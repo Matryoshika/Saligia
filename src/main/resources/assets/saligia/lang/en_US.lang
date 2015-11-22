@@ -1,0 +1,30 @@
+//Set all entity names
+entity.Acedia.name=Acedia
+entity.Avaritia.name=Avaritia
+entity.Gula.name=Gula
+entity.Invidia.name=Invidia
+entity.Ira.name=Ira
+entity.Luxuria.name=Luxuria
+entity.Superbia.name=Superbia
+
+//set all block names
+tile.BlockMatryoshikaBrain.name=Matryoshika Brain
+matryoshikabrain.name=Matryoshika Brain
+
+//set all item names
+item.ItemSinDagger.name=Dagger of Sin
+item.ItemDeathHand.name=Hand of Death
+item.ItemSoulCrucible.name=Crucible of Souls
+item.ItemZombieSoul.name=Soul of the Zombie
+item.ItemVillagerSoul.name=Soul of the Villager
+item.ItemBuffMobSoul.name=Soul of the Dark One
+item.ItemAnimalSoul.name=Soul of the Innocent One
+
+//set all enchant names
+enchantment.purify=Purify
+
+//Lore
+lore.deathhand.desc1=Demonic energies flow forth...
+
+//Generator
+tile.BlockDynamicGenerator.name=Dynamic Generator
