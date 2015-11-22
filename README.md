@@ -1,4 +1,4 @@
-![Matryoshika's Sinners Logo] 
+![Matryoshika's Sinners Logo] (https://raw.githubusercontent.com/Matryoshika/Saligia/master/src/main/resources/assets/saligia/textures/Saligia_1.png)
 -------------------------------------------
 
 ##Matryoshika's Sinners is a [Minecraft] (https://minecraft.net/) mod, based on The 7 Deadly Sins.
