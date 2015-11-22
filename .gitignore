@@ -1,66 +1,27 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+/bin/
 
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-
-# modding files
-# =========================
-forge-1.7.10-10.13.4.1448-1.7.10-changelog.txt
-forge-1.7.10-10.13.4.1448-1.7.10-src.zip
-/eclipse
-/build
-/bin
-/.settings
-/.gradle
-/gradle
-gradlew.file
-gradlew.bat
-MinecraftForge-Credits.txt
+*.index
+eclipse/*
+.gradle/*
+forge-1.7.10-10.13.4.1566-1.7.10-changelog.txt
+gradle/*
+forge-1.7.10-10.13.4.1566-1.7.10-src.zip
+.classpath
+.project
+.settings/org.eclipse.jdt.core.prefs
+build.gradle
+CREDITS-fml.txt
+gradlew
 MinecraftForge-License.txt
+MinecraftForge-Credits.txt
+gradlew.bat
 README.txt
 LICENSE-fml.txt
-CREDITS-fml.txt
-.project
-.classpath
-build.gradle
-/.metadata
+src/main/resources/assets/saligia/textures/LogoMS.png
+src/main/resources/assets/saligia/textures/items/dagger.png
+src/main/resources/assets/saligia/textures/items/AltarDagger.png
+src/main/resources/assets/saligia/textures/gui/generatorGUIAlt.png
+src/main/resources/assets/saligia/textures/gui/generatorGUI.png
+src/main/resources/assets/saligia/textures/gui/brainGUI.png
+src/main/resources/assets/saligia/textures/blocks/matryoshikaBrainTEMP.png
+src/main/resources/assets/saligia/textures/blocks/Core.png
