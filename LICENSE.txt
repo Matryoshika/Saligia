@@ -1,0 +1,50 @@
+## Saligia Mod License
+
+Copyright (c) 2015- Matryoshika / Jonathan Carlsson
+
+Matryoshika AKA The Mod-Author retains all rights of this mod, or any derivatives of it.
+Permission is granted for Private use.
+Private use in this context is using this mod for only yourself, or in a group of up to 8 players.
+If more than 8 players in a group have access to this mod, it is seen as in a public modpack.
+Demanding economic means from players, or cutting of my mod, whole or in parts, violates the Private 
+use permission.
+Donations made through free-will do not count towards commercial play.
+
+Unless given explicit, written permission, this mod may not be distributed outside official 
+locations.
+
+The only allowed means of modification without explicit permission is through the official GitHub 
+(https://github.com/Matryoshika/Saligia), through Forking & Pull-Requests.
+This is to ensure that all issues are properly documented, fixed and distributed from the source.
+Any other means of modifications is forbidden.
+
+Sublicense permissions may be granted by the Mod-Author, if there is a good reason behind it.
+
+Adding my mod to a public modpack is forbidden without explicit permission. Please get in touch 
+with the Mod-Author and request permission.
+	This is due to my subpar coding, and my perfectionist requirements of myself. I want to know 
+	who, when, where, and with what my mod is added to, and what will cause issues with it.
+
+
+Players are allowed to:
+	Use my mod for private play.
+
+	Make private modpacks with my mod.
+		Private modpack in this context is seen as a modpack that is available for only 8 or less 
+		players.
+	
+	Create Let's Plays and/or stream content of my mod.
+	
+	Fork and create Pull-Requests on the official GitHub.
+	
+	Request ideas and create Localization for my mod.
+	
+Anything else is forbidden unless given explicit permission from the Mod-Author.
+
+Conditions will be changed once this mod is out of Alpha-release.
+	
+
+The Mod-Author can be reached at: 
+	http://www.minecraftforum.net/members/Matryoshika
+	mad.matryoshika@gmail.com
+	https://twitter.com/Mad_Matryoshika
