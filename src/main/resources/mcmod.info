@@ -1,0 +1,16 @@
+[
+{
+  "modid": "matryoshikassinners",
+  "name": "Matryoshika's Sinners",
+  "description": "A mod that adds bosses inspired by the 7 Deadly Sins",
+  "version": "${1.0}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Matryoshika"],
+  "credits": "MOTHY/Akuno-P for creating my beloved Evillious Chronicles",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
