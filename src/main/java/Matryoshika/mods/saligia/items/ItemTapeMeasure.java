@@ -38,15 +38,11 @@ public class ItemTapeMeasure extends Item {
 			xa =+ Minecraft.getMinecraft().objectMouseOver.blockX;
 			ya =+ Minecraft.getMinecraft().objectMouseOver.blockY;
 			za =+ Minecraft.getMinecraft().objectMouseOver.blockZ;
-			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Set Point A").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
-			player.addChatMessage(chatComponent);
 		}
 		if(player.isSneaking() && Minecraft.getMinecraft().objectMouseOver!=null && world.isRemote == false){
 			xb =+ Minecraft.getMinecraft().objectMouseOver.blockX;
 			yb =+ Minecraft.getMinecraft().objectMouseOver.blockY;
 			zb =+ Minecraft.getMinecraft().objectMouseOver.blockZ;
-			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Set Point B").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
-			player.addChatMessage(chatComponent);
 			CountAxis(player);
 		}
 		
