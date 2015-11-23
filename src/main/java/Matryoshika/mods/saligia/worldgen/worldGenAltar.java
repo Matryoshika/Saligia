@@ -19,9 +19,9 @@ public class worldGenAltar implements IWorldGenerator{
 	{
 		BiomeGenBase b = world.getBiomeGenForCoords(chunkX, chunkZ);
 		Random randomchunk = new Random();
-		int chunkrandom = randomchunk.nextInt(100) + 1;
+		int chunkrandom = randomchunk.nextInt(5000) + 1;
 		if(b.biomeName.equals("Hell")){
-			if (chunkrandom <= 3){
+			if (chunkrandom == 1){
 			world.setBlock(chunkX*16 + random.nextInt(16), 70, chunkZ*16 + random.nextInt(16), saligia_Blocks.AltarPagan);
 			world.scheduleBlockUpdate(chunkX, 70, chunkZ, saligia_Blocks.AltarPagan, 100);
 			}
