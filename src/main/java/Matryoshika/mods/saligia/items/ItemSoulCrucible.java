@@ -79,7 +79,7 @@ public class ItemSoulCrucible extends Item{
 		
 		if(bowl.stackTagCompound.getInteger("amount") >= 100 && world.isRemote == false){
 			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("This Crucible has been filled.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
-			player.addChatComponentMessage(chatComponent);
+			player.addChatMessage(chatComponent);
 		}
 		
 		if(bowl.stackTagCompound.getInteger("amount") <= 100){
@@ -111,7 +111,7 @@ public class ItemSoulCrucible extends Item{
 			else{
 				if(world.isRemote == false){
 					chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Currently holds: " + bowl.stackTagCompound.getInteger("amount") + " Soul-fragments").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
-					player.addChatComponentMessage(chatComponent);
+					player.addChatMessage(chatComponent);
 				}
 			}
 		}
