@@ -1,12 +1,12 @@
 ![Matryoshika's Sinners Logo] (https://raw.githubusercontent.com/Matryoshika/Saligia/master/src/main/resources/assets/saligia/textures/Saligia_logo.png)
 -------------------------------------------
 
-##Matryoshika's Sinners is a [Minecraft] (https://minecraft.net/) mod, based on The 7 Deadly Sins.
+##Saligia is a [Minecraft] (https://minecraft.net/) mod, based on The 7 Deadly Sins.
 ###The main idea of this mod is to implement a stable, yet enriching end-game.
 Server stability is also a holy law to enforce that Entities and/or TileEntities added by this mod will have as low of an impact on any server as possible.
 **Please report any and all issues!**
 
-[License for Matryoshika's Sinners] (https://github.com/Matryoshika/Saligia/blob/master/LICENSE.txt)
+[License for Saligia] (https://github.com/Matryoshika/Saligia/blob/master/LICENSE.txt)
 
 * This mod implements 
   * 7 unique, extremely tough bosses.
