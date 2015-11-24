@@ -34,12 +34,12 @@ public class ItemTapeMeasure extends Item {
 	}
 	
 	public ItemStack onItemRightClick(ItemStack tape, World world, EntityPlayer player){
-		if(!player.isSneaking() && Minecraft.getMinecraft().objectMouseOver!=null && world.isRemote == false){
+		if(player.isSneaking() && Minecraft.getMinecraft().objectMouseOver!=null && world.isRemote == false){
 			xa =+ Minecraft.getMinecraft().objectMouseOver.blockX;
 			ya =+ Minecraft.getMinecraft().objectMouseOver.blockY;
 			za =+ Minecraft.getMinecraft().objectMouseOver.blockZ;
 		}
-		if(player.isSneaking() && Minecraft.getMinecraft().objectMouseOver!=null && world.isRemote == false){
+		if(!player.isSneaking() && Minecraft.getMinecraft().objectMouseOver!=null && world.isRemote == false){
 			xb =+ Minecraft.getMinecraft().objectMouseOver.blockX;
 			yb =+ Minecraft.getMinecraft().objectMouseOver.blockY;
 			zb =+ Minecraft.getMinecraft().objectMouseOver.blockZ;
