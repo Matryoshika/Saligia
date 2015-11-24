@@ -85,5 +85,11 @@ public interface MultiblockPos {
 				{4,-7,0},{-4,-7,0},{0,-7,4},{0,-7,-4}
 			};
 		}
+		
+		public void MobGrinder(World world){
+			final int[][] AVARITIA_BLOCKS = new int[][]{
+				{1,0,1},{1,0,-1},{-1,0,1},{-1,0,-1},{-1,1,-5},{0,1,-6},{1,1,-5},{5,1,-1},{6,1,0},{5,1,1},{1,1,5}
+			};
+		}
 	}	
 }
