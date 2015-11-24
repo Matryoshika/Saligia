@@ -27,7 +27,6 @@ public class BlockGhastly extends Block {
 	public BlockGhastly (Block BlockGhastly){
 		super(Material.water);
 		setStepSound(soundTypeStone);
-		//setBlockTextureName(saligia.MODID+":BlockGhastly");
 		setHardness(10);
 		this.setResistance(150);
 		this.setBlockName("BlockGhastly");
@@ -39,10 +38,10 @@ public class BlockGhastly extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister p_149651_1_)
+    public void registerBlockIcons(IIconRegister iconRegister)
     {
-        this.blockIcon = p_149651_1_.registerIcon(saligia.MODID+":BlockGhastly");
-        this.GhastlySides = p_149651_1_.registerIcon(saligia.MODID+":BlockGhastlySides");
+        this.blockIcon = iconRegister.registerIcon(saligia.MODID+":BlockGhastly");
+        this.GhastlySides = iconRegister.registerIcon(saligia.MODID+":BlockGhastlySides");
     }
 	
 	
