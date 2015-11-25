@@ -1,5 +1,7 @@
 package Matryoshika.mods.saligia.blocks;
 
+import java.util.List;
+
 import javax.swing.Icon;
 
 import Matryoshika.mods.saligia.saligia;
@@ -10,8 +12,11 @@ import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -30,6 +35,7 @@ public class BlockGhastly extends Block {
 		setHardness(10);
 		this.setResistance(150);
 		this.setBlockName("BlockGhastly");
+		this.setCreativeTab(saligia.MatryoshikaTab);
 	}
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
