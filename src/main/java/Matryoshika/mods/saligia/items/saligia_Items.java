@@ -38,6 +38,7 @@ public class saligia_Items {
 	public static Item SoulVortex;
 	public static Item TapeMeasure;
 	public static Item RitualActivator;
+	public static Item LibroSaligia;
 	
 	public static List<Item>ItemList=new ArrayList<Item>();
 	
@@ -52,6 +53,7 @@ public class saligia_Items {
 		ItemList.add(SoulVortex = new ItemSoulVortex(SOUL).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(TapeMeasure = new ItemTapeMeasure(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(RitualActivator = new ItemRitualActivator(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(LibroSaligia = new ItemLibroSaligia(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Item Item:ItemList){
 			GameRegistry.registerItem(Item,  Item.getUnlocalizedName());
