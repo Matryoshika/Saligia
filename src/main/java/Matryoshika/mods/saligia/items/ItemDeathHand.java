@@ -50,8 +50,7 @@ public class ItemDeathHand extends ItemSword {
 		if (base2 == null || base1 == null || base2.worldObj.isRemote){
 			return false;
 		}
-		if (base1 instanceof EntityPlayer || base1 instanceof IBossDisplayData)
-        {
+		if (base1 instanceof EntityPlayer || base1 instanceof IBossDisplayData){
             return false;
         }
 		
@@ -62,7 +61,7 @@ public class ItemDeathHand extends ItemSword {
         }
 		
 		if (base1 instanceof EntityVillager) soulFragment = 1;
-		else if (base1 instanceof EntityZombie) soulFragment = 2;
+		else if (base1 instanceof EntityMob && !(base1 instanceof EntityGhast || base1 instanceof EntityCreeper)) soulFragment = 2;
 		else if (base1 instanceof EntityAnimal) soulFragment = 3;
 		else if (base1 instanceof EntityGhast || base1 instanceof EntityCreeper) soulFragment = 4;
 		
@@ -105,10 +104,6 @@ public class ItemDeathHand extends ItemSword {
             	Entity item = new EntityItem(base1.worldObj, posX, posY, posZ, soul);
             	base1.worldObj.spawnEntityInWorld(item);
             }
-            
-            
-            
-            
         }
 		return false;
 		
