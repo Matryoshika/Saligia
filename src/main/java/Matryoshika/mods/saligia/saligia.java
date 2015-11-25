@@ -4,6 +4,8 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+import Matryoshika.mods.saligia.blocks.BlockGhastly;
+import Matryoshika.mods.saligia.blocks.ItemBlockGhastly;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.enchantments.EnchantmentPurify;
 import Matryoshika.mods.saligia.entities.EntityAcedia;
@@ -32,6 +34,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -47,6 +50,8 @@ import net.minecraftforge.common.config.Configuration;
 		
 		
 		public static String[] allowedGeneratorsArray;
+		
+		public static Block GhastlyBlock;
 
 	public static final CreativeTabMatryoshika MatryoshikaTab = new CreativeTabMatryoshika("Matryoshika's Sinners"){
 		@Override
@@ -77,6 +82,9 @@ import net.minecraftforge.common.config.Configuration;
 		ConfigHandler.init(new Configuration(event.getSuggestedConfigurationFile()));
 		saligia_Items.registerItems();
 		saligia_Blocks.registerBlocks();
+		
+		saligia.GhastlyBlock = new BlockGhastly(GhastlyBlock);
+		GameRegistry.registerBlock(saligia.GhastlyBlock, ItemBlockGhastly.class, "GhastlyBlock");
 		
 	}
 	
