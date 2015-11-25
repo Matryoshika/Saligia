@@ -45,8 +45,6 @@ public class ItemDeathHand extends ItemSword {
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase base1, EntityLivingBase base2){
-		
-		
 		if (base2 == null || base1 == null || base2.worldObj.isRemote){
 			return false;
 		}
@@ -55,8 +53,7 @@ public class ItemDeathHand extends ItemSword {
         }
 		
 		World world = base1.worldObj;
-		if (base1.isDead || base1.getHealth() < 0.5f)
-        {
+		if (base1.isDead || base1.getHealth() < 0.5f){
             return false;
         }
 		
@@ -65,8 +62,7 @@ public class ItemDeathHand extends ItemSword {
 		else if (base1 instanceof EntityAnimal) soulFragment = 3;
 		else if (base1 instanceof EntityGhast || base1 instanceof EntityCreeper) soulFragment = 4;
 		
-		if (findPaganAltar(base1.worldObj, base1, soulFragment))
-        {
+		if (findPaganAltar(base1.worldObj, base1, soulFragment)){
             double posX = base1.posX;
             double posY = base1.posY;
             double posZ = base1.posZ;
