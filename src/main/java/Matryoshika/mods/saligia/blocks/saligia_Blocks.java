@@ -7,11 +7,14 @@ import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.blocks.altars.*;
 import Matryoshika.mods.saligia.blocks.ritualmasters.*;
 import Matryoshika.mods.saligia.blocks.sinblocks.*;
+import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.blocks.*;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 
@@ -19,7 +22,7 @@ public class saligia_Blocks {
 	
 	public static Block CentreRitual;
 	public static Block CentreCOTH;
-	public static Block GhastlyBlock;
+	
 	
 	public static Block MatryoshikaBrain;
 	public static Block AcediaBlock;
@@ -57,10 +60,18 @@ public class saligia_Blocks {
 		BlockList.add(AltarDemonic = new DemonicAltar(AltarDemonic).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CentreRitual = new BlockRitualCentre(CentreRitual).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CentreCOTH = new BlockRitualCOTH(CentreCOTH).setCreativeTab(saligia.MatryoshikaTab));
-		BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
+		//BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Block block:BlockList){
 			GameRegistry.registerBlock(block,  block.getUnlocalizedName());
 		}
+		
+		/*GameRegistry.addRecipe(new ItemStack(saligia.GhastlyBlock), new Object[]{
+				"TTT",
+				"TNT",
+				"TTT",
+				'N', Blocks.netherrack, 'T', Items.ghast_tear
+		});*/
+		
 	}
 }
