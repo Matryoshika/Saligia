@@ -10,6 +10,9 @@ entity.Superbia.name=Superbia
 //set all block names
 tile.BlockMatryoshikaBrain.name=Matryoshika Brain
 matryoshikabrain.name=Matryoshika Brain
+tile.BlockGhastly.name=Block of the Lost One's Weeping
+tile.BlockRitualCentre.name=Centre Ritual Stone
+tile.BlockRitualCOTH.name=Centre Ritual Stone: Cognizance of the Hellmouth
 
 //set all item names
 item.ItemSinDagger.name=Dagger of Sin
@@ -19,6 +22,7 @@ item.ItemZombieSoul.name=Soul of the Zombie
 item.ItemVillagerSoul.name=Soul of the Villager
 item.ItemBuffMobSoul.name=Soul of the Dark One
 item.ItemAnimalSoul.name=Soul of the Innocent One
+item.ItemRitualActivator.name=Source of Evil
 
 //set all enchant names
 enchantment.purify=Purify
