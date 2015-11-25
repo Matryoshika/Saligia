@@ -1,9 +1,13 @@
 package Matryoshika.mods.saligia.items;
 
+import java.util.Arrays;
+import java.util.List;
+
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -28,7 +32,16 @@ public class ItemRitualActivator extends Item {
 		this.setUnlocalizedName("ItemRitualActivator");
 		this.setTextureName(saligia.MODID+":soul");
 		setHasSubtypes(true);
-		setMaxDamage(20);
+		setMaxDamage(0);
+	}
+	@Override
+    public String getItemStackDisplayName(ItemStack stack){
+		return ritualName(stack);
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par){ 
+		list.add(EnumChatFormatting.DARK_RED + "Terrors of the mind within your grasp");
 	}
 	
 	
@@ -62,33 +75,26 @@ public class ItemRitualActivator extends Item {
 				
 				Block blockAtPos = world.getBlock(x1, y1, z1);
 				int meta = world.getBlockMetadata(x, y, z);
-				if(blockAtPos != saligia_Blocks.GhastlyBlock) {
-						badSetup = true;	
-				}
-				else{
-						for(int[] coords2 : GHASTLY_BLOCKS) {
-							int x2 = x + coords[0];
-							int y2 = y + coords[1];
-							int z2 = z + coords[2];
-							world.setBlock(x2, y2, z2, Blocks.air);
-							world.addWeatherEffect(new EntityLightningBolt(world, x2, y2, z2));
-							world.setBlock(x, y, z, saligia_Blocks.CentreRitualActivated);
-						
+				if(blockAtPos == saligia_Blocks.GhastlyBlock) {
+					for(int[] coords2 : GHASTLY_BLOCKS) {
+						int x2 = x + coords[0];
+						int y2 = y + coords[1];
+						int z2 = z + coords[2];
+						//world.setBlock(x2, y2, z2, Blocks.air);
+						world.addWeatherEffect(new EntityLightningBolt(world, x2, y2, z2));
+						world.setBlock(x, y, z, saligia_Blocks.CentreCOTH);	
 					}
 				}
-				
-			}
+				else{
+						wrongSetup(player, world);
+						break;
+					}
+				}
 		}
 		else{
 			return activator;
 		}
-		
-		
-		
-		if(badSetup = true && !world.isRemote){
-			player.addChatMessage(new ChatComponentTranslation("The ritual-pattern is not correct for the chosen ritual!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
-			badSetup = false;
-		}
+		super.getItemStackDisplayName(activator);
 		return activator;
 	}
 	
@@ -172,6 +178,11 @@ public class ItemRitualActivator extends Item {
 			
 			
 		
+	}
+	
+	public void wrongSetup(EntityPlayer player, World world){
+		if(world.isRemote == false)
+			player.addChatMessage(new ChatComponentTranslation("The ritual-pattern is not correct for the chosen ritual!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
 	}
 	
 }
