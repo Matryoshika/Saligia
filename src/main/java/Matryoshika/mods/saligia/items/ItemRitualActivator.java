@@ -1,8 +1,12 @@
 package Matryoshika.mods.saligia.items;
 
 import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.blocks.saligia_Blocks;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
@@ -16,6 +20,7 @@ public class ItemRitualActivator extends Item {
 	ChatComponentTranslation chatComponent;
 	int activatorCount = 0;
 	public String ritualSelected;
+	public boolean badSetup = false;
 	
 	public ItemRitualActivator(ToolMaterial soul){
 		super();
@@ -29,17 +34,61 @@ public class ItemRitualActivator extends Item {
 	
 	public ItemStack onItemRightClick(ItemStack activator, World world, EntityPlayer player){
 		
-		activator.setItemDamage(activator.getItemDamage()+1);
-		if (world.isRemote == false){
-			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Selected Ritual: "+ritualName(activator)).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
-			player.addChatMessage(chatComponent);
+		int x = Minecraft.getMinecraft().objectMouseOver.blockX;
+		int y = Minecraft.getMinecraft().objectMouseOver.blockY;
+		int z = Minecraft.getMinecraft().objectMouseOver.blockZ;
+		
+		if(player.isSneaking() == true){
+			activator.setItemDamage(activator.getItemDamage()+1);
+			if (world.isRemote == false){
+				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Selected Ritual: "+ritualName(activator)).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
+				player.addChatMessage(chatComponent);
+			}
+			if(activator.getItemDamage() >= 20){
+				activator.setItemDamage(0);
+			}
 		}
-		if(activator.getItemDamage() >= 20){
-			activator.setItemDamage(0);
+		Block block = world.getBlock(x, y, z);
+		if(block == saligia_Blocks.CentreRitual && activator.getItemDamage() == 1){
+			
+			final int [][] GHASTLY_BLOCKS = new int [][]{
+				{0,1,-4},{3,1,-3},{4,1,0},{3,1,3},{0,1,4},{-3,1,3},{-4,1,0},{-3,1,-3}
+			};
+			
+			for(int[] coords : GHASTLY_BLOCKS) {
+				int x1 = x + coords[0];
+				int y1 = y + coords[1];
+				int z1 = z + coords[2];
+				
+				Block blockAtPos = world.getBlock(x1, y1, z1);
+				int meta = world.getBlockMetadata(x, y, z);
+				if(blockAtPos != saligia_Blocks.GhastlyBlock) {
+						badSetup = true;	
+				}
+				else{
+						for(int[] coords2 : GHASTLY_BLOCKS) {
+							int x2 = x + coords[0];
+							int y2 = y + coords[1];
+							int z2 = z + coords[2];
+							world.setBlock(x2, y2, z2, Blocks.air);
+							world.addWeatherEffect(new EntityLightningBolt(world, x2, y2, z2));
+							world.setBlock(x, y, z, saligia_Blocks.CentreRitualActivated);
+						
+					}
+				}
+				
+			}
+		}
+		else{
+			return activator;
 		}
 		
 		
 		
+		if(badSetup = true && !world.isRemote){
+			player.addChatMessage(new ChatComponentTranslation("The ritual-pattern is not correct for the chosen ritual!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+			badSetup = false;
+		}
 		return activator;
 	}
 	
