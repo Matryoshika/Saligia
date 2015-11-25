@@ -75,7 +75,7 @@ public class ItemRitualActivator extends Item {
 				
 				Block blockAtPos = world.getBlock(x1, y1, z1);
 				int meta = world.getBlockMetadata(x, y, z);
-				if(blockAtPos == saligia_Blocks.GhastlyBlock) {
+				if(blockAtPos == saligia.GhastlyBlock) {
 					for(int[] coords2 : GHASTLY_BLOCKS) {
 						int x2 = x + coords[0];
 						int y2 = y + coords[1];
