@@ -36,7 +36,12 @@ public class ItemRitualActivator extends Item {
 	}
 	@Override
     public String getItemStackDisplayName(ItemStack stack){
-		return ritualName(stack);
+		if(!stack.hasDisplayName()){
+			return ritualName(stack);}
+		else{
+			return "Hand of Sin";
+		}
+		
 	}
 	
 	@Override
