@@ -17,7 +17,9 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class ItemRitualActivator extends Item {
@@ -31,6 +33,7 @@ public class ItemRitualActivator extends Item {
 	public String ritualSelected2;
 	public String tooltip;
 	public boolean badSetup = false;
+	public Vec3 posVec;
 	
 	public ItemRitualActivator(ToolMaterial soul){
 		super();
@@ -51,13 +54,26 @@ public class ItemRitualActivator extends Item {
 		tooltip = new String(StatCollector.translateToLocal("saligia.ritualactivator.tooltip"));
 		list.add(EnumChatFormatting.GRAY + tooltip);
 	}
-	
-	
-	public ItemStack onItemRightClick(ItemStack activator, World world, EntityPlayer player){
+
+	public ItemStack onItemRightClick(ItemStack activator, EntityPlayer player, World world){
+		if(player.isSneaking() == true){
+			activator.setItemDamage(activator.getItemDamage()+1);
+			if (world.isRemote == false){
+				ritualSelected2 = new String(StatCollector.translateToLocal("saligia.ritual.select"));
+				player.addChatMessage(new ChatComponentTranslation(ritualSelected2+ritualName(activator)).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE)));
+			}
+			if(activator.getItemDamage() >= 20){
+				activator.setItemDamage(0);
+			}
+		}
 		
-		int x = Minecraft.getMinecraft().objectMouseOver.blockX;
-		int y = Minecraft.getMinecraft().objectMouseOver.blockY;
-		int z = Minecraft.getMinecraft().objectMouseOver.blockZ;
+		return activator;
+	}
+	
+
+	public boolean onItemUse(ItemStack activator, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10){
+
+		//System.out.println("{"+x+","+y+","+z+"}");
 		
 		if(player.isSneaking() == true){
 			activator.setItemDamage(activator.getItemDamage()+1);
@@ -69,8 +85,12 @@ public class ItemRitualActivator extends Item {
 				activator.setItemDamage(0);
 			}
 		}
+		
+		
+		
+		
 		Block block = world.getBlock(x, y, z);
-		if(block == saligia_Blocks.CentreRitual && activator.getItemDamage() == 1){
+		if(block == saligia_Blocks.CentreRitual && activator.getItemDamage() == 1 && !player.isSneaking()){
 			
 			final int [][] GHASTLY_BLOCKS = new int [][]{
 				{0,1,-4},{3,1,-3},{4,1,0},{3,1,3},{0,1,4},{-3,1,3},{-4,1,0},{-3,1,-3}
@@ -84,16 +104,12 @@ public class ItemRitualActivator extends Item {
 				Block blockAtPos = world.getBlock(x1, y1, z1);
 				int meta = world.getBlockMetadata(x, y, z);
 				if(blockAtPos == saligia.GhastlyBlock) {
-					Item bowl = saligia_Items.SoulCrucible;
-						for(int[] coords2 : GHASTLY_BLOCKS) {
-							int x2 = x + coords[0];
-							int y2 = y + coords[1];
-							int z2 = z + coords[2];
-							//world.addWeatherEffect(new EntityLightningBolt(world, x1, y1, z1));
-							world.playSoundAtEntity(player, "mob.enderdragon.growl", 10F, 0.1F);
-							world.setBlock(x, y, z, saligia_Blocks.CentreCOTH);
-					}
-					
+						//world.addWeatherEffect(new EntityLightningBolt(world, x1, y1, z1));
+						world.playSoundAtEntity(player, "mob.enderdragon.growl", 10F, 0.1F);
+						//world.setBlock(x, y, z, saligia_Blocks.CentreCOTH);
+						world.setBlock(x, y, z, saligia_Blocks.CentreCOTH, 0, 2);
+						break;
+	
 				}
 				else{
 						wrongSetup(player, world);
@@ -101,11 +117,10 @@ public class ItemRitualActivator extends Item {
 					}
 				}
 		}
-		else{
-			return activator;
-		}
+
 		super.getItemStackDisplayName(activator);
-		return activator;
+		return true;
+		
 	}
 	
 	public String ritualName(ItemStack stack){
