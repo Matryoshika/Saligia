@@ -7,7 +7,7 @@ import net.minecraft.item.Item.ToolMaterial;
 public class ItemLibroSaligia extends Item {
 	public ItemLibroSaligia(ToolMaterial soul){
 		super();
-		this.maxStackSize = 16;
+		this.maxStackSize = 1;
 		this.setUnlocalizedName("ItemLibroSaligia");
 		this.setTextureName(saligia.MODID+":LibroSaligia");
 	}
