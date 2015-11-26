@@ -34,14 +34,10 @@ public class ItemRitualActivator extends Item {
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}
+	
 	@Override
     public String getItemStackDisplayName(ItemStack stack){
-		if(!stack.hasDisplayName()){
-			return ritualName(stack);}
-		else{
-			return "Hand of Sin";
-		}
-		
+			return ritualName(stack);
 	}
 	
 	@Override
@@ -85,9 +81,10 @@ public class ItemRitualActivator extends Item {
 						int x2 = x + coords[0];
 						int y2 = y + coords[1];
 						int z2 = z + coords[2];
-						//world.setBlock(x2, y2, z2, Blocks.air);
 						world.addWeatherEffect(new EntityLightningBolt(world, x2, y2, z2));
-						world.setBlock(x, y, z, saligia_Blocks.CentreCOTH);	
+						world.setBlock(x, y, z, saligia_Blocks.CentreCOTH);
+						
+						
 					}
 				}
 				else{
@@ -99,11 +96,18 @@ public class ItemRitualActivator extends Item {
 		else{
 			return activator;
 		}
+		
+		
+		
+		
 		super.getItemStackDisplayName(activator);
 		return activator;
 	}
 	
 	public String ritualName(ItemStack stack){
+		if (stack.getItemDamage() == 0){
+			ritualSelected = new String("˜kSource Of Sin");
+		}
 		if (stack.getItemDamage() == 1){
 			ritualSelected = new String("Cognizance of the Hellmouth"); 
 		}
@@ -164,30 +168,13 @@ public class ItemRitualActivator extends Item {
 		if (stack.getItemDamage() == 20){
 			ritualSelected = new String("Placeholder"); 
 		}
-		return ritualSelected;
-		
-		
-		/*if(activatorCount == 0){
-			activatorCount++;
-			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Will now cycle through the available rituals").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
-			player.addChatMessage(chatComponent);
-			System.out.println("Hello");
-		}
-		if(activatorCount > 0 && activatorCount < 20){
-			activatorCount++;
-			
-			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Current ritual: "+ritualName(string)).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
-			player.addChatMessage(chatComponent);
-			}
-			*/
-			
-			
-		
+		return ritualSelected;		
 	}
 	
 	public void wrongSetup(EntityPlayer player, World world){
 		if(world.isRemote == false)
 			player.addChatMessage(new ChatComponentTranslation("The ritual-pattern is not correct for the chosen ritual!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
 	}
+	
 	
 }
