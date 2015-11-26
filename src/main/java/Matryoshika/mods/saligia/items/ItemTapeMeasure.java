@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
@@ -44,6 +45,10 @@ public class ItemTapeMeasure extends Item {
 			yb =+ Minecraft.getMinecraft().objectMouseOver.blockY;
 			zb =+ Minecraft.getMinecraft().objectMouseOver.blockZ;
 			CountAxis(player);
+			
+			if(world.getTileEntity(xb, yb, zb) == null){
+				System.out.println("Has a tileentity");
+			}
 		}
 		
 		return tape;	
