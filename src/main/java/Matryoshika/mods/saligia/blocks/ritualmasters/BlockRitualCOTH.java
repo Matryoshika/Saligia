@@ -3,6 +3,7 @@ package Matryoshika.mods.saligia.blocks.ritualmasters;
 import java.util.List;
 
 import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.blocks.BlockRitualCentre;
 import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,10 +14,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockRitualCOTH extends Block {
+public class BlockRitualCOTH extends BlockRitualCentre {
 	
-	public BlockRitualCOTH (Block BlockRitualCOTH){
-		super(Material.rock);
+	public BlockRitualCOTH (Block BlockRitualCentre){
+		super(BlockRitualCentre);
 		setStepSound(soundTypeStone);
 		setBlockTextureName(saligia.MODID+":BlockRitualCentre");
 		setHardness(10);
