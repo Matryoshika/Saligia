@@ -19,6 +19,7 @@ import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.items.souls.*;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class saligia_Items {
 	
@@ -39,6 +40,7 @@ public class saligia_Items {
 	public static Item TapeMeasure;
 	public static Item RitualActivator;
 	public static Item LibroSaligia;
+	public static Item Soul;
 	
 	public static List<Item>ItemList=new ArrayList<Item>();
 	
@@ -73,6 +75,12 @@ public class saligia_Items {
 				" I ",
 				'I', Items.iron_ingot, 'B', Items.bowl
 		});
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(saligia_Items.RitualActivator), 
+				" S ", 
+				"SxS", 
+				" S ", 
+				'S', "materialSaligiaSoul", 'x', Items.emerald));
+		
 		}
 		
 	}
