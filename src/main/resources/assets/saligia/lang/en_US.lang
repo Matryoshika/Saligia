@@ -23,6 +23,7 @@ item.ItemVillagerSoul.name=Soul of the Villager
 item.ItemBuffMobSoul.name=Soul of the Dark One
 item.ItemAnimalSoul.name=Soul of the Innocent One
 item.ItemRitualActivator.name=Source of Evil
+item.ItemLibroSaligia.name=Libro Saligia
 
 //set all enchant names
 enchantment.purify=Purify
