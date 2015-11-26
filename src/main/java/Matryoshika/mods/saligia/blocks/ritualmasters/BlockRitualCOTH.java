@@ -1,9 +1,11 @@
 package Matryoshika.mods.saligia.blocks.ritualmasters;
 
 import java.util.List;
+import java.util.Random;
 
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.blocks.BlockRitualCentre;
+import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,6 +15,8 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -66,5 +70,9 @@ public class BlockRitualCOTH extends BlockContainer implements ITileEntityProvid
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TileRitualCOTH();
 	}
+	
+	public Item getItemDropped(int par1, Random rand, int par2){
+        return saligia_Blocks.CentreRitual.getItemDropped(0, rand, par2);
+    }
 
 }
