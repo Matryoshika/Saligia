@@ -50,3 +50,5 @@ saligia.wrongSetup=The ritual-pattern is not correct for the chosen ritual!
 
 //Tooltips
 saligia.ritualactivator.tooltip=Terrors of the mind within your grasp
+saligia.blockghastly.tooltip1=As ethereal as smoke, this block 
+saligia.blockghastly.tooltip2=may vanish at the slightest touch
