@@ -43,6 +43,7 @@ public class ItemSoulCrucible extends Item{
 	public ItemSoulCrucible(ToolMaterial bowl) {
 		super();
 		this.maxStackSize = 1;
+		setHasSubtypes(true);
 		setMaxDamage(0);
 		
 		this.setUnlocalizedName("ItemSoulCrucible");
@@ -80,6 +81,7 @@ public class ItemSoulCrucible extends Item{
 		if(bowl.stackTagCompound.getInteger("amount") >= 100 && world.isRemote == false){
 			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("This Crucible has been filled.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
 			player.addChatMessage(chatComponent);
+			bowl.setItemDamage(bowl.getItemDamage()-1);
 		}
 		
 		if(bowl.stackTagCompound.getInteger("amount") <= 100){
