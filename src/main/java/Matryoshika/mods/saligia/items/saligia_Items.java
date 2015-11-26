@@ -19,6 +19,7 @@ import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.items.souls.*;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class saligia_Items {
@@ -75,7 +76,7 @@ public class saligia_Items {
 				" I ",
 				'I', Items.iron_ingot, 'B', Items.bowl
 		});
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(saligia_Items.RitualActivator), 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(saligia_Items.RitualActivator, 1, 0), 
 				" S ", 
 				"SxS", 
 				" S ", 
