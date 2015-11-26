@@ -20,7 +20,9 @@ public class saligia_Tile {
 		TileList.add(RitualCOTH = new TileRitualCOTH());
 		
 		for(TileEntity Tile:TileList){
-			GameRegistry.registerTileEntity(TileRitualCOTH.class, "tileRitualCOTH");
+			//GameRegistry.registerTileEntity(TileRitualCOTH.class, "tileRitualCOTH");
 		}
+		
+		
 	}
 }
