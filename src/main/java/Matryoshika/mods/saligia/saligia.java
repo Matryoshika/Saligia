@@ -38,9 +38,11 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.OreDictionary;
 
 	@Mod(modid=saligia.MODID, version=saligia.VERSION, name="saligia")
 		public class saligia {	
@@ -95,6 +97,11 @@ import net.minecraftforge.common.config.Configuration;
 		MinecraftForge.EVENT_BUS.register(new matryoshikaEventHandler());
 		proxy.registerRenderers();
 		proxy.registerEntities();
+		
+		OreDictionary.registerOre("materialSaligiaSoul", new ItemStack(saligia_Items.AnimalSoul));
+		OreDictionary.registerOre("materialSaligiaSoul", new ItemStack(saligia_Items.BuffMobSoul));
+		OreDictionary.registerOre("materialSaligiaSoul", new ItemStack(saligia_Items.VillagerSoul));
+		OreDictionary.registerOre("materialSaligiaSoul", new ItemStack(saligia_Items.ZombieSoul));
 
 		
 		//Register entities
