@@ -9,17 +9,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.util.EnumChatFormatting;
 
-public class ZombieSoul extends Soul{
-	public ZombieSoul(ToolMaterial soul){
-		super(soul);
+public class Soul extends Item{
+	public Soul(ToolMaterial soul){
+		super();
 		this.maxStackSize = 16;
-		this.setUnlocalizedName("ItemZombieSoul");
-		this.setTextureName(saligia.MODID+":soul");
+		this.setUnlocalizedName("ItemSoul");
 	}
-	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par){
-		list.add(EnumChatFormatting.DARK_GRAY + "This soul has started to become corrupt...");
+	public boolean hasEffect(ItemStack stack){
+		return true;
 	}
 
 }
+

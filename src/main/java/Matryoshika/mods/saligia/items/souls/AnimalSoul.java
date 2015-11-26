@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.util.EnumChatFormatting;
 
-public class AnimalSoul extends Item{
+public class AnimalSoul extends Soul{
 	public AnimalSoul(ToolMaterial soul){
-		super();
+		super(soul);
 		this.maxStackSize = 16;
 		this.setUnlocalizedName("ItemAnimalSoul");
 		this.setTextureName(saligia.MODID+":soul");
@@ -20,10 +20,6 @@ public class AnimalSoul extends Item{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par){
 		list.add(EnumChatFormatting.DARK_GRAY + "Belonged to an innocent but undeveloped soul...");
-	}
-	@Override
-	public boolean hasEffect(ItemStack stack){
-		return true;
 	}
 
 }
