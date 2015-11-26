@@ -5,12 +5,14 @@ import Matryoshika.mods.saligia.items.saligia_Items;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
@@ -46,4 +48,10 @@ public class BlockRitualCentre extends Block {
 	public boolean isOpaqueCube(){
     	return false;
     }
+
+	//@Override
+	//public TileEntity createNewTileEntity(World world, int meta) {
+		// TODO Auto-generated method stub
+		//return null;
+	//}
 }
