@@ -38,21 +38,18 @@ public class BlockGhastly extends Block {
 		this.setCreativeTab(saligia.MatryoshikaTab);
 	}
 	@SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta)
-    {
+    public IIcon getIcon(int side, int meta){
         return side == 1 ? this.GhastlySides : (side == 0 ? this.GhastlySides : (side != meta ? this.blockIcon : this.GhastlyFace));
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister)
-    {
+    public void registerBlockIcons(IIconRegister iconRegister){
         this.blockIcon = iconRegister.registerIcon(saligia.MODID+":BlockGhastly");
         this.GhastlySides = iconRegister.registerIcon(saligia.MODID+":BlockGhastlySides");
     }
 	
 	
-	public boolean isOpaqueCube()
-    {
+	public boolean isOpaqueCube(){
     	return false;
     }
 }
