@@ -33,3 +33,20 @@ lore.deathhand.desc1=Demonic energies flow forth...
 
 //Generator
 tile.BlockDynamicGenerator.name=Dynamic Generator
+
+//Rituals & Activator names
+saligia.ritual.select=Selected ritual: 
+saligia.ritual.COTH=Cognizance of the Hellmouth
+saligia.ritual.ROTTS=Roar of the Thundering Skies
+saligia.ritual.FOTDB=Fountain of the Divine's blood
+saligia.ritual.BOTAE=Blessings of the Arid Earth
+saligia.ritual.GFTOG=Gift from the Ocean Grave
+saligia.ritual.GOTA=Gaze of the Abyss
+saligia.ritual.placeholder=Placeholder
+
+
+//chatcomponents
+saligia.wrongSetup=The ritual-pattern is not correct for the chosen ritual!
+
+//Tooltips
+saligia.ritualactivator.tooltip=Terrors of the mind within your grasp
