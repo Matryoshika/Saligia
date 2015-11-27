@@ -54,10 +54,7 @@ public class TileRitualCOTH extends TileEntity{
 						ItemStack iStack = new ItemStack(saligia_Items.LibroSaligia);
 						Entity entity = new EntityItem(worldObj, this.xCoord+0.5, y+0.2, this.zCoord+0.5, iStack);
 						worldObj.spawnEntityInWorld(entity);
-						entity.motionX =0;
-						entity.motionY =0;
-						entity.motionZ =0;
-						worldObj.playSoundAtEntity(entity, "mob.ghast.scream", 10F, 0.1F);
+						entity.motionX =0; entity.motionY =0; entity.motionZ =0;
 						
 						}
 					}
