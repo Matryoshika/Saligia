@@ -28,7 +28,7 @@ public class TileRitualCOTH extends TileEntity{
 		{0,1,-4},{3,1,-3},{4,1,0},{3,1,3},{0,1,4},{-3,1,3},{-4,1,0},{-3,1,-3}
 	};
 	
-	private static final double RANGE = 5F;
+	private static final double RANGE = 2F;
 	
 	@Override
     public void updateEntity(){
@@ -39,12 +39,10 @@ public class TileRitualCOTH extends TileEntity{
 		if (!this.worldObj.isRemote){
 		
 		Class<EntityItem> items = EntityItem.class;
-		List<EntityItem> inbox = worldObj.getEntitiesWithinAABB(items, AxisAlignedBB.getBoundingBox(xCoord - RANGE, yCoord - RANGE, zCoord - RANGE, xCoord + RANGE, yCoord + RANGE, zCoord + RANGE));
+		List<EntityItem> inbox = worldObj.getEntitiesWithinAABB(items, AxisAlignedBB.getBoundingBox(this.xCoord - RANGE, this.yCoord - RANGE, this.zCoord - RANGE, this.xCoord + RANGE, this.yCoord + RANGE, this.zCoord + RANGE));
 		if(worldObj.isAirBlock(xCoord, yCoord+1, zCoord) == true){
 			for(EntityItem item : inbox){
 				if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() == Items.writable_book) {
-					ItemStack stack = item.getEntityItem();
-					
 					if (item.ticksExisted ==5)
 						worldObj.playSoundEffect(this.xCoord, this.yCoord, this.zCoord, saligia.MODID+":whispering1", 1.0F, 1.0F);
 					
