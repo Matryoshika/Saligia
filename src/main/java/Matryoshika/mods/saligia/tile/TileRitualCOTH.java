@@ -1,10 +1,14 @@
 package Matryoshika.mods.saligia.tile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.entities.misc.customLightningBolt;
 import Matryoshika.mods.saligia.items.saligia_Items;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
@@ -20,12 +24,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 
 public class TileRitualCOTH extends TileEntity{
+	final int [][] GHASTLY_BLOCKS = new int [][]{
+		{0,1,-4},{3,1,-3},{4,1,0},{3,1,3},{0,1,4},{-3,1,3},{-4,1,0},{-3,1,-3}
+	};
 	
 	private static final double RANGE = 5F;
 	
 	@Override
     public void updateEntity(){
 		int y = this.yCoord+1;
+		int count = 0;
+		int ticked = 1;
 		
 		if (!this.worldObj.isRemote){
 		
@@ -36,7 +45,10 @@ public class TileRitualCOTH extends TileEntity{
 				if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() == Items.writable_book) {
 					ItemStack stack = item.getEntityItem();
 					
-					if(item.ticksExisted >= 20){
+					if (item.ticksExisted ==5)
+						worldObj.playSoundEffect(this.xCoord, this.yCoord, this.zCoord, saligia.MODID+":whispering1", 1.0F, 1.0F);
+					
+					if(item.ticksExisted >= 320){
 						worldObj.addWeatherEffect(new customLightningBolt(worldObj, this.xCoord, y, this.zCoord));
 						item.setDead();
 						ItemStack iStack = new ItemStack(saligia_Items.LibroSaligia);
@@ -75,4 +87,5 @@ public class TileRitualCOTH extends TileEntity{
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt){
         readFromNBT(pkt.func_148857_g());
     }
+	
 }
