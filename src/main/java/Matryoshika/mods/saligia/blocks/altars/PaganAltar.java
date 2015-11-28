@@ -27,6 +27,9 @@ public class PaganAltar extends BlockFalling {
 	int left = 0;
 	boolean mats1 = false;
 	private static final double RANGE = 2F;
+	int splitInEight;
+	int leftOver;
+	boolean clearCrafting = false;
 	
 	
 	
@@ -47,10 +50,11 @@ public class PaganAltar extends BlockFalling {
 			if(world.isAirBlock(x, y+1, z) == true){
 				for(EntityItem item : inbox){
 					if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() == Item.getItemFromBlock(Blocks.netherrack) && !world.isRemote) {
-						EntityItem entityitem = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.75, new ItemStack(saligia.GhastlyBlock, 8));
+						EntityItem entityitem = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.75, new ItemStack(saligia.GhastlyBlock, (decreasedPerStack / 8)));
 							world.spawnEntityInWorld(entityitem);
 							entityitem.motionX =0; entityitem.motionY =0; entityitem.motionZ =0;
 						
+							
 						mats1 = false;
 					}
 				}
@@ -58,6 +62,7 @@ public class PaganAltar extends BlockFalling {
 					if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() != Item.getItemFromBlock(saligia.GhastlyBlock) && !world.isRemote) {
 						world.addWeatherEffect(new customLightningBolt(world, x, y+1, z));
 						item.setDead();	
+						clearCrafting = false;
 					}
 				}
 			}
@@ -68,9 +73,13 @@ public class PaganAltar extends BlockFalling {
 		}
 		if(player.inventory.getCurrentItem().getItem() == Items.ghast_tear && mats1 == false){
 
-			if(player.inventory.getCurrentItem().stackSize == 64){
-				decreasedPerStack = player.inventory.getCurrentItem().stackSize - left;
-				player.inventory.decrStackSize(player.inventory.currentItem, 64);
+			splitInEight = player.inventory.getCurrentItem().stackSize % 8;
+			System.out.print(splitInEight);
+
+			if(player.inventory.getCurrentItem().stackSize >= 8){
+				decreasedPerStack = player.inventory.getCurrentItem().stackSize - splitInEight;
+				System.out.print(decreasedPerStack);
+				player.inventory.decrStackSize(player.inventory.currentItem, decreasedPerStack);
 				EntityItem entity1 = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.25, new ItemStack(Items.ghast_tear, 1, 2)); 
 				entity1.delayBeforeCanPickup = Integer.MAX_VALUE;
 				if(!world.isRemote){
@@ -84,7 +93,7 @@ public class PaganAltar extends BlockFalling {
 		}
 		
 		if(player.inventory.getCurrentItem().getItem() == Item.getItemFromBlock(Blocks.netherrack) && mats1 == true && player.inventory.getCurrentItem().stackSize >= 8){
-			player.inventory.decrStackSize(player.inventory.currentItem, 8);
+			player.inventory.decrStackSize(player.inventory.currentItem, (decreasedPerStack/8));
 			EntityItem entityitem = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.75, new ItemStack(Blocks.netherrack, 1, 2));
 
 			if(!world.isRemote){
@@ -97,7 +106,7 @@ public class PaganAltar extends BlockFalling {
 		}
 		
 		else{
-			return false;
+			return true;
 		}   
     }
 	
