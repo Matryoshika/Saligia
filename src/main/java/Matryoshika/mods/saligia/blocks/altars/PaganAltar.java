@@ -1,8 +1,10 @@
 package Matryoshika.mods.saligia.blocks.altars;
 
 import java.util.List;
+import java.util.Random;
 
 import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.entities.misc.customLightningBolt;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import net.minecraft.block.Block;
@@ -11,6 +13,7 @@ import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -21,7 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class PaganAltar extends BlockFalling {
+public class PaganAltar extends Block {
 	
 	int decreasedPerStack;
 	int left = 0;
@@ -30,11 +33,14 @@ public class PaganAltar extends BlockFalling {
 	int splitInEight;
 	int leftOver;
 	boolean clearCrafting = false;
+	int yLevel = 1;
 	
+	boolean hasFallen = false;
+	public static boolean fallInstantly;
 	
 	
 	public PaganAltar (Block PaganAltar){
-		super();
+		super(Material.iron);
 		setStepSound(soundTypeStone);
 		setBlockTextureName(saligia.MODID+":PaganAltar");
 		setHardness(-1);
@@ -65,10 +71,7 @@ public class PaganAltar extends BlockFalling {
 						clearCrafting = false;
 					}
 				}
-			}
-			
-			
-			
+			}		
 			return false;
 		}
 		if(player.inventory.getCurrentItem().getItem() == Items.ghast_tear && mats1 == false){
@@ -110,4 +113,72 @@ public class PaganAltar extends BlockFalling {
 		}   
     }
 	
+	public void onBlockAdded(World world, int x, int y, int z){
+		Random random = new Random();
+        if(world.getBlock(x, y-yLevel, z) == Blocks.air){
+        	
+        	
+        	
+        	updateTick(world, x, y, z, random);
+        }
+    }
+	public void updateTick(World world, int x, int y, int z, Random random)
+    {
+        if (!world.isRemote && world.getBlock(x, y-1, z) == Blocks.air || world.getBlock(x, y-1, z) == Blocks.lava || world.getBlock(x, y-1, z) == Blocks.flowing_lava){
+        
+        	hasFallen = false;
+        	setFalling(world, x, y, z);
+        }
+        else{
+        	hasFallen= true;
+        }
+    }
+	
+	private void setFalling(World world, int x, int y, int z){
+		if(hasFallen == false){
+			if (canFall(world, x, y - 1, z) && y >= 0){
+	            byte b0 = 32;
+
+	            if (!fallInstantly && world.checkChunksExist(x - b0, y - b0, z - b0, x + b0, y + b0, z + b0)){
+	                if (!world.isRemote){
+	                    EntityFallingBlock entityfallingblock = new EntityFallingBlock(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this, world.getBlockMetadata(x, y, z));
+	                    this.func_149829_a(entityfallingblock);
+	                    world.spawnEntityInWorld(entityfallingblock);
+	                }
+	            }
+	            else{
+	                world.setBlockToAir(x, y, z);
+
+	                while (canFall(world, x, y - 1, z) && y > 0){
+	                    --y;
+	                }
+
+	                if (y > 0){
+	                    world.setBlock(x, y, z, this);
+	                }
+	                hasFallen = true;
+	            }
+	            hasFallen = true;
+	        }
+			hasFallen = true;
+		}
+    }
+	
+	public static boolean canFall(World world, int x, int y, int z){
+        Block block = world.getBlock(x, y, z);
+
+        if (block.isAir(world, x, y, z)){
+            return true;
+        }
+        else if (block == Blocks.fire){
+            return true;
+        }
+        else{
+            Material material = block.getMaterial();
+            return material == Material.water ? true : material == Material.lava;
+        }
+    }
+	protected void func_149829_a(EntityFallingBlock p_149829_1_) {
+		
+	}
 }
