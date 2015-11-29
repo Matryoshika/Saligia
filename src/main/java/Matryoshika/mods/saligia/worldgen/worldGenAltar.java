@@ -19,10 +19,14 @@ public class worldGenAltar implements IWorldGenerator{
 	{
 		BiomeGenBase b = world.getBiomeGenForCoords(chunkX, chunkZ);
 		Random randomchunk = new Random();
-		int chunkrandom = randomchunk.nextInt(5000) + 1;
+		int chunkrandom = randomchunk.nextInt(2) + 1;
+		Random randomY = new Random();
+		int yRandom = randomY.nextInt(120)+1; 
 		if(b.biomeName.equals("Hell")){
 			if (chunkrandom == 1){
-			world.setBlock(chunkX*16 + random.nextInt(16), 70, chunkZ*16 + random.nextInt(16), saligia_Blocks.AltarPagan);
+				
+				if(world.getBlock(chunkX*16, yRandom, chunkZ*16) == Blocks.air)
+			world.setBlock(chunkX*16 + random.nextInt(16), yRandom, chunkZ*16 + random.nextInt(16), saligia_Blocks.AltarPagan);
 			world.scheduleBlockUpdate(chunkX, 70, chunkZ, saligia_Blocks.AltarPagan, 100);
 			}
 			else{
