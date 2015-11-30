@@ -90,6 +90,9 @@ public class ItemRitualActivator extends Item {
 		
 		
 		Block block = world.getBlock(x, y, z);
+		
+		
+		//COTH ritual
 		if(block == saligia_Blocks.CentreRitual && activator.getItemDamage() == 1 && !player.isSneaking()){
 			
 			final int [][] GHASTLY_BLOCKS = new int [][]{
@@ -117,6 +120,61 @@ public class ItemRitualActivator extends Item {
 					}
 				}
 		}
+		
+		//ROTTS ritual
+		if(block == saligia_Blocks.CentreRitual && activator.getItemDamage() == 2 && !player.isSneaking()){
+			
+			final int [][] STONE_STAIRS = new int [][]{
+				{1,0,0},{0,0,1},{0,0,-1},{-1,0,0},
+				{-2,-4,-1},{-2,-4,0},{-2,-4,1},{-1,-4,2},{0,-4,2},{1,-4,2},{2,-4,1},{2,-4,0},{2,-4,-1},{1,-4,-2},{0,-4,-2},{-1,-4,-2},
+				{2,-5,-3},{1,-5,-3},{0,-5,-3},{-1,-5,-3},{-2,-5,-3},{-3,-5,-2},{-3,-5,-1},{-3,-5,0},{-3,-5,1},{-3,-5,2},
+				{-2,-5,3},{-1,-5,3},{0,-5,3},{1,-5,3},{2,-5,3},{3,-5,2},{3,-5,1},{3,-5,0},{3,-5,-1},{3,-5,-2},
+				{-3,-5,-3},{-2,-4,-2},{-3,-5,3},{-2,-4,2},{3,-5,3},{2,-4,2},{3,-5,-3},{2,-4,-2}
+			};
+			final int [][] STONE_BLOCKS = new int [][]{
+				{1,-3,0},{1,-2,0},{1,-1,0},{0,-3,-1},{0,-2,-1},{0,-1,-1},{-1,-3,0},{-1,-2,0},{-1,-1,0},{0,-3,1},{0,-2,1},{0,-1,1}
+			};
+			
+			for(int[] coords1 : STONE_STAIRS) {
+				int x1 = x + coords1[0];
+				int y1 = y + coords1[1];
+				int z1 = z + coords1[2];
+				//System.out.print("This Works, Boss");
+				
+				Block blockAtPos1 = world.getBlock(x1, y1, z1);
+				if(blockAtPos1 == Blocks.stone_brick_stairs) {
+					//System.out.print("This Works too, Boss");
+					
+					for(int[] coords2 : STONE_BLOCKS) {
+						int x2 = x + coords2[0];
+						int y2 = y + coords2[1];
+						int z2 = z + coords2[2];
+						
+						Block blockAtPos2 = world.getBlock(x2, y2, z2);
+						if(blockAtPos2 == Blocks.stonebrick) {
+							
+							world.playSoundAtEntity(player, "mob.enderdragon.growl", 10F, 0.1F);
+							//world.setBlock(x, y, z, saligia_Blocks.CentreCOTH);
+							world.setBlock(x, y, z, saligia_Blocks.CentreROTTS, 0, 2);
+							break;
+							
+						}
+						else{
+							wrongSetup(player, world);
+							break;
+						}
+					}
+				}
+				else{
+					wrongSetup(player, world);
+					break;
+				}
+			}		
+		}
+		
+		
+		
+		
 
 		super.getItemStackDisplayName(activator);
 		return true;
