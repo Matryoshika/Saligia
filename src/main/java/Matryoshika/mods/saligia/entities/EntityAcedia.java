@@ -38,6 +38,7 @@ public class EntityAcedia extends EntityBoss{
 	
 	public EntityAcedia(World world){
         super(world);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.01D);
     }
 	
 	@Override

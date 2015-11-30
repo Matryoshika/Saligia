@@ -37,6 +37,7 @@ public class EntitySuperbia extends EntityBoss {
 
 	public EntitySuperbia(World world) {
 		super(world);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.15D);
 	}
 	
 	@Override

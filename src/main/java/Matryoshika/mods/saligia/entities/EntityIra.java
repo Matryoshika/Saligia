@@ -29,5 +29,6 @@ public class EntityIra extends EntityBoss{
 
 	public EntityIra(World world){
         super(world);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
     }
 }
