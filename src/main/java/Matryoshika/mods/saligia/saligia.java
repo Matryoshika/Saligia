@@ -4,6 +4,8 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+import org.apache.logging.log4j.Level;
+
 import Matryoshika.mods.saligia.blocks.BlockGhastly;
 import Matryoshika.mods.saligia.blocks.ItemBlockGhastly;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
@@ -24,6 +26,7 @@ import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.utils.SinnersDelight;
 import Matryoshika.mods.saligia.utils.matryoshikaEventHandler;
 import Matryoshika.mods.saligia.worldgen.worldGenAltar;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -55,6 +58,9 @@ import net.minecraftforge.oredict.OreDictionary;
 		public static String[] allowedGeneratorsArray;
 		
 		public static Block GhastlyBlock;
+		
+		public static File ConfigDir;
+	    private Configuration mainConf;
 
 	public static final CreativeTabMatryoshika MatryoshikaTab = new CreativeTabMatryoshika("Matryoshika's Sinners"){
 		@Override
@@ -82,6 +88,11 @@ import net.minecraftforge.oredict.OreDictionary;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
+		
+		ConfigDir = event.getModConfigurationDirectory();
+		mainConf = new Configuration(new File(ConfigDir.getPath() + File.separator + "saligia", "main.cfg"));
+		readMainConfig();
+		
 		ConfigHandler.init(new Configuration(event.getSuggestedConfigurationFile()));
 		saligia_Items.registerItems();
 		saligia_Blocks.registerBlocks();
@@ -129,5 +140,21 @@ import net.minecraftforge.oredict.OreDictionary;
 		
 		
 		
+	}
+	
+	private void readMainConfig(){
+        Configuration cfg = mainConf;
+        try {
+            cfg.load();
+            cfg.addCustomCategoryComment("Boss Configs", "Shared between all bosses");
+        }
+        catch (Exception e1){
+            FMLLog.log(Level.ERROR, e1, "Problem loading config file!");
+        }
+        finally {
+            if (mainConf.hasChanged()) {
+                mainConf.save();
+            }
+        }
 	}
 }
