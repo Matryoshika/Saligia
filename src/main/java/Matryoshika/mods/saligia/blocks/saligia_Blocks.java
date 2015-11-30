@@ -22,6 +22,7 @@ public class saligia_Blocks {
 	
 	public static Block CentreRitual;
 	public static Block CentreCOTH;
+	public static Block CentreROTTS;
 	
 	
 	public static Block MatryoshikaBrain;
@@ -60,6 +61,7 @@ public class saligia_Blocks {
 		BlockList.add(AltarDemonic = new DemonicAltar(AltarDemonic).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CentreRitual = new BlockRitualCentre(CentreRitual).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CentreCOTH = new BlockRitualCOTH(CentreCOTH).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(CentreROTTS = new BlockRitualROTTS(CentreROTTS).setCreativeTab(saligia.MatryoshikaTab));
 		//BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Block block:BlockList){
