@@ -21,6 +21,7 @@ import Matryoshika.mods.saligia.entities.saligia_Entities;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.rendering.GUIHandler.MSGuiHandler;
 import Matryoshika.mods.saligia.tile.TileRitualCOTH;
+import Matryoshika.mods.saligia.tile.TileRitualROTTS;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.utils.SinnersDelight;
@@ -101,6 +102,7 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerBlock(saligia.GhastlyBlock, ItemBlockGhastly.class, "GhastlyBlock");
 		
 		GameRegistry.registerTileEntity(TileRitualCOTH.class, "tileRitualCOTH");
+		GameRegistry.registerTileEntity(TileRitualROTTS.class, "tileRitualROTTS");
 		
 	}
 	
