@@ -86,30 +86,25 @@ public class EntityBoss extends EntityMob implements IBossDisplayData {
 		return true;
 	}
 	
-	protected void entityInit()
-    {
+	protected void entityInit(){
         super.entityInit();
         this.dataWatcher.addObject(16, new Byte((byte)0));
     }
 	
-	public void setBesideClimbableBlock(boolean p_70839_1_)
-    {
+	public void setBesideClimbableBlock(boolean p_70839_1_){
         byte b0 = this.dataWatcher.getWatchableObjectByte(16);
 
-        if (p_70839_1_)
-        {
+        if (p_70839_1_){
             b0 = (byte)(b0 | 1);
         }
-        else
-        {
+        else{
             b0 &= -2;
         }
 
         this.dataWatcher.updateObject(16, Byte.valueOf(b0));
     }
 	
-	protected Entity findPlayerToAttack()
-    {
+	protected Entity findPlayerToAttack(){
             double d0 = 25.0D;
             return this.worldObj.getClosestVulnerablePlayerToEntity(this, d0);
     }
