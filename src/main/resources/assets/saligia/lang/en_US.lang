@@ -13,6 +13,7 @@ matryoshikabrain.name=Matryoshika Brain
 tile.BlockGhastly.name=Block of the Lost One's Weeping
 tile.BlockRitualCentre.name=Centre Ritual Stone
 tile.BlockRitualCOTH.name=Centre Ritual Stone: Cognizance of the Hellmouth
+tile.PaganAltar.name=Altar of the Pagans
 
 //set all item names
 item.ItemSinDagger.name=Dagger of Sin
@@ -24,6 +25,7 @@ item.ItemBuffMobSoul.name=Soul of the Dark One
 item.ItemAnimalSoul.name=Soul of the Innocent One
 item.ItemRitualActivator.name=Source of Evil
 item.ItemLibroSaligia.name=Libro Saligia
+item.ItemBloodStone.name=Gem of the Infernal Blood
 
 //set all enchant names
 enchantment.purify=Purify
@@ -46,7 +48,12 @@ saligia.ritual.placeholder=Placeholder
 
 
 //chatcomponents
-saligia.wrongSetup=The ritual-pattern is not correct for the chosen ritual!
+saligia.wrongSetup=The ritual-pattern is incorrect for the chosen ritual!
+saligia.superbia.trash1=You believe you can hurt Me?
+saligia.superbia.trash2=Die you fool!
+saligia.superbia.trash3=You are so disrespectful!
+saligia.superbia.trash4=Kneel to me, peasant!
+saligia.superbia.trash5=You are more idiotic than you look.
 
 //Tooltips
 saligia.ritualactivator.tooltip=Terrors of the mind within your grasp

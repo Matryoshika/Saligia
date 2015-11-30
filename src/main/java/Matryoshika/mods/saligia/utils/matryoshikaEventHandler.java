@@ -68,19 +68,19 @@ public class matryoshikaEventHandler {
         int randomNum = rand.nextInt(5) + 1;
 		if(victim instanceof EntitySuperbia){
 			if(randomNum == 1){
-				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("You believe you can hurt Me?").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
+				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("saligia.superbia.trash1").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
 			}
 			if(randomNum == 2){
-				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Die you fool!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
+				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("saligia.superbia.trash2").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
 			}
 			if(randomNum == 3){
-				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("You are so disrespectful!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
+				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("saligia.superbia.trash3").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
 			}
 			if(randomNum == 4){
-				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Kneel to me, peasant!").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
+				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("saligia.superbia.trash4").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
 			}
 			if(randomNum == 5){
-				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("You are more idiotic than you look.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
+				chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("saligia.superbia.trash5").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD));
 			}
 			((EntityPlayer) event.source.getEntity()).addChatComponentMessage(chatComponent);
 			if(event.source.isProjectile()){
