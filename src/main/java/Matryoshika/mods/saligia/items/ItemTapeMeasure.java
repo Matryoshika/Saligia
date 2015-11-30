@@ -46,7 +46,7 @@ public class ItemTapeMeasure extends Item {
 			zb =+ Minecraft.getMinecraft().objectMouseOver.blockZ;
 			CountAxis(player);
 			
-			if(world.getTileEntity(xb, yb, zb) == null){
+			if(world.getTileEntity(xb, yb, zb) != null){
 				System.out.println("Has a tileentity");
 			}
 		}
