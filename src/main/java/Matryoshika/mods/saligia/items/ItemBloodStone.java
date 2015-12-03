@@ -1,7 +1,9 @@
 package Matryoshika.mods.saligia.items;
 
 import Matryoshika.mods.saligia.saligia;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -34,11 +36,32 @@ public class ItemBloodStone extends Item {
 			}
 		}
 		
+		//e59bf71deba3410991e11a998281fe6b
+		if(!player.capabilities.isCreativeMode && player.inventory.hasItem(this)){
+				
+				player.capabilities.allowFlying = true;
+				if(player.isSneaking()){
+					player.capabilities.setFlySpeed(0F);
+				}
+				else{player.capabilities.setFlySpeed(0.3F);}
+				
+			
+
+			
+		}
+		
+		
 		/*
 		for(double healthRegen = 0.025;healthRegen < 5; healthRegen += Math.sqrt(1+healthRegen)/5 ){
 			System.out.println(healthRegen);
 		}
 		*/
+		
+		
+		
+	}
+	
+	public void onDrop (World world, EntityPlayer player, ItemStack stack, Minecraft mc){
 		
 	}
 	
