@@ -27,6 +27,7 @@ item.ItemAnimalSoul.name=Soul of the Innocent One
 item.ItemRitualActivator.name=Source of Evil
 item.ItemLibroSaligia.name=Libro Saligia
 item.ItemBloodStone.name=Gem of the Infernal Blood
+item.ItemSinpick.name=Pickaxe of Everlasting Greed
 
 //set all enchant names
 enchantment.purify=Purify
@@ -42,8 +43,8 @@ saligia.ritual.select=Selected ritual:
 saligia.ritual.COTH=Cognizance of the Hellmouth
 saligia.ritual.ROTTS=Roar of the Thundering Skies
 saligia.ritual.FOTDB=Fountain of the Divine's blood
-saligia.ritual.BOTAE=Blessings of the Arid Earth
-saligia.ritual.GFTOG=Gift from the Ocean Grave
+saligia.ritual.LOB=Legacy of Behemoth
+saligia.ritual.LOL=Legacy of Leviathan
 saligia.ritual.GOTA=Gaze of the Abyss
 saligia.ritual.placeholder=Placeholder
 
@@ -60,3 +61,16 @@ saligia.superbia.trash5=You are more idiotic than you look.
 saligia.ritualactivator.tooltip=Terrors of the mind within your grasp
 saligia.blockghastly.tooltip1=As ethereal as smoke, this block 
 saligia.blockghastly.tooltip2=may vanish at the slightest touch
+
+
+
+//Book Lore
+saligia.book1.1=There are many dark secrets
+saligia.book1.2=hidden in the depths of our
+saligia.book1.3=hearts, and this book will guide
+saligia.book1.4=you down the path of Sin.
+
+saligia.book.tab1=Relics
+saligia.book.tab2=Altar
+saligia.book.tab3=Recipes
+saligia.book.tab4=Rituals
