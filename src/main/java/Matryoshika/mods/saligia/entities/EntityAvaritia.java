@@ -3,6 +3,7 @@ package Matryoshika.mods.saligia.entities;
 import java.util.List;
 import java.util.Random;
 
+import Matryoshika.mods.saligia.saligia;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -60,7 +61,7 @@ public class EntityAvaritia extends EntityBoss{
 				Random rand2 = new Random();
 				int random2 = rand2.nextInt(5) + 1;
 				
-				if(random1 == 1 && counter >= 20 && !worldObj.isRemote){
+				if(random1 == 1 && counter >= saligia.avaritiaCounter && !worldObj.isRemote){
 					if(random2 == 1 && entityPlayer.getCurrentArmor(0) != null){
 						ItemStack helm = entityPlayer.getCurrentArmor(0).copy();
 						entityPlayer.setCurrentItemOrArmor(1, null);

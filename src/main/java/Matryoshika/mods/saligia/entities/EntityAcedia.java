@@ -3,6 +3,7 @@ package Matryoshika.mods.saligia.entities;
 import java.util.List;
 import java.util.Random;
 
+import Matryoshika.mods.saligia.saligia;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -38,7 +39,7 @@ public class EntityAcedia extends EntityBoss{
 	
 	public EntityAcedia(World world){
         super(world);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.01D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(saligia.bossSpeed/30);
     }
 	
 	@Override
@@ -75,13 +76,13 @@ public class EntityAcedia extends EntityBoss{
 		boolean canSpawn;
 		
 		List<EntityMob> inbox = EntityAcedia.worldObj.getEntitiesWithinAABB(mobs, box);
-		if(inbox.size() >= 11){
+		if(inbox.size() >= saligia.acediaMinionMax){
 			canSpawn = false;
 		}
 		else{
 			canSpawn = true;
 		}
-		if(canSpawn == false && inbox.size() < 11){
+		if(canSpawn == false && inbox.size() < saligia.acediaMinionMax){
 			if(timer >= 600){
 				canSpawn = true;
 				timer = 0;

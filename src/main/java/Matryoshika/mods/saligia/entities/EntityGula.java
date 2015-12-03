@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.utils.math;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
@@ -77,7 +78,7 @@ public class EntityGula extends EntityBoss{
 			int bX = (int) (posX + rand.nextInt(range) - rand.nextInt(range));
             int bY = (int) (posY + rand.nextInt(range) - rand.nextInt(range));
             int bZ = (int) (posZ + rand.nextInt(range) - rand.nextInt(range));
-            if (getDistance(bX, bY, bZ) <= range){
+            if (getDistance(bX, bY, bZ) <= range && !worldObj.isRemote){
             	Block block = worldObj.getBlock(bX, bY, bZ);
                 float hardness = block.getBlockHardness(worldObj, bX, bY, bZ);
                 
@@ -87,7 +88,7 @@ public class EntityGula extends EntityBoss{
                     	worldObj.setBlockToAir(bX, bY, bZ);
                     	worldObj.markBlockForUpdate(bX, bY, bZ);
                     	if(this.getHealth() < this.getMaxHealth()){
-                    		this.heal(10F);
+                    		this.heal(saligia.gulaHeal);
                     		}
                 	}
                 	else{
@@ -119,9 +120,9 @@ public class EntityGula extends EntityBoss{
 				double dy = (EntityGula.posY - entityItem.posY);
 				double dz = (EntityGula.posZ - entityItem.posZ);
 				double ddt = math.py3d(dx, dy, dz);
-				entityItem.motionX += (dx/ddt/ddt)*0.01;
+				entityItem.motionX += (dx/ddt/ddt)*0.05;
 				entityItem.motionY += (dy/ddt/ddt)*0.01;
-				entityItem.motionZ += (dz/ddt/ddt)*0.01;
+				entityItem.motionZ += (dz/ddt/ddt)*0.05;
 				if (entityItem.posY < EntityGula.posY){
 					entityItem.motionY += 0.005;
 				}
@@ -130,8 +131,13 @@ public class EntityGula extends EntityBoss{
 				}
 				entityItem.delayBeforeCanPickup = 20;
 				
-				if(entityItem.getDistanceToEntity(EntityGula) <= 3 || entityItem.ticksExisted >= 200){
+				if(entityItem.getDistanceToEntity(EntityGula) <= 1 || entityItem.ticksExisted >= 200){
 					entityItem.setDead();
+					
+					Random eatRandom = EntityGula.worldObj.rand;
+					int random2 = eatRandom.nextInt(10) + 1;
+					if(random2 == 1)
+					EntityGula.worldObj.playSound(EntityGula.posX, EntityGula.posY, EntityGula.posZ, "random.eat", 10F, 0.1F, true);
 				
 			}
 		}

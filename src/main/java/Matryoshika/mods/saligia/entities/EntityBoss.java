@@ -1,5 +1,6 @@
 package Matryoshika.mods.saligia.entities;
 
+import Matryoshika.mods.saligia.saligia;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -18,8 +19,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class EntityBoss extends EntityMob implements IBossDisplayData {
-	
-	private static final float MAX_HP = 500F;
 
 	public EntityBoss(World world) {
 		super(world);
@@ -75,10 +74,10 @@ public class EntityBoss extends EntityMob implements IBossDisplayData {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4);
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(MAX_HP);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(saligia.bossSpeed);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(saligia.bossHealth);
 		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(1.0);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(100D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(saligia.bossAttack);
 	}
 	
 	@Override
@@ -105,7 +104,7 @@ public class EntityBoss extends EntityMob implements IBossDisplayData {
     }
 	
 	protected Entity findPlayerToAttack(){
-            double d0 = 25.0D;
+            double d0 = saligia.bossToPlayerRange;
             return this.worldObj.getClosestVulnerablePlayerToEntity(this, d0);
     }
 
