@@ -47,6 +47,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 import net.minecraftforge.oredict.OreDictionary;
 
 	@Mod(modid=saligia.MODID, version=saligia.VERSION, name="saligia")
@@ -62,6 +63,19 @@ import net.minecraftforge.oredict.OreDictionary;
 		
 		public static File ConfigDir;
 	    private Configuration mainConf;
+	    
+	    public static float bossHealth;
+	    public static double bossSpeed;
+	    public static double bossAttack;
+	    public static double bossToPlayerRange;
+	    public static int acediaMinionMax;
+	    public static int avaritiaCounter;
+	    public static float gulaHeal;
+	    public static boolean isPickEnabled;
+	    public static int pickRange;
+	    
+	    
+	    
 
 	public static final CreativeTabMatryoshika MatryoshikaTab = new CreativeTabMatryoshika("Matryoshika's Sinners"){
 		@Override
@@ -145,10 +159,24 @@ import net.minecraftforge.oredict.OreDictionary;
 	}
 	
 	private void readMainConfig(){
+		
         Configuration cfg = mainConf;
         try {
             cfg.load();
             cfg.addCustomCategoryComment("Boss Configs", "Shared between all bosses");
+            bossHealth = cfg.getFloat("Boss Health", "Boss Configs", 200, 500, 5000, "This sets the health for all Bosses");
+            bossSpeed = cfg.getFloat("Boss Speed", "Boss Configs", (float) 0.4, 0, 1, "This sets the base speed of Bosses (Some add/subtract to this)");
+            bossAttack = cfg.getInt("Boss Attack Damage", "Boss Configs", 100, 100, 500, "This sets the rate of how hard the Bosses will hit you");
+            bossToPlayerRange = cfg.getFloat("Player Detection Range", "Boss Configs", 25, 20, 64, "Sets how far away Bosses will detect players");
+            cfg.addCustomCategoryComment("Boss Specific configs", "Configs that only alter a specific Boss");
+            acediaMinionMax = cfg.getInt("Acedia Minion count", "Boss Specific Configs", 11, 11, 30, "Sets how many of Acedia's minions can exist in the world");
+            avaritiaCounter = cfg.getInt("Sets the tick timer for when Avaritia will steal items", "Boss Specific configs", 20, 0, 20, "This is also affected by a random counter, with a 1/32 chance");
+            gulaHeal = cfg.getFloat("Regen amount per block", "Boss Specific configs", 10, 10, 30, "How much Gula will regen for every block eaten");
+            
+            cfg.addCustomCategoryComment("Item Configs", "Configs for all items");
+            
+            isPickEnabled = cfg.getBoolean("Allow Pickaxe of Greed", "Item Configs", true, "Wether or not this item is enabled. False will disable it.");
+            pickRange = cfg.getInt("Range of magnetization", "Item Configs", 1, 0, 20, "How far the pickaxe will drag items towards the player");
         }
         catch (Exception e1){
             FMLLog.log(Level.ERROR, e1, "Problem loading config file!");
