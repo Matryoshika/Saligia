@@ -195,10 +195,10 @@ public class ItemRitualActivator extends Item {
 			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.FOTDB"));  
 		}
 		if (stack.getItemDamage() == 4){
-			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.BOTAE")); 
+			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.LOB")); 
 		}
 		if (stack.getItemDamage() == 5){
-			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.GFTOG"));
+			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.LOL"));
 		}
 		if (stack.getItemDamage() == 6){
 			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.GOTA"));
