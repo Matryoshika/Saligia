@@ -43,6 +43,7 @@ public class saligia_Items {
 	public static Item LibroSaligia;
 	public static Item Soul;
 	public static Item BloodStone;
+	public static Item AvaritiaPickaxe;
 	
 	public static List<Item>ItemList=new ArrayList<Item>();
 	
@@ -59,6 +60,8 @@ public class saligia_Items {
 		ItemList.add(RitualActivator = new ItemRitualActivator(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(LibroSaligia = new ItemLibroSaligia(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(BloodStone = new ItemBloodStone(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		if(saligia.isPickEnabled == true){ItemList.add(AvaritiaPickaxe = new ItemAvaritiaPick(SIN).setCreativeTab(saligia.MatryoshikaTab));}
+		
 		
 		for(Item Item:ItemList){
 			GameRegistry.registerItem(Item,  Item.getUnlocalizedName());
