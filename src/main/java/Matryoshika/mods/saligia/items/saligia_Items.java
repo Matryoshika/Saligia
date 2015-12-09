@@ -17,6 +17,9 @@ import net.minecraft.world.World;
 import net.minecraft.item.Item.ToolMaterial;
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
+import Matryoshika.mods.saligia.items.relics.ItemAvaritiaPick;
+import Matryoshika.mods.saligia.items.relics.ItemBloodStone;
+import Matryoshika.mods.saligia.items.relics.ItemWitheringShield;
 import Matryoshika.mods.saligia.items.souls.*;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
@@ -44,6 +47,7 @@ public class saligia_Items {
 	public static Item Soul;
 	public static Item BloodStone;
 	public static Item AvaritiaPickaxe;
+	public static Item WitheringShield;
 	
 	public static List<Item>ItemList=new ArrayList<Item>();
 	
@@ -61,6 +65,7 @@ public class saligia_Items {
 		ItemList.add(LibroSaligia = new ItemLibroSaligia(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(BloodStone = new ItemBloodStone(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		if(saligia.isPickEnabled == true){ItemList.add(AvaritiaPickaxe = new ItemAvaritiaPick(SIN).setCreativeTab(saligia.MatryoshikaTab));}
+		ItemList.add(WitheringShield = new ItemWitheringShield(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		
 		
 		for(Item Item:ItemList){
