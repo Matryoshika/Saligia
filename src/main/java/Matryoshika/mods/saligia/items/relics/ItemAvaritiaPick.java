@@ -1,4 +1,4 @@
-package Matryoshika.mods.saligia.items;
+package Matryoshika.mods.saligia.items.relics;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
