@@ -28,6 +28,7 @@ item.ItemRitualActivator.name=Source of Evil
 item.ItemLibroSaligia.name=Libro Saligia
 item.ItemBloodStone.name=Gem of the Infernal Blood
 item.ItemSinpick.name=Pickaxe of Everlasting Greed
+item.ItemWitheringShield.name=Scorn of the Fade
 
 //set all enchant names
 enchantment.purify=Purify
