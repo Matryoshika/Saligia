@@ -34,10 +34,6 @@ public class TileRitualROTTS extends TileEntity{
 	
 	@Override
     public void updateEntity(){
-		float f = 1.0F;
-        float f1 = f * 0.6F + 0.4F;
-        float f2 = f * f * 0.7F - 0.5F;
-        float f3 = f * f * 0.6F - 0.7F;
 		
 		Random rand = new Random();
 		
