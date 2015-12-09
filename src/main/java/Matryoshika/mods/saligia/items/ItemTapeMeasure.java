@@ -1,6 +1,8 @@
 package Matryoshika.mods.saligia.items;
 
 import Matryoshika.mods.saligia.saligia;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,6 +51,12 @@ public class ItemTapeMeasure extends Item {
 			if(world.getTileEntity(xb, yb, zb) != null){
 				System.out.println("Has a tileentity");
 			}
+			
+			if(world.getBlock(xb, yb, zb) instanceof Block && world.isRemote == false){
+				System.out.println(world.getBlock(xb, yb, zb).getUnlocalizedName());
+				System.out.println(world.getBlock(xb, yb, zb).getLocalizedName());
+			}
+			
 		}
 		
 		return tape;	
