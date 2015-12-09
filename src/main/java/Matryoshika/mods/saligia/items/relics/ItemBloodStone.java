@@ -1,4 +1,4 @@
-package Matryoshika.mods.saligia.items;
+package Matryoshika.mods.saligia.items.relics;
 
 import Matryoshika.mods.saligia.saligia;
 import net.minecraft.client.Minecraft;
