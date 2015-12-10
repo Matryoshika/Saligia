@@ -12,16 +12,26 @@ Server stability is also a holy law to enforce that Entities and/or TileEntities
   * 7 unique, extremely tough bosses.
   * Unique and lethal weapons.	
   * Decorative blocks.
+  * Multi-block rituals (The ones done so far)!
+	* Base-protection
+	* Regeneration
+	* Guillotine
+	* Lore-introduction
+  * Relics.
+	* Gem of Infernal Blood
+		Passive regeneration not tied to location, and upgradeable
+	* Scorn of the Fade
+		Will heal the player from any withering effects.
+	* Pickaxe of Everlasting Greed
+		Pickaxe that mines in an offset 5x5, automatically places torches in dark areas, and has a built-in magnet mode
 	
 * Further updates will add:
   * Lore en masse!
   * In-Game documentation.
   * Multi-block Item-storage in tiers: Based on ideas from AE2, Automagy & Modular Systems.
-  * Energy system: Will of course easily tie into the RedstoneFlux-API
   * Static cobble-generator: Can fill a double chest almost instantly.
   * Static water-generator: That can create buckets-worth of water instantly*
   * Enderpearl generator: Upgradeable tear into the End that spits out enderpearls.
-  * Guillotine Sword: Off with their heads!
 	
 *Means of I/O sold seperately
 	
