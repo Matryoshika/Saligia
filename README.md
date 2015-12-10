@@ -29,6 +29,7 @@ Server stability is also a holy law to enforce that Entities and/or TileEntities
   * Static cobble-generator: Can fill a double chest almost instantly.
   * Static water-generator: That can create buckets-worth of water instantly*
   * Enderpearl generator: Upgradeable tear into the End that spits out enderpearls.
+  * A pencil that houses a bound demon named Jeff, which will convert mob-drops to food
 	
 *Means of I/O sold seperately
 	
