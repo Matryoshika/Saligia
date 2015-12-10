@@ -18,12 +18,9 @@ Server stability is also a holy law to enforce that Entities and/or TileEntities
 	* Guillotine
 	* Lore-introduction
   * Relics.
-	* Gem of Infernal Blood
-		Passive regeneration not tied to location, and upgradeable
-	* Scorn of the Fade
-		Will heal the player from any withering effects.
-	* Pickaxe of Everlasting Greed
-		Pickaxe that mines in an offset 5x5, automatically places torches in dark areas, and has a built-in magnet mode
+	* Gem of Infernal Blood: Passive regeneration not tied to location, and upgradeable
+	* Scorn of the Fade: Will heal the player from any withering effects.
+	* Pickaxe of Everlasting Greed: Pickaxe that mines in an offset 5x5, automatically places torches in dark areas, and has a built-in magnet mode
 	
 * Further updates will add:
   * Lore en masse!
