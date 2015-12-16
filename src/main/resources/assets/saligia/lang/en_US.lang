@@ -15,6 +15,7 @@ tile.BlockRitualCentre.name=Centre Ritual Stone
 tile.BlockRitualCOTH.name=Centre Ritual Stone: Cognizance of the Hellmouth
 tile.BlockRitualROTTS.name=Centre Ritual Stone: Roar of the Thundering Skies
 tile.PaganAltar.name=Altar of the Pagans
+tile.BlockCharcoal.name=Block of Charcoal
 
 //set all item names
 item.ItemSinDagger.name=Dagger of Sin
@@ -29,6 +30,7 @@ item.ItemLibroSaligia.name=Libro Saligia
 item.ItemBloodStone.name=Gem of the Infernal Blood
 item.ItemSinpick.name=Pickaxe of Everlasting Greed
 item.ItemWitheringShield.name=Scorn of the Fade
+item.itemFelMeat.name=Festered Meat
 
 //set all enchant names
 enchantment.purify=Purify

@@ -15,6 +15,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 
@@ -37,6 +38,8 @@ public class saligia_Blocks {
 	public static Block SuperbiaBlock;
 	
 	public static Block GeneratorDynamic;
+	public static Block VoidLight;
+	public static Block CharcoalBlock;
 	
 	public static Block AltarPagan;
 	public static Block AltarCultist;
@@ -66,6 +69,8 @@ public class saligia_Blocks {
 		BlockList.add(CentreROTTS = new BlockRitualROTTS(CentreROTTS).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CentreFOTDB = new BlockRitualFOTDB(CentreFOTDB).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CentreFOTI = new BlockRitualFOTI(CentreFOTI).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(VoidLight = new BlockVoidLight(VoidLight).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(CharcoalBlock = new BlockCharcoal(CharcoalBlock).setCreativeTab(saligia.MatryoshikaTab));
 		//BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Block block:BlockList){
@@ -78,6 +83,15 @@ public class saligia_Blocks {
 				"TTT",
 				'N', Blocks.netherrack, 'T', Items.ghast_tear
 		});*/
-		
+		GameRegistry.addRecipe(new ItemStack(CharcoalBlock), new Object[]{
+				"ccc",
+				"ccc",
+				"ccc",
+				'c', new ItemStack(Items.coal, 1, 1)
+		});
+		GameRegistry.addRecipe(new ItemStack(Items.coal, 9, 1), new Object[]{
+				"c",
+				'c', new ItemStack(CharcoalBlock)
+		});
 	}
 }

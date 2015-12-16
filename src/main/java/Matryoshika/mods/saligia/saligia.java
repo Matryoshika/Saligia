@@ -26,10 +26,12 @@ import Matryoshika.mods.saligia.tile.TileRitualFOTI;
 import Matryoshika.mods.saligia.tile.TileRitualROTTS;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
+import Matryoshika.mods.saligia.utils.SaligiaFuelHandler;
 import Matryoshika.mods.saligia.utils.SinnersDelight;
 import Matryoshika.mods.saligia.utils.matryoshikaEventHandler;
 import Matryoshika.mods.saligia.worldgen.worldGenAltar;
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -152,6 +154,7 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerWorldGenerator(worldGen, 33);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new MSGuiHandler());
+		GameRegistry.registerFuelHandler(SaligiaFuelHandler.getFuelHandler());
 
 	}
 	
