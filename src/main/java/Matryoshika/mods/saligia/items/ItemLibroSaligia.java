@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ItemLibroSaligia extends Item {
+	
 	public ItemLibroSaligia(ToolMaterial soul){
 		super();
 		this.maxStackSize = 1;
