@@ -24,6 +24,7 @@ import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import Matryoshika.mods.saligia.tile.TileRitualFOTDB;
 import Matryoshika.mods.saligia.tile.TileRitualFOTI;
 import Matryoshika.mods.saligia.tile.TileRitualROTTS;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.utils.SaligiaFuelHandler;
@@ -124,6 +125,8 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerTileEntity(TileRitualFOTDB.class, "tileRitualFOTDB");
 		GameRegistry.registerTileEntity(TileRitualFOTI.class, "tileRitualFOTI");
 		
+		GameRegistry.registerTileEntity(TileSoulBrazier.class, "tileSoulBrazier");
+		
 	}
 	
 	
@@ -186,7 +189,7 @@ import net.minecraftforge.oredict.OreDictionary;
             pickRange = cfg.getInt("Range of magnetization", "Item Configs", 1, 0, 20, "How far the pickaxe will drag items towards the player");
         }
         catch (Exception e1){
-            FMLLog.log(Level.ERROR, e1, "Problem loading config file!");
+            FMLLog.log(Level.ERROR, e1, "Problem loading Saligia Main config file!");
         }
         finally {
             if (mainConf.hasChanged()) {
