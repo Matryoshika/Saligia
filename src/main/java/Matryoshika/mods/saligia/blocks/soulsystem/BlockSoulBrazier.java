@@ -3,6 +3,7 @@ package Matryoshika.mods.saligia.blocks.soulsystem;
 import java.util.Random;
 
 import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.items.ItemSoulCrucible;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import cpw.mods.fml.relauncher.Side;
@@ -14,6 +15,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
@@ -67,7 +69,7 @@ public class BlockSoulBrazier extends BlockContainer implements ITileEntityProvi
 			return true;	
 		}
 		if(te.amount < Matryoshika.mods.saligia.utils.math.SoulBrazierMax()){
-			if(!player.isSneaking() && player.inventory.getCurrentItem() != null){
+			if(!player.isSneaking() && player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof Matryoshika.mods.saligia.items.souls.Soul){
 				Item soul = player.inventory.getCurrentItem().getItem();
 				
 				if(player.inventory.getCurrentItem().getItem() == saligia_Items.AnimalSoul){te.amount += Integer.decode("0x2");}
@@ -78,9 +80,13 @@ public class BlockSoulBrazier extends BlockContainer implements ITileEntityProvi
 				te.markDirty();
 			}
 		}
+		
 		if(te.amount >= Matryoshika.mods.saligia.utils.math.SoulBrazierMax()){ 
 			te.amount = Matryoshika.mods.saligia.utils.math.SoulBrazierMax();
 			}
+		if(player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() == saligia_Items.SoulCrucible){
+			return false;
+		}
 		
 		return true;
 	}

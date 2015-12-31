@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.DamageSource;
@@ -31,13 +32,17 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import Matryoshika.mods.saligia.items.ItemDeathHand;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 
 public class ItemSoulCrucible extends Item{
+	
+	public static int capacity = Integer.decode("0x64");
+	public int currentAmount = 0;
 	
 	public void onCreated(ItemStack itemStack, World world, EntityPlayer player) {
 	    itemStack.stackTagCompound = new NBTTagCompound();
 	    itemStack.stackTagCompound.setString("souls", "Amount of Soul Fragments: ");
-	    itemStack.stackTagCompound.setInteger("amount", 0);
+	    itemStack.stackTagCompound.setInteger("amount", currentAmount);
 	}
 	
 	public ItemSoulCrucible(ToolMaterial bowl) {
@@ -54,14 +59,8 @@ public class ItemSoulCrucible extends Item{
 	
 	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par){ 
-		 if (stack.stackTagCompound != null && stack.stackTagCompound.getInteger("amount") <= 100){
-			 String souls = stack.stackTagCompound.getString("souls");
-			 int amount = stack.stackTagCompound.getInteger("amount");
-			 list.add(EnumChatFormatting.DARK_RED + "Amount of Soul Fragments: " + amount);
-			 
-		 }
-		 if (stack.stackTagCompound != null && stack.stackTagCompound.getInteger("amount") >= 100){
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par){
+		 if (stack.stackTagCompound != null && stack.stackTagCompound.getInteger("amount") >= Integer.decode("0x64")){
 			 list.add(EnumChatFormatting.DARK_RED + "The Soul Crucible has been filled...");
 			 this.setTextureName(saligia.MODID+":soulCrucibleFull");
 		 }
@@ -78,43 +77,37 @@ public class ItemSoulCrucible extends Item{
 			bowl.getTagCompound().setInteger("amount", 0);
 			}
 		
-		if(bowl.stackTagCompound.getInteger("amount") >= 100 && world.isRemote == false){
+		if(bowl.stackTagCompound.getInteger("amount") >= Integer.decode("0x64") && world.isRemote == false){
 			chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("This Crucible has been filled.").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
 			player.addChatMessage(chatComponent);
 			bowl.setItemDamage(bowl.getItemDamage()-1);
 		}
 		
-		if(bowl.stackTagCompound.getInteger("amount") <= 100){
+		if(bowl.stackTagCompound.getInteger("amount") <= Integer.decode("0x64")){
 			if(player.inventory.hasItem(saligia_Items.VillagerSoul)){
 				player.inventory.consumeInventoryItem(saligia_Items.VillagerSoul);
 				int amount = bowl.stackTagCompound.getInteger("amount");
-				bowl.stackTagCompound.setInteger("amount", amount+6);
+				bowl.stackTagCompound.setInteger("amount", amount+Integer.decode("0x6"));
 				return bowl;
 			}
 			if(player.inventory.hasItem(saligia_Items.AnimalSoul)){
 				player.inventory.consumeInventoryItem(saligia_Items.AnimalSoul);
 				int amount = bowl.stackTagCompound.getInteger("amount");
-				bowl.stackTagCompound.setInteger("amount", amount+2);
+				bowl.stackTagCompound.setInteger("amount", amount+Integer.decode("0x2"));
 				return bowl;
 			}
 			if(player.inventory.hasItem(saligia_Items.BuffMobSoul)){
 				player.inventory.consumeInventoryItem(saligia_Items.BuffMobSoul);
 				int amount = bowl.stackTagCompound.getInteger("amount");
-				bowl.stackTagCompound.setInteger("amount", amount+4);
+				bowl.stackTagCompound.setInteger("amount", amount+Integer.decode("0x4"));
 				return bowl;
 			}
 			if(player.inventory.hasItem(saligia_Items.ZombieSoul)){
 				player.inventory.consumeInventoryItem(saligia_Items.ZombieSoul);
 				int amount = bowl.stackTagCompound.getInteger("amount");
-				bowl.stackTagCompound.setInteger("amount", amount+1);
+				bowl.stackTagCompound.setInteger("amount", amount+Integer.decode("0x1"));
 				return bowl;
 				
-			}
-			else{
-				if(world.isRemote == false){
-					chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Currently holds: " + bowl.stackTagCompound.getInteger("amount") + " Soul-fragments").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
-					player.addChatMessage(chatComponent);
-				}
 			}
 		}
 
@@ -124,12 +117,54 @@ public class ItemSoulCrucible extends Item{
 	}
 	@Override
 	public boolean hasEffect(ItemStack stack){
-		if(stack.hasTagCompound() == true && stack.stackTagCompound.getInteger("amount") >= 100){
+		if(stack.hasTagCompound() == true && stack.stackTagCompound.getInteger("amount") >= Integer.decode("0x64")){
 			return true;
 		}
 		else{
 			return false;
 		}
+	}
+	
+	@Override
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float xFloat, float yFloat, float zFloat){
+		
+		Block target = world.getBlock(x, y, z);
+		if(target instanceof Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulBrazier){
+			TileEntity tile = world.getTileEntity(x, y, z);
+			if(!(tile instanceof TileSoulBrazier)) return false;
+			TileSoulBrazier te = (TileSoulBrazier) tile;
+
+			//Adding energy to crucible
+			if(te.amount > 0){
+				if(te.amount < Integer.decode("0x64") && te.amount > stack.stackTagCompound.getInteger("amount")){
+					int already = stack.stackTagCompound.getInteger("amount");
+					stack.stackTagCompound.setInteger("amount", te.amount-already);
+					te.amount -= te.amount-already;
+				}
+				if(te.amount > Integer.decode("0x64")){
+					int already = stack.stackTagCompound.getInteger("amount");
+					stack.stackTagCompound.setInteger("amount", Integer.decode("0x64")-already);
+					te.amount -= Integer.decode("0x64")-already;	
+				}
+			}
+			//Removing energy from crucible
+			if(player.isSneaking()){
+				if(te.amount < Matryoshika.mods.saligia.utils.math.SoulBrazierMax() && stack.stackTagCompound.getInteger("amount") > 0){
+					int diff = (te.amount + stack.stackTagCompound.getInteger("amount"));
+					if(diff <= Matryoshika.mods.saligia.utils.math.SoulBrazierMax()){
+						if(stack.stackTagCompound.getInteger("amount") <= Integer.decode("0x64")){
+							int amount = stack.stackTagCompound.getInteger("amount");
+							te.amount += amount;
+							stack.stackTagCompound.setInteger("amount",amount -= amount);
+							if(stack.stackTagCompound.getInteger("amount") >= Integer.decode("0x64")){
+								stack.stackTagCompound.setInteger("amount", Integer.decode("0x64"));
+							}
+						}
+					}
+				}
+			}
+		}	
+		return true;
 	}
 }
 

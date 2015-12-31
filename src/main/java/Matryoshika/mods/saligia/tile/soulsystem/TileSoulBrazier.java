@@ -52,7 +52,6 @@ public class TileSoulBrazier extends TileEntity {
 							item.setDead();
 							amount += Integer.decode("0x2");
 							//tag.setInteger("currentStorage", tag.getInteger("currentStorage") + Integer.decode("0x2"));
-							System.out.println(amount);
 						}
 						if(stack != null && stack.getItem() == saligia_Items.VillagerSoul){
 							
@@ -68,7 +67,6 @@ public class TileSoulBrazier extends TileEntity {
 						if(stack != null && stack.getItem() == saligia_Items.BuffMobSoul){
 							item.setDead();
 							amount += 10;
-							System.out.println(amount);
 							//tag.setInteger(TAG_ENERGY, amount + Integer.decode("0x4"));
 						}
 						markDirty();
@@ -109,7 +107,6 @@ public class TileSoulBrazier extends TileEntity {
 		tag.setInteger("amount", amount);
 		tag.setInteger("maxStorage", capacity);
 		tag.setBoolean("notFilled", canGetMore);
-		System.out.println("Writing to NBT, Boss");
 	}
 
 	@Override
@@ -118,7 +115,6 @@ public class TileSoulBrazier extends TileEntity {
 		amount = tag.getInteger("amount");
 		capacity = tag.getInteger("maxStorage");
 		canGetMore = tag.getBoolean("notFilled");
-		System.out.println("Reading to NBT, Boss");
 	}
 	
 	@Override
