@@ -7,6 +7,7 @@ import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.blocks.altars.*;
 import Matryoshika.mods.saligia.blocks.ritualmasters.*;
 import Matryoshika.mods.saligia.blocks.sinblocks.*;
+import Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulBrazier;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.blocks.*;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
@@ -47,6 +48,8 @@ public class saligia_Blocks {
 	public static Block AltarSinful;
 	public static Block AltarDemonic;
 	
+	public static Block SoulBrazier;
+	
 	public static List<Block>BlockList=new ArrayList<Block>();
 	public static List<Block>BlockMetaList=new ArrayList<Block>();
 	
@@ -71,6 +74,7 @@ public class saligia_Blocks {
 		BlockList.add(CentreFOTI = new BlockRitualFOTI(CentreFOTI).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(VoidLight = new BlockVoidLight(VoidLight).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(CharcoalBlock = new BlockCharcoal(CharcoalBlock).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(SoulBrazier = new BlockSoulBrazier(SoulBrazier).setCreativeTab(saligia.MatryoshikaTab));
 		//BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Block block:BlockList){
