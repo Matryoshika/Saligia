@@ -87,7 +87,7 @@ import net.minecraftforge.oredict.OreDictionary;
 		@Override
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem() {
-			return Items.ender_eye;
+			return saligia_Items.BloodStone;
 		}
 	};
 		
