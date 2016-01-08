@@ -1,6 +1,6 @@
 package Matryoshika.mods.saligia.tile.soulsystem;
 
-public class TileSoulNexus extends TileSoulBrazier{
+public class TileSoulNexus extends TileSoulObelisk{
 
 	@Override
 	public void TESoulBrazier(){

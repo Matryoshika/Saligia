@@ -36,7 +36,7 @@ public class BlockSoulObelisk extends BlockSoulBrazier {
 		
 		if(player.isSneaking() && player.inventory.getCurrentItem() == null){
 			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Holds: " + Integer.toString(te.amount)));
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Max: " + Integer.toString(Matryoshika.mods.saligia.utils.math.SoulObeliskMax())));
+			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Max  : " + Integer.toString(Matryoshika.mods.saligia.utils.math.SoulObeliskMax())));
 			return true;	
 		}
 		if(te.amount < Matryoshika.mods.saligia.utils.math.SoulObeliskMax()){
