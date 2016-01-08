@@ -33,6 +33,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import Matryoshika.mods.saligia.items.ItemDeathHand;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulObelisk;
 
 public class ItemSoulCrucible extends Item{
 	
@@ -142,25 +143,42 @@ public class ItemSoulCrucible extends Item{
 			}
 		
 		Block target = world.getBlock(x, y, z);
-		if(target instanceof Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulBrazier){
+		if(target instanceof Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulBrazier || target instanceof Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulObelisk){
 			TileEntity tile = world.getTileEntity(x, y, z);
-			if(!(tile instanceof TileSoulBrazier)) return false;
-			TileSoulBrazier te = (TileSoulBrazier) tile;
+			if(!(tile instanceof TileSoulBrazier) && !(tile instanceof TileSoulBrazier)) return false;
+			TileSoulBrazier tb = (TileSoulBrazier) tile;
+			TileSoulObelisk to = (TileSoulObelisk) tile;
 
-			//Adding energy to brazier
-			if(player.isSneaking() && stack.stackTagCompound.getInteger("amount") > 0 && te.amount < Integer.decode("0x29A")){
+			//Adding energy to brazier from crucible
+			if(player.isSneaking() && stack.stackTagCompound.getInteger("amount") > 0 && tb.amount < Integer.decode("0x29A")){
 				for(int transferAmount = 0; transferAmount <= 1 && currentAmount < 100 ; transferAmount++){
 					stack.stackTagCompound.setInteger("amount", stack.stackTagCompound.getInteger("amount") - 1);
-					te.amount +=1;
+					tb.amount +=1;
 				}
 			}
-			//Adding energy to Crucible
-			if(!player.isSneaking() && stack.stackTagCompound.getInteger("amount") < Integer.decode("0x64") && te.amount > 0){
-				for(int transferAmount = 0; transferAmount <= 1 && te.amount > 0; transferAmount++){
-					te.amount -=1;
+			//Adding energy to crucible from brazier
+			if(!player.isSneaking() && stack.stackTagCompound.getInteger("amount") < Integer.decode("0x64") && tb.amount > 0){
+				for(int transferAmount = 0; transferAmount <= 1 && tb.amount > 0; transferAmount++){
+					tb.amount -=1;
 					stack.stackTagCompound.setInteger("amount", stack.stackTagCompound.getInteger("amount") + 1);
 				}
 			}
+			
+			//Adding energy to obelisk from crucible
+			if(player.isSneaking() && stack.stackTagCompound.getInteger("amount") > 0 && to.amount < Integer.decode("0x6C4A4")){
+				for(int transferAmount = 0; transferAmount <= 1 && currentAmount < 100 ; transferAmount++){
+					stack.stackTagCompound.setInteger("amount", stack.stackTagCompound.getInteger("amount") - 1);
+					to.amount +=1;
+				}
+			}
+			//Adding energy to crucible from obelisk
+			if(!player.isSneaking() && stack.stackTagCompound.getInteger("amount") < Integer.decode("0x64") && to.amount > 0){
+				for(int transferAmount = 0; transferAmount == 1 && tb.amount > 0; transferAmount++){
+					to.amount -=1;
+					stack.stackTagCompound.setInteger("amount", stack.stackTagCompound.getInteger("amount") + 1);
+				}
+			}
+			
 		}	
 		return true;
 	}
