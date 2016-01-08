@@ -110,6 +110,12 @@ public class ItemSoulCrucible extends Item{
 				
 			}
 		}
+		
+		
+			if(world.isRemote != false){
+					chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Currently holds: " + bowl.stackTagCompound.getInteger("amount") + " Soul-fragments").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
+					player.addChatComponentMessage(chatComponent);
+				}
 
 		return bowl;
 		
@@ -128,39 +134,31 @@ public class ItemSoulCrucible extends Item{
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float xFloat, float yFloat, float zFloat){
 		
+		if (!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
+			}
+		if (!stack.getTagCompound().hasKey("amount")) {
+			stack.getTagCompound().setInteger("amount", 0);
+			}
+		
 		Block target = world.getBlock(x, y, z);
 		if(target instanceof Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulBrazier){
 			TileEntity tile = world.getTileEntity(x, y, z);
 			if(!(tile instanceof TileSoulBrazier)) return false;
 			TileSoulBrazier te = (TileSoulBrazier) tile;
 
-			//Adding energy to crucible
-			if(te.amount > 0){
-				if(te.amount < Integer.decode("0x64") && te.amount > stack.stackTagCompound.getInteger("amount")){
-					int already = stack.stackTagCompound.getInteger("amount");
-					stack.stackTagCompound.setInteger("amount", te.amount-already);
-					te.amount -= te.amount-already;
-				}
-				if(te.amount > Integer.decode("0x64")){
-					int already = stack.stackTagCompound.getInteger("amount");
-					stack.stackTagCompound.setInteger("amount", Integer.decode("0x64")-already);
-					te.amount -= Integer.decode("0x64")-already;	
+			//Adding energy to brazier
+			if(player.isSneaking() && stack.stackTagCompound.getInteger("amount") > 0 && te.amount < Integer.decode("0x29A")){
+				for(int transferAmount = 0; transferAmount <= 1 && currentAmount < 100 ; transferAmount++){
+					stack.stackTagCompound.setInteger("amount", stack.stackTagCompound.getInteger("amount") - 1);
+					te.amount +=1;
 				}
 			}
-			//Removing energy from crucible
-			if(player.isSneaking()){
-				if(te.amount < Matryoshika.mods.saligia.utils.math.SoulBrazierMax() && stack.stackTagCompound.getInteger("amount") > 0){
-					int diff = (te.amount + stack.stackTagCompound.getInteger("amount"));
-					if(diff <= Matryoshika.mods.saligia.utils.math.SoulBrazierMax()){
-						if(stack.stackTagCompound.getInteger("amount") <= Integer.decode("0x64")){
-							int amount = stack.stackTagCompound.getInteger("amount");
-							te.amount += amount;
-							stack.stackTagCompound.setInteger("amount",amount -= amount);
-							if(stack.stackTagCompound.getInteger("amount") >= Integer.decode("0x64")){
-								stack.stackTagCompound.setInteger("amount", Integer.decode("0x64"));
-							}
-						}
-					}
+			//Adding energy to Crucible
+			if(!player.isSneaking() && stack.stackTagCompound.getInteger("amount") < Integer.decode("0x64") && te.amount > 0){
+				for(int transferAmount = 0; transferAmount <= 1 && te.amount > 0; transferAmount++){
+					te.amount -=1;
+					stack.stackTagCompound.setInteger("amount", stack.stackTagCompound.getInteger("amount") + 1);
 				}
 			}
 		}	
