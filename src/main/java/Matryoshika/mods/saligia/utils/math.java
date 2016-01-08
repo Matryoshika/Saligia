@@ -11,10 +11,10 @@ public class math {
 	public static int SoulBrazierMax(){
 		return Integer.decode("0x29A");
 	}
-	public static int SoulObelisk(){
+	public static int SoulObeliskMax(){
 		return Integer.decode("0x6C4A4");
 	}
-	public static int SoulNexus(){
+	public static int SoulNexusMax(){
 		return Integer.decode("0x119B92A8");
 	}
 	
