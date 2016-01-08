@@ -25,6 +25,7 @@ import Matryoshika.mods.saligia.tile.TileRitualFOTDB;
 import Matryoshika.mods.saligia.tile.TileRitualFOTI;
 import Matryoshika.mods.saligia.tile.TileRitualROTTS;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulObelisk;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.utils.SaligiaFuelHandler;
@@ -126,6 +127,7 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerTileEntity(TileRitualFOTI.class, "tileRitualFOTI");
 		
 		GameRegistry.registerTileEntity(TileSoulBrazier.class, "tileSoulBrazier");
+		GameRegistry.registerTileEntity(TileSoulObelisk.class, "tileSoulObelisk");
 		
 	}
 	
