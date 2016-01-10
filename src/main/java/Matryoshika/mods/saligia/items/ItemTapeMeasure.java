@@ -49,11 +49,11 @@ public class ItemTapeMeasure extends Item {
 			CountAxis(player);
 			
 			if(world.getTileEntity(xb, yb, zb) != null){
-				System.out.println("Has a tileentity");
+				TileEntity tile = world.getTileEntity(xb, yb, zb);
+				System.out.println(tile.getClass().getSimpleName());
 			}
 			
 			if(world.getBlock(xb, yb, zb) instanceof Block && world.isRemote == false){
-				System.out.println(world.getBlock(xb, yb, zb).getUnlocalizedName());
 				System.out.println(world.getBlock(xb, yb, zb).getLocalizedName());
 			}
 			
