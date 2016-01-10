@@ -64,11 +64,6 @@ public class BlockSoulBrazier extends BlockContainer implements ITileEntityProvi
 		if(!(tile instanceof TileSoulBrazier)) return false;
 		TileSoulBrazier te = (TileSoulBrazier) tile;
 		
-		if(player.isSneaking() && player.inventory.getCurrentItem() == null){
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Holds: " + Integer.toString(te.amount)));
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Max  : " + Integer.toString(Matryoshika.mods.saligia.utils.math.SoulBrazierMax())));
-			return true;	
-		}
 		if(te.amount < Matryoshika.mods.saligia.utils.math.SoulBrazierMax()){
 			if(!player.isSneaking() && player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof Matryoshika.mods.saligia.items.souls.Soul){
 				Item soul = player.inventory.getCurrentItem().getItem();

@@ -33,17 +33,12 @@ public class BlockSoulNexus extends BlockSoulObelisk{
 		if(!(tile instanceof TileSoulNexus)) return false;
 		TileSoulNexus te = (TileSoulNexus) tile;
 		
-		if(player.isSneaking() && player.inventory.getCurrentItem() == null){
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Holds: " + Integer.toString(te.amount)));
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Max  : " + Integer.toString(Matryoshika.mods.saligia.utils.math.SoulNexusMax())));
-			return true;	
-		}
 		if(te.amount < Matryoshika.mods.saligia.utils.math.SoulNexusMax()){
 			if(!player.isSneaking() && player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof Matryoshika.mods.saligia.items.souls.Soul){
 				Item soul = player.inventory.getCurrentItem().getItem();
 				
 				if(player.inventory.getCurrentItem().getItem() == saligia_Items.AnimalSoul){te.amount += Integer.decode("0x2");}
-				if(player.inventory.getCurrentItem().getItem() == saligia_Items.VillagerSoul){te.amount += Integer.decode("0x6");}
+				if(player.inventory.getCurrentItem().getItem() == saligia_Items.VillagerSoul){te.amount += Integer.decode("0x66660");}
 				if(player.inventory.getCurrentItem().getItem() == saligia_Items.ZombieSoul){te.amount += Integer.decode("0x1");}
 				if(player.inventory.getCurrentItem().getItem() == saligia_Items.BuffMobSoul){te.amount += Integer.decode("0x4");}
 				player.inventory.consumeInventoryItem(soul);

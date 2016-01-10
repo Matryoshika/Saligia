@@ -33,12 +33,7 @@ public class BlockSoulObelisk extends BlockSoulBrazier {
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(!(tile instanceof TileSoulObelisk)) return false;
 		TileSoulObelisk te = (TileSoulObelisk) tile;
-		
-		if(player.isSneaking() && player.inventory.getCurrentItem() == null){
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Holds: " + Integer.toString(te.amount)));
-			if(world.isRemote) player.addChatComponentMessage(new ChatComponentText("Max  : " + Integer.toString(Matryoshika.mods.saligia.utils.math.SoulObeliskMax())));
-			return true;	
-		}
+
 		if(te.amount < Matryoshika.mods.saligia.utils.math.SoulObeliskMax()){
 			if(!player.isSneaking() && player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() instanceof Matryoshika.mods.saligia.items.souls.Soul){
 				Item soul = player.inventory.getCurrentItem().getItem();
