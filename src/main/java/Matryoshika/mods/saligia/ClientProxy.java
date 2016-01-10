@@ -14,9 +14,13 @@ import Matryoshika.mods.saligia.rendering.entities.RenderInvidia;
 import Matryoshika.mods.saligia.rendering.entities.RenderIra;
 import Matryoshika.mods.saligia.rendering.entities.RenderLuxuria;
 import Matryoshika.mods.saligia.rendering.entities.RenderSuperbia;
+import Matryoshika.mods.saligia.utils.RenderHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -31,6 +35,10 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityIra.class, new RenderIra(new ModelBiped(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLuxuria.class, new RenderLuxuria(new ModelBiped(), 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySuperbia.class, new RenderSuperbia(new ModelBiped(), 0));
+		
+		
+		MinecraftForge.EVENT_BUS.register(new RenderHandler());
+		
 		
 	}
 	
