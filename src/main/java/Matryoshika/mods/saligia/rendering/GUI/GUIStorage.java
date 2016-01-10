@@ -37,7 +37,6 @@ public class GUIStorage extends Gui{
 		
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glDepthMask(true);
-		
 		GL11.glPopMatrix();
 	}
 }
