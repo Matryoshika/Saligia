@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.blocks.altars.PaganAltar;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

@@ -113,6 +113,9 @@ public class ItemSoulCrucible extends Item{
 			}
 		}
 		
+		int amount = bowl.stackTagCompound.getInteger("amount");
+		if(amount >= capacity)
+			bowl.stackTagCompound.setInteger("amount", capacity);
 		
 			if(world.isRemote != false){
 					chatComponent = (ChatComponentTranslation) new ChatComponentTranslation("Currently holds: " + bowl.stackTagCompound.getInteger("amount") + " Soul-fragments").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.DARK_RED));
@@ -199,7 +202,25 @@ public class ItemSoulCrucible extends Item{
 				}
 			}	
 		}	
+		int amount = stack.stackTagCompound.getInteger("amount");
+		if(amount >= capacity)
+			stack.stackTagCompound.setInteger("amount", capacity);
 		return true;
+	}
+	
+	
+	
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5){
+		if (!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		if (!stack.getTagCompound().hasKey("amount")) {
+			stack.getTagCompound().setInteger("amount", 0);
+		}
+		if(stack.stackTagCompound.getInteger("amount") > 0 && stack.stackTagCompound.getInteger("amount") < capacity){
+			stack.setItemDamage(stack.stackTagCompound.getInteger("amount"));
+		}
+		
 	}
 }
 
