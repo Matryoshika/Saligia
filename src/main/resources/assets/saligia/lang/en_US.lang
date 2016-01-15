@@ -17,6 +17,11 @@ tile.BlockRitualROTTS.name=Centre Ritual Stone: Roar of the Thundering Skies
 tile.PaganAltar.name=Altar of the Pagans
 tile.BlockCharcoal.name=Block of Charcoal
 
+tile.SoulBrazier.name=§bSoul Brazier§r
+tile.SoulObelisk.name=§bSoul Obelisk§r
+tile.SoulNexus.name=§bSoul Nexus§r
+tile.SoulPyre.name=§bSoul Pyre§r
+
 //set all item names
 item.ItemSinDagger.name=Dagger of Sin
 item.ItemDeathHand.name=Hand of Death
