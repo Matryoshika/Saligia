@@ -2,8 +2,8 @@ package Matryoshika.mods.saligia;
 
 
 import Matryoshika.mods.saligia.rendering.GUIHandler.MSGuiHandler;
+import Matryoshika.mods.saligia.rendering.GUIHandler.HUDRenderHandler;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
-import Matryoshika.mods.saligia.utils.RenderHandler;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
