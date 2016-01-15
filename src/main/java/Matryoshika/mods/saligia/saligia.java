@@ -20,12 +20,15 @@ import Matryoshika.mods.saligia.entities.EntitySuperbia;
 import Matryoshika.mods.saligia.entities.saligia_Entities;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.rendering.GUIHandler.MSGuiHandler;
+import Matryoshika.mods.saligia.rendering.GUIHandler.HUDRenderHandler;
 import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import Matryoshika.mods.saligia.tile.TileRitualFOTDB;
 import Matryoshika.mods.saligia.tile.TileRitualFOTI;
 import Matryoshika.mods.saligia.tile.TileRitualROTTS;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulNexus;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulObelisk;
+import Matryoshika.mods.saligia.tile.soulsystem.TileSoulPyre;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.utils.SaligiaFuelHandler;
@@ -83,7 +86,7 @@ import net.minecraftforge.oredict.OreDictionary;
 	    
 	    
 
-	public static final CreativeTabMatryoshika MatryoshikaTab = new CreativeTabMatryoshika("Matryoshika's Sinners"){
+	public static final CreativeTabMatryoshika MatryoshikaTab = new CreativeTabMatryoshika("Saligia"){
 		@Override
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem() {
@@ -128,6 +131,8 @@ import net.minecraftforge.oredict.OreDictionary;
 		
 		GameRegistry.registerTileEntity(TileSoulBrazier.class, "tileSoulBrazier");
 		GameRegistry.registerTileEntity(TileSoulObelisk.class, "tileSoulObelisk");
+		GameRegistry.registerTileEntity(TileSoulNexus.class, "tileSoulNexus");
+		GameRegistry.registerTileEntity(TileSoulPyre.class, "tileSoulPyre");
 		
 	}
 	
@@ -165,9 +170,7 @@ import net.minecraftforge.oredict.OreDictionary;
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
-		
-		
+			
 	}
 	
 	private void readMainConfig(){
