@@ -16,7 +16,7 @@ public class GUIStorage extends Gui{
 	public static ResourceLocation emptyBar = new ResourceLocation(saligia.MODID + ":" + "textures/gui/HUDProgressEmpty.png");
 	public static ResourceLocation fullBar = new ResourceLocation(saligia.MODID + ":" + "textures/gui/HUDProgressFull.png");
 	
-	public GUIStorage(Minecraft mc, String storage, double bar){
+	public GUIStorage(Minecraft mc, String storage, double bar, String type){
 		ScaledResolution scaled = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 		int width = scaled.getScaledWidth();
 		int height = scaled.getScaledHeight();
@@ -31,9 +31,10 @@ public class GUIStorage extends Gui{
 		mc.renderEngine.bindTexture((ResourceLocation) emptyBar);
 		drawTexturedModalRect((int) (width)-128, (height)-128, 0, 0, 256, 256);
 		mc.renderEngine.bindTexture((ResourceLocation) fullBar);
-		drawTexturedModalRect((int) (width)-128, (height)-128, 0, 0, (int) (bar * 2.56), 256);
+		String progress = Double.toString(bar * 2.56);
+		drawTexturedModalRect((int) (width)-128, (height)-128, 0, 0, (int) Double.parseDouble(progress), 256);
 		GL11.glScalef(2F, 2F, 2F);
-		drawCenteredString(mc.fontRenderer, storage+"%", width / 2, (height / 2) - 48, Integer.parseInt("FFFFFF", 16));
+		drawCenteredString(mc.fontRenderer, type, width / 2, (height / 2) - 48, Integer.parseInt("FFFFFF", 16));
 		
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glDepthMask(true);
