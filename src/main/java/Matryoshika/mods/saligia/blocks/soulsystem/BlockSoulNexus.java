@@ -19,7 +19,7 @@ public class BlockSoulNexus extends BlockSoulObelisk{
 		setBlockTextureName(saligia.MODID+":BlockSoulNexus");
 		setHardness(10);
 		this.setResistance(150);
-		this.setBlockName("BlockSoulNexus");
+		this.setBlockName("SoulNexus");
 	}
 	
 	@Override

@@ -20,7 +20,7 @@ public class BlockSoulObelisk extends BlockSoulBrazier {
 		setBlockTextureName(saligia.MODID+":BlockSoulObelisk");
 		setHardness(10);
 		this.setResistance(150);
-		this.setBlockName("BlockSoulObelisk");
+		this.setBlockName("SoulObelisk");
 	}
 	
 	@Override

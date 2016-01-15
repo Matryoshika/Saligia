@@ -30,7 +30,7 @@ public class BlockSoulBrazier extends BlockContainer implements ITileEntityProvi
 		setBlockTextureName(saligia.MODID+":BlockSoulBrazier");
 		setHardness(10);
 		this.setResistance(150);
-		this.setBlockName("BlockSoulBrazier");
+		this.setBlockName("SoulBrazier");
 	}
 	
 	@Override
