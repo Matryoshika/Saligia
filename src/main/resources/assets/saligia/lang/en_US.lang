@@ -14,6 +14,8 @@ tile.BlockGhastly.name=Block of the Lost One's Weeping
 tile.BlockRitualCentre.name=Centre Ritual Stone
 tile.BlockRitualCOTH.name=Centre Ritual Stone: Cognizance of the Hellmouth
 tile.BlockRitualROTTS.name=Centre Ritual Stone: Roar of the Thundering Skies
+tile.BlockRitualFOTDB.name=Centre Ritual Stone: Fountain of the Divine's Blood
+tile.BlockRitualFOTI.name=Centre Ritual Stone: Fall of the Imperious
 tile.PaganAltar.name=Altar of the Pagans
 tile.BlockCharcoal.name=Block of Charcoal
 
@@ -82,3 +84,60 @@ saligia.book.tab1=Relics
 saligia.book.tab2=Altar
 saligia.book.tab3=Recipes
 saligia.book.tab4=Rituals
+
+//will incorporate proper word-spacing later on. For now, all these need to be within the Libro Saligia's right side
+saligia.book.relics1=Scattered throughout the world,
+saligia.book.relics2=powerful objects may be found. 
+saligia.book.relics3=These Relics contain a vast source
+saligia.book.relics4=of magical energy, but they all
+saligia.book.relics5=differ from  eachother. Perhaps
+saligia.book.relics6=You will be able to gather them all?
+saligia.book.relics7=Try as you might, you cannot open 
+saligia.book.relics8=the next page. Perhaps the book  
+saligia.book.relics9=finds you too "good-natured"? Or  
+saligia.book.relics10=do you fear what you may find?
+
+saligia.book.return=Return
+
+
+
+
+//Rune proc's
+//Do NOT change any word that starts with ?, eg ?(damage) should be left as-is
+saligia.rune.tier=Tier
+saligia.rune.default=Rune of
+
+saligia.rune.acedia.main=
+saligia.rune.acedia.items=
+saligia.rune.acedia.tools=
+saligia.rune.acedia.armour=
+
+saligia.rune.avaritia.main=
+saligia.rune.avaritia.items=
+saligia.rune.avaritia.tools=
+saligia.rune.avaritia.armour=
+
+saligia.rune.gula.main=
+saligia.rune.gula.items=
+saligia.rune.gula.tools=
+saligia.rune.gula.armour=
+
+saligia.rune.invidia.main=
+saligia.rune.invidia.items=
+saligia.rune.invidia.tools=
+saligia.rune.invidia.armour=
+
+saligia.rune.ira.main=Main: Weapon.
+saligia.rune.ira.items=Item: Adds ?+damage damage.
+saligia.rune.ira.tools=Tool: Adds ?(5*Tier)% of your foe's max health to damage.
+saligia.rune.ira.armour=Armour: Adds a Thorn effect, dealing ?(3*Tier)% damage back.
+
+saligia.rune.luxuria.main=
+saligia.rune.luxuria.items=
+saligia.rune.luxuria.tools=
+saligia.rune.luxuria.armour=
+
+saligia.rune.superbia.main=
+saligia.rune.superbia.items=
+saligia.rune.superbia.tools=
+saligia.rune.superbia.armour=
