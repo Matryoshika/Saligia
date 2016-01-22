@@ -12,7 +12,6 @@ import net.minecraft.util.EnumChatFormatting;
 public class ZombieSoul extends Soul{
 	public ZombieSoul(ToolMaterial soul){
 		super(soul);
-		this.maxStackSize = 16;
 		this.setUnlocalizedName("ItemZombieSoul");
 		this.setTextureName(saligia.MODID+":soul");
 	}

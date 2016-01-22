@@ -12,7 +12,6 @@ import net.minecraft.util.EnumChatFormatting;
 public class BuffMobSoul extends Soul{
 	public BuffMobSoul(ToolMaterial soul){
 		super(soul);
-		this.maxStackSize = 16;
 		this.setUnlocalizedName("ItemBuffMobSoul");
 		this.setTextureName(saligia.MODID+":soul");
 	}

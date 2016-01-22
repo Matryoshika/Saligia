@@ -12,7 +12,6 @@ import net.minecraft.util.EnumChatFormatting;
 public class VillagerSoul extends Soul{
 	public VillagerSoul(ToolMaterial soul){
 		super(soul);
-		this.maxStackSize = 16;
 		this.setUnlocalizedName("ItemVillagerSoul");
 		this.setTextureName(saligia.MODID+":soul");
 	}

@@ -12,7 +12,6 @@ import net.minecraft.util.EnumChatFormatting;
 public class AnimalSoul extends Soul{
 	public AnimalSoul(ToolMaterial soul){
 		super(soul);
-		this.maxStackSize = 16;
 		this.setUnlocalizedName("ItemAnimalSoul");
 		this.setTextureName(saligia.MODID+":soul");
 	}
