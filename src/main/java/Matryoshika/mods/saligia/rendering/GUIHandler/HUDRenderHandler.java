@@ -2,18 +2,24 @@ package Matryoshika.mods.saligia.rendering.GUIHandler;
 
 import java.text.DecimalFormat;
 
+import Matryoshika.mods.saligia.API.Rituals.IRitualSensor;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.items.ItemLibroSaligia;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.rendering.GUI.GUIStorage;
+import Matryoshika.mods.saligia.rendering.GUI.HUDRitual;
 import Matryoshika.mods.saligia.rendering.GUI.HUDTransferringFrom;
 import Matryoshika.mods.saligia.rendering.GUI.HUDTransferringTo;
+import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulNexus;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulObelisk;
 import Matryoshika.mods.saligia.utils.math;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,6 +39,7 @@ public class HUDRenderHandler{
 	int Z;
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
+	@SideOnly(Side.CLIENT)
 	public void onRenderExperienceBar(RenderGameOverlayEvent event){
 		
 		if(event.isCancelable() || event.type != ElementType.EXPERIENCE){      
@@ -87,6 +94,13 @@ public class HUDRenderHandler{
 				String type = saligia_Blocks.SoulNexus.getLocalizedName();
 				Double bar = nexus;
 				new GUIStorage(Minecraft.getMinecraft(), percentage, bar, type);
+			}
+			
+			if(tile instanceof IRitualSensor){
+				Block block = player.worldObj.getBlock(X, Y, Z);
+				String name = block.getLocalizedName();
+				
+				new HUDRitual(Minecraft.getMinecraft(), name);
 			}
 	    }
 	}
