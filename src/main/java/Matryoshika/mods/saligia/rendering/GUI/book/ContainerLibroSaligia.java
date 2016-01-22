@@ -1,4 +1,4 @@
-package Matryoshika.mods.saligia.rendering.GUI;
+package Matryoshika.mods.saligia.rendering.GUI.book;
 
 import Matryoshika.mods.saligia.items.ItemLibroSaligia;
 import net.minecraft.entity.player.EntityPlayer;

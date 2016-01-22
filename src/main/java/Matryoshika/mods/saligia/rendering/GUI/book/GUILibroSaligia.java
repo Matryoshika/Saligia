@@ -1,15 +1,17 @@
-package Matryoshika.mods.saligia.rendering.GUI;
+package Matryoshika.mods.saligia.rendering.GUI.book;
 
 import org.lwjgl.opengl.GL11;
 
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.items.saligia_Items;
+import Matryoshika.mods.saligia.rendering.GUIHandler.MSGuiHandler;
 import cpw.mods.fml.client.config.GuiButtonExt;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -125,7 +127,7 @@ public class GUILibroSaligia extends GuiContainer{
 	public void actionPerformed(GuiButton button){
 		switch(button.id){
 			case 0:{
-			//open Relics tab
+				mc.thePlayer.openGui((Object) saligia.instance, MSGuiHandler.GUI_LIBROSALIGIARELICS, mc.theWorld, (int) mc.thePlayer.posX, (int) mc.thePlayer.posY, (int) mc.thePlayer.posZ);
 			break;
 			}
 			case 1:{
@@ -141,6 +143,17 @@ public class GUILibroSaligia extends GuiContainer{
 			break;
 			}
 		}
+	}
+	
+	@Override
+	public boolean doesGuiPauseGame(){
+		 return false;
+	}
+	@Override
+	protected void keyTyped(char par1, int par2){
+		 if (par2 == 1 || par2 == this.mc.gameSettings.keyBindInventory.getKeyCode()){
+			 this.mc.thePlayer.closeScreen();
+		 }
 	}
 	
 	

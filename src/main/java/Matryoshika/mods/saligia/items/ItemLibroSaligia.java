@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import org.lwjgl.opengl.GL11;
 
 import Matryoshika.mods.saligia.saligia;
-import Matryoshika.mods.saligia.rendering.GUI.GUILibroSaligia;
+import Matryoshika.mods.saligia.rendering.GUI.book.GUILibroSaligia;
 import Matryoshika.mods.saligia.rendering.GUIHandler.MSGuiHandler;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulNexus;
