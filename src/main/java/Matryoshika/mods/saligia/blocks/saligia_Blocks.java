@@ -8,7 +8,9 @@ import Matryoshika.mods.saligia.blocks.altars.*;
 import Matryoshika.mods.saligia.blocks.ritualmasters.*;
 import Matryoshika.mods.saligia.blocks.sinblocks.*;
 import Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulBrazier;
+import Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulNexus;
 import Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulObelisk;
+import Matryoshika.mods.saligia.blocks.soulsystem.BlockSoulPyre;
 import Matryoshika.mods.saligia.items.saligia_Items;
 import Matryoshika.mods.saligia.blocks.*;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
@@ -51,6 +53,8 @@ public class saligia_Blocks {
 	
 	public static Block SoulBrazier;
 	public static Block SoulObelisk;
+	public static Block SoulNexus;
+	public static Block SoulPyre;
 	
 	public static List<Block>BlockList=new ArrayList<Block>();
 	public static List<Block>BlockMetaList=new ArrayList<Block>();
@@ -78,6 +82,8 @@ public class saligia_Blocks {
 		BlockList.add(CharcoalBlock = new BlockCharcoal(CharcoalBlock).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(SoulBrazier = new BlockSoulBrazier(SoulBrazier).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(SoulObelisk = new BlockSoulObelisk(SoulObelisk).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(SoulNexus = new BlockSoulNexus(SoulNexus).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(SoulPyre = new BlockSoulPyre(SoulPyre).setCreativeTab(saligia.MatryoshikaTab));
 		//BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Block block:BlockList){

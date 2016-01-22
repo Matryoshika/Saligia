@@ -20,6 +20,7 @@ import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.items.relics.ItemAvaritiaPick;
 import Matryoshika.mods.saligia.items.relics.ItemBloodStone;
 import Matryoshika.mods.saligia.items.relics.ItemWitheringShield;
+import Matryoshika.mods.saligia.items.runes.ItemRune;
 import Matryoshika.mods.saligia.items.souls.*;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
@@ -48,6 +49,8 @@ public class saligia_Items {
 	public static Item BloodStone;
 	public static Item AvaritiaPickaxe;
 	public static Item WitheringShield;
+	public static Item FelMeat;
+	public static Item Rune;
 	
 	public static List<Item>ItemList=new ArrayList<Item>();
 	
@@ -66,6 +69,8 @@ public class saligia_Items {
 		ItemList.add(BloodStone = new ItemBloodStone(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		if(saligia.isPickEnabled == true){ItemList.add(AvaritiaPickaxe = new ItemAvaritiaPick(SIN).setCreativeTab(saligia.MatryoshikaTab));}
 		ItemList.add(WitheringShield = new ItemWitheringShield(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(FelMeat = new ItemFelMeat(3, 0.2f, false, new PotionEffect(Potion.moveSpeed.id, 600, 0),new PotionEffect(Potion.regeneration.id, 100, 0)).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(Rune = new ItemRune(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		
 		
 		for(Item Item:ItemList){
@@ -80,12 +85,7 @@ public class saligia_Items {
 					Items.stone_sword
 				});
 		
-		GameRegistry.addRecipe(new ItemStack(saligia_Items.SoulCrucible), new Object[]{
-				"   ",
-				"IBI",
-				" I ",
-				'I', Items.iron_ingot, 'B', Items.bowl
-		});
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(saligia_Items.RitualActivator, 1, 0), 
 				" S ", 
 				"SxS", 
