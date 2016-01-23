@@ -103,41 +103,41 @@ saligia.book.return=Return
 
 
 //Rune proc's
-//Do NOT change any word that starts with ?, eg ?(damage) should be left as-is
+//Do NOT change any word that starts with ?, eg ?(damage) should be left as-is, up to the end-paranthesis
 saligia.rune.tier=Tier
 saligia.rune.default=Rune of
 
-saligia.rune.acedia.main=
-saligia.rune.acedia.items=
-saligia.rune.acedia.tools=
-saligia.rune.acedia.armour=
+saligia.rune.acedia.main=Main: Weapon
+saligia.rune.acedia.items=Item: Low regeneration if standing idle for ?(48-(Tier^3)) seconds.
+saligia.rune.acedia.tools=Tool: On hit: Freezes all foes within ?(4^Tier) blocks for ?(Tier) seconds.
+saligia.rune.acedia.armour=Armour: ?(percentage)% impervious to knockback.
 
-saligia.rune.avaritia.main=
-saligia.rune.avaritia.items=
-saligia.rune.avaritia.tools=
-saligia.rune.avaritia.armour=
+saligia.rune.avaritia.main=Main: Pickaxe
+saligia.rune.avaritia.items=Item: Loose items within ?((4^Tier)/2) blocks move towards you.
+saligia.rune.avaritia.tools=Tool: ?(Tier*15)% chance to gain ?(Tier*2)x loot & resources.
+saligia.rune.avaritia.armour=Armour: Highlights ore-deposits within ?((8*Tier)/2) blocks.
 
-saligia.rune.gula.main=
-saligia.rune.gula.items=
-saligia.rune.gula.tools=
-saligia.rune.gula.armour=
+saligia.rune.gula.main=Main: Helmet
+saligia.rune.gula.items=Item: Passively feeds you 1 Hunger per ?(60/Tier) seconds.
+saligia.rune.gula.tools=Tool: Steals ?(1*Tier) Hunger from your foe.
+saligia.rune.gula.armour=Armour: Can store ?(4shanks^Tier) shanks & distribute it as needed.
 
-saligia.rune.invidia.main=
-saligia.rune.invidia.items=
-saligia.rune.invidia.tools=
-saligia.rune.invidia.armour=
+saligia.rune.invidia.main=Main: Armour.
+saligia.rune.invidia.items=Item: Highlights any and all entities within ?(4^Tier) blocks.
+saligia.rune.invidia.tools=Tool: Attacks have a ?(10*Tier)% chance of bypassing armour.
+saligia.rune.invidia.armour=Armour: Display ?(tier) statistics of your foe.
 
 saligia.rune.ira.main=Main: Weapon.
 saligia.rune.ira.items=Item: Adds ?+damage damage.
 saligia.rune.ira.tools=Tool: Adds ?(5*Tier)% of your foe's max health to damage.
 saligia.rune.ira.armour=Armour: Adds a Thorn effect, dealing ?(3*Tier)% damage back.
 
-saligia.rune.luxuria.main=
-saligia.rune.luxuria.items=
-saligia.rune.luxuria.tools=
-saligia.rune.luxuria.armour=
+saligia.rune.luxuria.main=Leggings
+saligia.rune.luxuria.items=Item: Heal another Entity for ?(Tier) Hearts.
+saligia.rune.luxuria.tools=Tool: Crops & Cattle grow at +?(50*Tier)% speed while within ?((8*Tier)/2) blocks.
+saligia.rune.luxuria.armour=Armour: Gain ?(35*Tier)% speed-boost while near another player.
 
-saligia.rune.superbia.main=
-saligia.rune.superbia.items=
-saligia.rune.superbia.tools=
-saligia.rune.superbia.armour=
+saligia.rune.superbia.main=Main: Chestplate.
+saligia.rune.superbia.items=Item: Absorbs ?(2*Tier) damage. 
+saligia.rune.superbia.tools=Tool: ?(5*Tier)% chance to nullify incoming damage.
+saligia.rune.superbia.armour=Armour: Absorbs ?(5*Tier)% damage of any attack.
