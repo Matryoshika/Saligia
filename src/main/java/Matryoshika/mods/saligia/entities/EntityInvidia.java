@@ -33,7 +33,7 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 
-public class EntityInvidia extends EntityBoss{
+public class EntityInvidia extends EntitySaligiaBoss{
 
 	private static final double RANGE = 5F;
 	

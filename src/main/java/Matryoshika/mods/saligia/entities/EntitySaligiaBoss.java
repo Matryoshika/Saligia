@@ -18,9 +18,9 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public class EntityBoss extends EntityMob implements IBossDisplayData {
+public class EntitySaligiaBoss extends EntityMob implements IBossDisplayData {
 
-	public EntityBoss(World world) {
+	public EntitySaligiaBoss(World world) {
 		super(world);
         setSize(1,2);
         this.isImmuneToFire = true;
@@ -61,7 +61,7 @@ public class EntityBoss extends EntityMob implements IBossDisplayData {
         }
     }
 	
-	public EntityBoss(World world, double x, double y, double z){
+	public EntitySaligiaBoss(World world, double x, double y, double z){
 		this(world);
 		setPosition(x,y,z);		
 	}

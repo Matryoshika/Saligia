@@ -27,7 +27,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
-public class EntityGula extends EntityBoss{
+public class EntityGula extends EntitySaligiaBoss{
 	
 	public EntityGula(World world){
         super(world);

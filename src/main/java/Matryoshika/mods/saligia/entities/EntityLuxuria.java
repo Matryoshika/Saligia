@@ -32,7 +32,7 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 
-public class EntityLuxuria extends EntityBoss{
+public class EntityLuxuria extends EntitySaligiaBoss{
 
 	private static final double RANGE = 5F;
 	private int timer;

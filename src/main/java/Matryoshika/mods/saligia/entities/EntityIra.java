@@ -25,7 +25,7 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 
-public class EntityIra extends EntityBoss{
+public class EntityIra extends EntitySaligiaBoss{
 
 	public EntityIra(World world){
         super(world);

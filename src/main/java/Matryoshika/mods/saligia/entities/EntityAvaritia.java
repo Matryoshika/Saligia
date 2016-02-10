@@ -33,7 +33,7 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 
-public class EntityAvaritia extends EntityBoss{
+public class EntityAvaritia extends EntitySaligiaBoss{
 
 	private static final double RANGE = 5F;
 	private int counter;

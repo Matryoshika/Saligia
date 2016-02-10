@@ -33,7 +33,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
-public class EntitySuperbia extends EntityBoss {
+public class EntitySuperbia extends EntitySaligiaBoss {
 
 	public EntitySuperbia(World world) {
 		super(world);
