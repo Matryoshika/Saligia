@@ -7,6 +7,7 @@ import Matryoshika.mods.saligia.entities.EntityInvidia;
 import Matryoshika.mods.saligia.entities.EntityIra;
 import Matryoshika.mods.saligia.entities.EntityLuxuria;
 import Matryoshika.mods.saligia.entities.EntitySuperbia;
+import Matryoshika.mods.saligia.rendering.tilePaganAltarRenderer;
 import Matryoshika.mods.saligia.rendering.GUIHandler.HUDRenderHandler;
 import Matryoshika.mods.saligia.rendering.entities.RenderAcedia;
 import Matryoshika.mods.saligia.rendering.entities.RenderAvaritia;
@@ -15,6 +16,8 @@ import Matryoshika.mods.saligia.rendering.entities.RenderInvidia;
 import Matryoshika.mods.saligia.rendering.entities.RenderIra;
 import Matryoshika.mods.saligia.rendering.entities.RenderLuxuria;
 import Matryoshika.mods.saligia.rendering.entities.RenderSuperbia;
+import Matryoshika.mods.saligia.tile.altars.TilePaganAltar;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -39,6 +42,7 @@ public class ClientProxy extends CommonProxy {
 		
 		MinecraftForge.EVENT_BUS.register(new HUDRenderHandler());
 		
+		ClientRegistry.bindTileEntitySpecialRenderer(TilePaganAltar.class, new tilePaganAltarRenderer());
 		
 	}
 	

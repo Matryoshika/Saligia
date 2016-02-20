@@ -2,12 +2,15 @@ package Matryoshika.mods.saligia;
 
 
 import Matryoshika.mods.saligia.rendering.GUIHandler.MSGuiHandler;
+import Matryoshika.mods.saligia.blocks.altars.AltarCrafting;
 import Matryoshika.mods.saligia.rendering.GUIHandler.HUDRenderHandler;
+import Matryoshika.mods.saligia.utils.AltarRecipes;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
@@ -39,4 +42,7 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event){
 	}
 	
+	public void generateAvaritiaParticles(Entity theEntity) { 
+		
+	}
 }

@@ -6,9 +6,11 @@ import java.lang.reflect.Modifier;
 
 import org.apache.logging.log4j.Level;
 
+import Matryoshika.mods.saligia.RuneSocketing.RuneEffectEventHandler;
 import Matryoshika.mods.saligia.blocks.BlockGhastly;
 import Matryoshika.mods.saligia.blocks.ItemBlockGhastly;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
+import Matryoshika.mods.saligia.blocks.altars.AltarCrafting;
 import Matryoshika.mods.saligia.enchantments.EnchantmentPurify;
 import Matryoshika.mods.saligia.entities.EntityAcedia;
 import Matryoshika.mods.saligia.entities.EntityAvaritia;
@@ -25,16 +27,21 @@ import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import Matryoshika.mods.saligia.tile.TileRitualFOTDB;
 import Matryoshika.mods.saligia.tile.TileRitualFOTI;
 import Matryoshika.mods.saligia.tile.TileRitualROTTS;
+import Matryoshika.mods.saligia.tile.TileRunicScribe;
+import Matryoshika.mods.saligia.tile.altars.TileCultistAltar;
+import Matryoshika.mods.saligia.tile.altars.TilePaganAltar;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulNexus;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulObelisk;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulPyre;
 import Matryoshika.mods.saligia.utils.ConfigHandler;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
+import Matryoshika.mods.saligia.utils.NormalRecipes;
 import Matryoshika.mods.saligia.utils.SaligiaFuelHandler;
 import Matryoshika.mods.saligia.utils.SinnersDelight;
 import Matryoshika.mods.saligia.utils.matryoshikaEventHandler;
-import Matryoshika.mods.saligia.worldgen.worldGenAltar;
+import Matryoshika.mods.saligia.worldgen.biomeDecorationAltar;
+import Matryoshika.mods.saligia.worldgen.biomeDecorationRose;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.Mod;
@@ -100,9 +107,8 @@ import net.minecraftforge.oredict.OreDictionary;
 	public static final Enchantment purify = new EnchantmentPurify(83, 1);
 	public static Potion potionsSinnersDelight;
 	
-	public static worldGenAltar worldGen = new worldGenAltar();
-	
 	matryoshikaEventHandler events = new matryoshikaEventHandler();
+	RuneEffectEventHandler runeevents = new RuneEffectEventHandler();
 	
 	
 	@SidedProxy(clientSide="Matryoshika.mods.saligia.ClientProxy",serverSide="Matryoshika.mods.saligia.CommonProxy")
@@ -113,6 +119,8 @@ import net.minecraftforge.oredict.OreDictionary;
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		
+		
+		
 		ConfigDir = event.getModConfigurationDirectory();
 		mainConf = new Configuration(new File(ConfigDir.getPath() + File.separator + "saligia", "main.cfg"));
 		readMainConfig();
@@ -120,9 +128,12 @@ import net.minecraftforge.oredict.OreDictionary;
 		ConfigHandler.init(new Configuration(event.getSuggestedConfigurationFile()));
 		saligia_Items.registerItems();
 		saligia_Blocks.registerBlocks();
+		NormalRecipes.registerNormalRecipes();
 		
 		saligia.GhastlyBlock = new BlockGhastly(GhastlyBlock);
 		GameRegistry.registerBlock(saligia.GhastlyBlock, ItemBlockGhastly.class, "GhastlyBlock");
+		
+		GameRegistry.registerTileEntity(TileRunicScribe.class, "tileRunicScribe");
 		
 		GameRegistry.registerTileEntity(TileRitualCOTH.class, "tileRitualCOTH");
 		GameRegistry.registerTileEntity(TileRitualROTTS.class, "tileRitualROTTS");
@@ -134,13 +145,22 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerTileEntity(TileSoulNexus.class, "tileSoulNexus");
 		GameRegistry.registerTileEntity(TileSoulPyre.class, "tileSoulPyre");
 		
+		GameRegistry.registerTileEntity(TilePaganAltar.class, "tilePaganAltar");
+		GameRegistry.registerTileEntity(TileCultistAltar.class, "tileCultistAltar");
+		
+		
+		
+		AltarCrafting.init();
 	}
 	
 	
 	
 	@EventHandler
 	public void Init(FMLInitializationEvent event){
+		MinecraftForge.TERRAIN_GEN_BUS.register(new biomeDecorationAltar());
+		MinecraftForge.TERRAIN_GEN_BUS.register(new biomeDecorationRose());
 		MinecraftForge.EVENT_BUS.register(new matryoshikaEventHandler());
+		MinecraftForge.EVENT_BUS.register(new RuneEffectEventHandler());
 		proxy.registerRenderers();
 		proxy.registerEntities();
 		
@@ -160,8 +180,6 @@ import net.minecraftforge.oredict.OreDictionary;
 		saligia_Entities.registerEntities(EntitySuperbia.class, "Superbia");
 		
 		potionsSinnersDelight = new SinnersDelight(28, true, 0).setIconIndex(0,0).setPotionName("Sinners Delight");
-		
-		GameRegistry.registerWorldGenerator(worldGen, 33);
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new MSGuiHandler());
 		GameRegistry.registerFuelHandler(SaligiaFuelHandler.getFuelHandler());
