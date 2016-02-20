@@ -44,6 +44,8 @@ public class saligia_Blocks {
 	public static Block GeneratorDynamic;
 	public static Block VoidLight;
 	public static Block CharcoalBlock;
+	public static Block RunicScribe;
+	public static Block SinRose;
 	
 	public static Block AltarPagan;
 	public static Block AltarCultist;
@@ -84,6 +86,8 @@ public class saligia_Blocks {
 		BlockList.add(SoulObelisk = new BlockSoulObelisk(SoulObelisk).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(SoulNexus = new BlockSoulNexus(SoulNexus).setCreativeTab(saligia.MatryoshikaTab));
 		BlockList.add(SoulPyre = new BlockSoulPyre(SoulPyre).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(RunicScribe = new BlockRunicScribe(RunicScribe).setCreativeTab(saligia.MatryoshikaTab));
+		BlockList.add(SinRose = new blockSinRose(SinRose).setCreativeTab(saligia.MatryoshikaTab));
 		//BlockList.add(GhastlyBlock = new BlockGhastly(GhastlyBlock).setCreativeTab(saligia.MatryoshikaTab));
 		
 		for(Block block:BlockList){
@@ -96,15 +100,7 @@ public class saligia_Blocks {
 				"TTT",
 				'N', Blocks.netherrack, 'T', Items.ghast_tear
 		});*/
-		GameRegistry.addRecipe(new ItemStack(CharcoalBlock), new Object[]{
-				"ccc",
-				"ccc",
-				"ccc",
-				'c', new ItemStack(Items.coal, 1, 1)
-		});
-		GameRegistry.addRecipe(new ItemStack(Items.coal, 9, 1), new Object[]{
-				"c",
-				'c', new ItemStack(CharcoalBlock)
-		});
+		
+		
 	}
 }

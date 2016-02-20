@@ -1,42 +1,69 @@
 package Matryoshika.mods.saligia.blocks.altars;
 
+import java.awt.Color;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.lwjgl.opengl.GL11;
+
 import Matryoshika.mods.saligia.saligia;
+import Matryoshika.mods.saligia.blocks.altars.AltarCrafting;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.entities.misc.customLightningBolt;
 import Matryoshika.mods.saligia.items.saligia_Items;
+import Matryoshika.mods.saligia.items.runes.ItemRune;
+import Matryoshika.mods.saligia.rendering.tilePaganAltarRenderer;
+import Matryoshika.mods.saligia.tile.TileRitualCOTH;
+import Matryoshika.mods.saligia.tile.altars.TilePaganAltar;
+import cpw.mods.fml.common.registry.GameData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockSand;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class PaganAltar extends Block {
+public class PaganAltar extends Block implements ITileEntityProvider{
 	
 	int decreasedPerStack;
 	int left = 0;
-	boolean mats1 = false;
+	public static boolean shouldPurge;
 	private static final double RANGE = 2F;
 	int splitInEight;
 	int leftOver;
 	boolean clearCrafting = false;
 	int yLevel = 1;
 	
-	boolean hasFallen = false;
-	public static boolean fallInstantly;
+	public boolean step1 = true;
+	public boolean step2 = false;
+	
+	EntityItem entItem = null;
 	
 	
 	public PaganAltar (Block PaganAltar){
@@ -47,138 +74,100 @@ public class PaganAltar extends Block {
 		this.setResistance(18000000);
 		this.setBlockName("PaganAltar");
 	}
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float sideX, float sideY, float sideZ){
-		if(player.inventory.getCurrentItem() == null){
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		TilePaganAltar altar = (TilePaganAltar) world.getTileEntity(x, y, z);
+		ItemStack stack = player.getCurrentEquippedItem();
+		
+		altar.updateRecipe();
+		
+		//renderItem(world, altar, x, y, z);
+
+		if(player.isSneaking()) {
+			if(altar.requiredEnergy == 0)
+				for(int i = altar.getSizeInventory() - 1; i >= 0; i--) {
+					ItemStack stackAt = altar.getStackInSlot(i);
+					if(stackAt != null) {
+						ItemStack copy = stackAt.copy();
+						if(!player.inventory.addItemStackToInventory(copy))
+							player.dropPlayerItemWithRandomChoice(copy, false);
+						altar.setInventorySlotContents(i, null);
+						world.func_147453_f(x, y, z, this);
+						break;
+					}
+				}
+		}
+		else if(stack != null && stack.getItem() != saligia_Items.LibroSaligia){
+			return altar.addItem(player, stack);
+		}else {
+			if(altar.hasValidRecipe()){
+				altar.tryCraft();
+				if(altar.getStackInSlot(1).getItem() instanceof ItemRune && altar.getStackInSlot(1).stackTagCompound.getInteger("saligiaTier")>=3){
+					return false;
+				}else{
+					for(int i = 0; i <= 90; i++){
+				    	Random rand = new Random();
+						double motionX = rand.nextGaussian() * 0.02D;
+						double motionY = rand.nextGaussian() * 0.02D;
+						double motionZ = rand.nextGaussian() * 0.02D;
+				    	world.spawnParticle("reddust", x+0.5+(motionX*8), y+1+(motionY*8), z+0.5+(motionZ*8), -1.0D*motionX, 0.0D*motionY, 0.0D*motionZ);   
+				    }
+					for(int i = 0; i < altar.getSizeInventory(); i++){
+						if(altar.getStackInSlot(i) != null){
+							altar.setInventorySlotContents(i, null);
+						}
+					}
+				}
+			}
 			
-			Class<EntityItem> items1 = EntityItem.class;
-			Class<EntityItem> items2 = EntityItem.class;
-			List<EntityItem> inbox = world.getEntitiesWithinAABB(items1, AxisAlignedBB.getBoundingBox(x - RANGE, y - RANGE, z - RANGE, x + RANGE, y + RANGE, z + RANGE));
-			if(world.isAirBlock(x, y+1, z) == true){
-				for(EntityItem item : inbox){
-					if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() == Item.getItemFromBlock(Blocks.netherrack) && !world.isRemote) {
-						EntityItem entityitem = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.75, new ItemStack(saligia.GhastlyBlock, (decreasedPerStack / 8)));
-							world.spawnEntityInWorld(entityitem);
-							entityitem.motionX =0; entityitem.motionY =0; entityitem.motionZ =0;
-						
-							
-						mats1 = false;
-					}
-				}
-				for(EntityItem item : inbox){
-					if(!item.isDead && item.getEntityItem() != null && item.getEntityItem().getItem() != Item.getItemFromBlock(saligia.GhastlyBlock) && !world.isRemote) {
-						world.addWeatherEffect(new customLightningBolt(world, x, y+1, z));
-						item.setDead();	
-						clearCrafting = false;
-					}
-				}
-			}		
-			return false;
 		}
-		if(player.inventory.getCurrentItem().getItem() == Items.ghast_tear && mats1 == false){
-
-			splitInEight = player.inventory.getCurrentItem().stackSize % 8;
-			System.out.print(splitInEight);
-
-			if(player.inventory.getCurrentItem().stackSize >= 8){
-				decreasedPerStack = player.inventory.getCurrentItem().stackSize - splitInEight;
-				System.out.print(decreasedPerStack);
-				player.inventory.decrStackSize(player.inventory.currentItem, decreasedPerStack);
-				EntityItem entity1 = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.25, new ItemStack(Items.ghast_tear, 1, 2)); 
-				entity1.delayBeforeCanPickup = Integer.MAX_VALUE;
-				if(!world.isRemote){
-					world.spawnEntityInWorld(entity1); 
-					entity1.motionX =0; entity1.motionY =0; entity1.motionZ =0; 
-					mats1 = true;
-				}
-				
-			}
-			return true;	
-		}
+			
 		
-		if(player.inventory.getCurrentItem().getItem() == Item.getItemFromBlock(Blocks.netherrack) && mats1 == true && player.inventory.getCurrentItem().stackSize >= 8){
-			player.inventory.decrStackSize(player.inventory.currentItem, (decreasedPerStack/8));
-			EntityItem entityitem = new EntityItem(world, (double)x+0.5, (double)y+1.2, (double)z+0.75, new ItemStack(Blocks.netherrack, 1, 2));
-
-			if(!world.isRemote){
-				world.spawnEntityInWorld(entityitem);
-				entityitem.delayBeforeCanPickup = Integer.MAX_VALUE;
-				entityitem.motionX =0; entityitem.motionY =0; entityitem.motionZ =0;
-				
-			}
-			return true;
-		}
+		return false;
 		
-		else{
-			return true;
-		}   
-    }
+		
+		
+	}
 	
 	public void onBlockAdded(World world, int x, int y, int z){
+		
+		world.setTileEntity(x, y, z, this.createTileEntity(world, world.getBlockMetadata(x, y, z)));
 		Random random = new Random();
         if(world.getBlock(x, y-yLevel, z) == Blocks.air){
-        	
-        	
-        	
         	updateTick(world, x, y, z, random);
         }
     }
-	public void updateTick(World world, int x, int y, int z, Random random)
-    {
-        if (!world.isRemote && world.getBlock(x, y-1, z) == Blocks.air || world.getBlock(x, y-1, z) == Blocks.lava || world.getBlock(x, y-1, z) == Blocks.flowing_lava){
+	
+	@Override
+	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+		return new TilePaganAltar();
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public void updateTick(World world, int x, int y, int z, Random random){      
+        callPlayers(world);
         
-        	hasFallen = false;
-        	setFalling(world, x, y, z);
-        }
-        else{
-        	hasFallen= true;
-        }
     }
+
 	
-	private void setFalling(World world, int x, int y, int z){
-		if(hasFallen == false){
-			if (canFall(world, x, y - 1, z) && y >= 0){
-	            byte b0 = 32;
-
-	            if (!fallInstantly && world.checkChunksExist(x - b0, y - b0, z - b0, x + b0, y + b0, z + b0)){
-	                if (!world.isRemote){
-	                    EntityFallingBlock entityfallingblock = new EntityFallingBlock(world, (double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this, world.getBlockMetadata(x, y, z));
-	                    this.func_149829_a(entityfallingblock);
-	                    world.spawnEntityInWorld(entityfallingblock);
-	                }
-	            }
-	            else{
-	                world.setBlockToAir(x, y, z);
-
-	                while (canFall(world, x, y - 1, z) && y > 0){
-	                    --y;
-	                }
-
-	                if (y > 0){
-	                    world.setBlock(x, y, z, this);
-	                }
-	                hasFallen = true;
-	            }
-	            hasFallen = true;
-	        }
-			hasFallen = true;
-		}
-    }
-	
-	public static boolean canFall(World world, int x, int y, int z){
-        Block block = world.getBlock(x, y, z);
-
-        if (block.isAir(world, x, y, z)){
-            return true;
-        }
-        else if (block == Blocks.fire){
-            return true;
-        }
-        else{
-            Material material = block.getMaterial();
-            return material == Material.water ? true : material == Material.lava;
-        }
-    }
-	protected void func_149829_a(EntityFallingBlock p_149829_1_) {
+	public void callPlayers(World world){
+		int x = (int) this.getBlockBoundsMinX();
+		int y = (int) this.getBlockBoundsMinY();
+		int z = (int) this.getBlockBoundsMinZ();
 		
+		if(world.getClosestPlayer(x, y, z, 100) != null){
+			EntityPlayer player = world.getClosestPlayer(x, y, z, 100);
+			player.addChatMessage(new ChatComponentTranslation("Come to me...").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE)));
+		}
+	}
+	
+	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l){
+	   return false;
+	}
+
+	public boolean isOpaqueCube(){
+	   return false;
 	}
 }
