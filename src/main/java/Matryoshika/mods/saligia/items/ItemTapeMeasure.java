@@ -55,6 +55,7 @@ public class ItemTapeMeasure extends Item {
 			
 			if(world.getBlock(xb, yb, zb) instanceof Block && world.isRemote == false){
 				System.out.println(world.getBlock(xb, yb, zb).getLocalizedName());
+				System.out.println(world.getBlock(xb, yb, zb).getClass());
 			}
 			
 		}

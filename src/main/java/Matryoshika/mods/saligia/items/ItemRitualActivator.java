@@ -35,6 +35,7 @@ public class ItemRitualActivator extends Item {
 	public boolean badSetup = false;
 	public Vec3 posVec;
 	
+	
 	public ItemRitualActivator(ToolMaterial soul){
 		super();
 		this.maxStackSize = 16;

@@ -15,6 +15,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.nbt.NBTTagCompound;
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.utils.CreativeTabMatryoshika;
 import Matryoshika.mods.saligia.items.relics.ItemAvaritiaPick;
@@ -51,6 +52,14 @@ public class saligia_Items {
 	public static Item WitheringShield;
 	public static Item FelMeat;
 	public static Item Rune;
+	public static Item DustCompound;
+	public static Item DustIngot;
+	public static Item SinIngot;
+	public static Item SickleBlade;
+	public static Item SickleBase;
+	public static Item DaggerBlade;
+	public static Item DaggerBase;
+	public static Item MobHarness;
 	
 	public static List<Item>ItemList=new ArrayList<Item>();
 	
@@ -71,28 +80,21 @@ public class saligia_Items {
 		ItemList.add(WitheringShield = new ItemWitheringShield(SIN).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(FelMeat = new ItemFelMeat(3, 0.2f, false, new PotionEffect(Potion.moveSpeed.id, 600, 0),new PotionEffect(Potion.regeneration.id, 100, 0)).setCreativeTab(saligia.MatryoshikaTab));
 		ItemList.add(Rune = new ItemRune(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(DustCompound = new ItemDustCompound(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(DustIngot = new ItemDustIngot(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(SinIngot = new ItemSinIngot(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(SickleBlade = new ItemDeathHandBlade(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(SickleBase = new ItemDeathHandBase(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(DaggerBlade = new ItemDaggerBlade(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(DaggerBase = new ItemDaggerBase(SIN).setCreativeTab(saligia.MatryoshikaTab));
+		ItemList.add(MobHarness = new ItemMobHarness(SOUL).setCreativeTab(saligia.MatryoshikaTab));
 		
 		
 		for(Item Item:ItemList){
 			GameRegistry.registerItem(Item,  Item.getUnlocalizedName());
-			
-			
-		ItemStack SinDagger = new ItemStack(saligia_Items.SinDagger );
-		SinDagger.addEnchantment(saligia.purify, 1);
-		GameRegistry.addShapelessRecipe(SinDagger, new Object[]
-				{
-					Items.flint, 
-					Items.stone_sword
-				});
-		
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(saligia_Items.RitualActivator, 1, 0), 
-				" S ", 
-				"SxS", 
-				" S ", 
-				'S', "materialSaligiaSoul", 'x', Items.emerald));
 		
 		}
+		
 		
 	}
 

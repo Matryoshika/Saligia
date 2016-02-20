@@ -26,12 +26,13 @@ import net.minecraft.world.World;
 public class ItemRune extends Item {
 	
 	public String runeProc;
-	public int tier;
+	public int saligiaTier;
+	public boolean compound = false;
 	
 	IIcon[] iconArray = new IIcon[8];
 	String Texture = ":runeBack";
 	
-	String[] elements = {"Acedia","Avaritia","Gula","Invidia","Ira","Luxuria","Superbia"};
+	public String[] elements = {"Acedia","Avaritia","Gula","Invidia","Ira","Luxuria","Superbia"};
 	
     @SideOnly(Side.CLIENT)
     private IIcon Acedia;
@@ -63,31 +64,31 @@ public class ItemRune extends Item {
 			}
 		//Sets the Tier value. Default is 1. Higher is gained through altar-crafting
 		//Change the second value in setInteger here to test Tier values
-		if (!stack.getTagCompound().hasKey("tier")) {
-			stack.getTagCompound().setInteger("tier", 1);
-			this.tier = stack.getTagCompound().getInteger("tier");
+		if (!stack.getTagCompound().hasKey("saligiaTier")) {
+			stack.getTagCompound().setInteger("saligiaTier", 1);
+			this.saligiaTier = stack.getTagCompound().getInteger("saligiaTier");
 		}
 		//Sets the affinity of the rune
-		if (!stack.getTagCompound().hasKey("element")) {
+		if (!stack.getTagCompound().hasKey("saligiaElement")) {
 			String randomElement = (elements[new Random().nextInt(elements.length)]);
-			stack.getTagCompound().setString("element", randomElement);
+			stack.getTagCompound().setString("saligiaElement", randomElement);
 			
 			List list = new ArrayList();
 			EntityPlayer player = (EntityPlayer) entity;
 			
 			addInformation(stack, player, list, par5);
 			
-			setIcon(Texture+stack.getTagCompound().getString("element"));
-			this.setTextureName(Texture+stack.getTagCompound().getString("element"));
+			setIcon(Texture+stack.getTagCompound().getString("saligiaElement"));
+			this.setTextureName(Texture+stack.getTagCompound().getString("saligiaElement"));
 			}
 		//Forces an update to the Tier if it's less than default
-		if(this.tier < 1){
-			this.tier = stack.getTagCompound().getInteger("tier");
+		if(this.saligiaTier < 1){
+			this.saligiaTier = stack.getTagCompound().getInteger("saligiaTier");
 		}
 		//If value is too high, resets it to T1
-		if(this.tier > 3 && stack.getTagCompound().getInteger("tier") > 3){
-			this.tier = 1;
-			stack.getTagCompound().setInteger("tier", 1);
+		if(this.saligiaTier > 3 && stack.getTagCompound().getInteger("saligiaTier") > 3){
+			this.saligiaTier = 1;
+			stack.getTagCompound().setInteger("saligiaTier", 1);
 		}
 		//System.out.println(saligia.MODID+Texture+"Ira");
 	}
@@ -95,25 +96,25 @@ public class ItemRune extends Item {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par){
 		//Sets the lore of the rune. Changes based on affinity
-		if (stack.hasTagCompound()){
-			String main = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("element").toLowerCase()+".main");
-			String items = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("element").toLowerCase()+".items");
-			String tools = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("element").toLowerCase()+".tools");
-			String armour = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("element").toLowerCase()+".armour");
+		if (stack.hasTagCompound() && compound == false){
+			String main = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("saligiaElement").toLowerCase()+".main");
+			String items = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("saligiaElement").toLowerCase()+".items");
+			String tools = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("saligiaElement").toLowerCase()+".tools");
+			String armour = StatCollector.translateToLocal("saligia.rune."+stack.getTagCompound().getString("saligiaElement").toLowerCase()+".armour");
 
-			switch (stack.getTagCompound().getString("element")){
+			switch (stack.getTagCompound().getString("saligiaElement")){
 			
 			//Changes specific lore depending on tier & affinity
 			case "Ira" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
-				list.add(items.replace("?+damage", Integer.toString(2*stack.getTagCompound().getInteger("tier"))));
-				list.add(tools.replace("?(5*Tier)", Integer.toString(5*stack.getTagCompound().getInteger("tier"))));
-				list.add(armour.replace("?(3*Tier)", Integer.toString(3*stack.getTagCompound().getInteger("tier"))));
+				list.add(items.replace("?+damage", Integer.toString(2*stack.getTagCompound().getInteger("saligiaTier"))));
+				list.add(tools.replace("?(5*Tier)", Integer.toString(5*stack.getTagCompound().getInteger("saligiaTier"))));
+				list.add(armour.replace("?(3*Tier)", Integer.toString(3*stack.getTagCompound().getInteger("saligiaTier"))));
 				break;	
 			}
 			case "Superbia" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
 				list.add(items.replace("?(2*Tier)", Integer.toString(2*stack.getTagCompound().getInteger("tier"))));
 				list.add(tools.replace("?(5*Tier)", Integer.toString(5*stack.getTagCompound().getInteger("tier"))));
@@ -121,19 +122,19 @@ public class ItemRune extends Item {
 				break;
 			}
 			case "Gula" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
-				list.add(items.replace("?(60/Tier)", Integer.toString(60/stack.getTagCompound().getInteger("tier"))));
-				list.add(tools.replace("?(1*Tier)", Integer.toString(1*stack.getTagCompound().getInteger("tier"))));
-				list.add(armour.replace("?(4shanks^Tier)", Integer.toString((int)Math.pow(4, stack.getTagCompound().getInteger("tier")))));
+				list.add(items.replace("?(60/Tier)", Integer.toString(60/stack.getTagCompound().getInteger("saligiaTier"))));
+				list.add(tools.replace("?(1*Tier)", Integer.toString(1*stack.getTagCompound().getInteger("saligiaTier"))));
+				list.add(armour.replace("?(4shanks^Tier)", Integer.toString((int)Math.pow(4, stack.getTagCompound().getInteger("saligiaTier")))));
 				break;
 			}
 			case "Invidia" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
-				list.add(items.replace("?(4^Tier)", Integer.toString((int)Math.pow(4, stack.getTagCompound().getInteger("tier")))));
-				list.add(tools.replace("?(10*Tier)", Integer.toString(10*stack.getTagCompound().getInteger("tier"))));
-				switch (stack.getTagCompound().getInteger("tier")){
+				list.add(items.replace("?(4^Tier)", Integer.toString((int)Math.pow(4, stack.getTagCompound().getInteger("saligiaTier")))));
+				list.add(tools.replace("?(10*Tier)", Integer.toString(10*stack.getTagCompound().getInteger("saligiaTier"))));
+				switch (stack.getTagCompound().getInteger("saligiaTier")){
 				case 1:{list.add(armour.replace("?(tier)", "basic")); break;}
 				case 2:{list.add(armour.replace("?(tier)", "")); break;}
 				case 3:{list.add(armour.replace("?(tier)", "advanced")); break;}
@@ -141,12 +142,12 @@ public class ItemRune extends Item {
 				break;	
 			}
 			case "Acedia" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
-				list.add(items.replace("?(48-(Tier^3))", Integer.toString(48-((int)Math.pow(stack.getTagCompound().getInteger("tier"), 3)))));
-				String toolsAcediaFirstRep = tools.replace("?(4^Tier)", Integer.toString((int)Math.pow(4, stack.getTagCompound().getInteger("tier"))));
-				list.add(toolsAcediaFirstRep.replace("?(Tier)", Integer.toString(stack.getTagCompound().getInteger("tier"))));
-				switch (stack.getTagCompound().getInteger("tier")){
+				list.add(items.replace("?(48-(Tier^3))", Integer.toString(48-((int)Math.pow(stack.getTagCompound().getInteger("saligiaTier"), 3)))));
+				String toolsAcediaFirstRep = tools.replace("?(4^Tier)", Integer.toString((int)Math.pow(4, stack.getTagCompound().getInteger("saligiaTier"))));
+				list.add(toolsAcediaFirstRep.replace("?(Tier)", Integer.toString(stack.getTagCompound().getInteger("saligiaTier"))));
+				switch (stack.getTagCompound().getInteger("saligiaTier")){
 				case 1:{list.add(armour.replace("?(percentage)", "33")); break;}
 				case 2:{list.add(armour.replace("?(percentage)", "67")); break;}
 				case 3:{list.add(armour.replace("?(percentage)", "100")); break;}
@@ -154,28 +155,28 @@ public class ItemRune extends Item {
 				break;
 			}
 			case "Avaritia" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
-				list.add(items.replace("?((4^Tier)/2)", Integer.toString(((int)Math.pow(4, stack.getTagCompound().getInteger("tier")))/2)));
-				String toolsAvaritiaFirstRep = tools.replace("?(Tier*15)", Integer.toString(stack.getTagCompound().getInteger("tier")*15));
-				list.add(toolsAvaritiaFirstRep.replace("?(Tier*2)", Integer.toString(stack.getTagCompound().getInteger("tier")*2)));
-				list.add(armour.replace("?((8*Tier)/2)", Integer.toString((8*stack.getTagCompound().getInteger("tier"))/2)));
+				list.add(items.replace("?((4^Tier)/2)", Integer.toString(((int)Math.pow(4, stack.getTagCompound().getInteger("saligiaTier")))/2)));
+				String toolsAvaritiaFirstRep = tools.replace("?(Tier*15)", Integer.toString(stack.getTagCompound().getInteger("saligiaTier")*15));
+				list.add(toolsAvaritiaFirstRep.replace("?(Tier*2)", Integer.toString(stack.getTagCompound().getInteger("saligiaTier")*2)));
+				list.add(armour.replace("?((8*Tier)/2)", Integer.toString((8*stack.getTagCompound().getInteger("saligiaTier"))/2)));
 				break;
 			}
 			case "Luxuria" :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
-				list.add(items.replace("?(Tier)", Integer.toString(stack.getTagCompound().getInteger("tier"))));
-				String toolsLuxuriaFirstRep = tools.replace("?(50*Tier)", Integer.toString(50*stack.getTagCompound().getInteger("tier")));
-				list.add(toolsLuxuriaFirstRep.replace("?((8*Tier)/2)", Integer.toString((8*stack.getTagCompound().getInteger("tier"))/2)));
-				list.add(armour.replace("?(35*Tier)", Integer.toString(35*stack.getTagCompound().getInteger("tier"))));
+				list.add(items.replace("?(Tier)", Integer.toString(stack.getTagCompound().getInteger("saligiaTier"))));
+				String toolsLuxuriaFirstRep = tools.replace("?(50*Tier)", Integer.toString(50*stack.getTagCompound().getInteger("saligiaTier")));
+				list.add(toolsLuxuriaFirstRep.replace("?((8*Tier)/2)", Integer.toString((8*stack.getTagCompound().getInteger("saligiaTier"))/2)));
+				list.add(armour.replace("?(35*Tier)", Integer.toString(35*stack.getTagCompound().getInteger("saligiaTier"))));
 				break;
 			}
 			
 			
 			//Default lore, fallback if dark voodoo appears
 			default :{
-				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("tier"));
+				list.add(StatCollector.translateToLocal("saligia.rune.tier")+" "+stack.getTagCompound().getInteger("saligiaTier"));
 				list.add(main);
 				list.add(items);
 				list.add(tools);
@@ -200,7 +201,7 @@ public class ItemRune extends Item {
 		if (!stack.hasTagCompound()){
 			return "ÅòkSource of Sin";
 			}
-		return StatCollector.translateToLocal("saligia.rune.default")+" "+stack.getTagCompound().getString("element");
+		return StatCollector.translateToLocal("saligia.rune.default")+" "+stack.getTagCompound().getString("saligiaElement");
 	}
 	
 	public void setIcon(String Texturename){
@@ -227,7 +228,7 @@ public class ItemRune extends Item {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining){
 		if(stack.hasTagCompound()){
-			switch (stack.stackTagCompound.getString("element")){
+			switch (stack.stackTagCompound.getString("saligiaElement")){
 			case "Acedia" : {return this.Acedia;}
 			case "Avaritia" : {return this.Avaritia;}
 			case "Gula" : {return this.Gula;}
@@ -244,7 +245,7 @@ public class ItemRune extends Item {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconIndex(ItemStack stack){
 		if(stack.hasTagCompound()){
-			switch (stack.stackTagCompound.getString("element")){
+			switch (stack.stackTagCompound.getString("saligiaElement")){
 			case "Acedia" : {return this.Acedia;}
 			case "Avaritia" : {return this.Avaritia;}
 			case "Gula" : {return this.Gula;}

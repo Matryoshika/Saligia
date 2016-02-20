@@ -10,7 +10,7 @@ public class ItemSinDagger extends ItemSword {
 		super(sin);
 		
 		this.setUnlocalizedName("ItemSinDagger");
-		this.setTextureName(saligia.MODID+":dagger1");
+		this.setTextureName(saligia.MODID+":dagger");
 	}
 
 	
