@@ -16,8 +16,14 @@ tile.BlockRitualCOTH.name=Centre Ritual Stone: Cognizance of the Hellmouth
 tile.BlockRitualROTTS.name=Centre Ritual Stone: Roar of the Thundering Skies
 tile.BlockRitualFOTDB.name=Centre Ritual Stone: Fountain of the Divine's Blood
 tile.BlockRitualFOTI.name=Centre Ritual Stone: Fall of the Imperious
-tile.PaganAltar.name=Altar of the Pagans
+tile.PaganAltar.name=§4Altar of the Pagan§r
+tile.CultistAltar.name=§4Altar of the Cultist§r
+tile.EvilAltar.name=§4Altar of Evil§r
+tile.SinfulAltar.name=§4Altar of the Sinful§r
+tile.DemonicAltar.name=§4Altar of the Demon§r
 tile.BlockCharcoal.name=Block of Charcoal
+tile.sinRose.name=Rose of Sin
+tile.RunicScribe.name=Runic Scribe
 
 tile.SoulBrazier.name=§bSoul Brazier§r
 tile.SoulObelisk.name=§bSoul Obelisk§r
@@ -38,12 +44,21 @@ item.ItemBloodStone.name=Gem of the Infernal Blood
 item.ItemSinpick.name=Pickaxe of Everlasting Greed
 item.ItemWitheringShield.name=Scorn of the Fade
 item.itemFelMeat.name=Festered Meat
+item.ItemDustCompound.name=Poisonous Compound
+item.ItemDustIngot.name=Unprocessed Compound Ingot
+item.ItemSinIngot.name=Sinful Ingot
+item.ItemDeathHandBlade.name=Sinful Crescent Blade
+item.ItemDeathHandBase.name=Sinful Staff Core
+item.ItemDaggerBlade.name=Sinful Blade
+item.ItemDaggerBase.name=Sinful Hilt
+item.ItemMobHarness.name=Handheld Purgatory
+item.ItemTapeMeasure.name=All-round Divine tool
 
 //set all enchant names
 enchantment.purify=Purify
 
 //Lore
-lore.deathhand.desc1=Demonic energies flow forth...
+lore.deathhand.desc1=Souls of the Damned hath to be harvested...
 
 //Generator
 tile.BlockDynamicGenerator.name=Dynamic Generator
@@ -72,6 +87,9 @@ saligia.ritualactivator.tooltip=Terrors of the mind within your grasp
 saligia.blockghastly.tooltip1=As ethereal as smoke, this block 
 saligia.blockghastly.tooltip2=may vanish at the slightest touch
 
+
+saligia.sinrose.tooltip1=You feel a great darkness in this flower.
+saligia.sinrose.tooltip2=A fine residue sticks to your fingers.
 
 
 //Book Lore
@@ -108,7 +126,7 @@ saligia.rune.tier=Tier
 saligia.rune.default=Rune of
 
 saligia.rune.acedia.main=Main: Weapon
-saligia.rune.acedia.items=Item: Low regeneration if standing idle for ?(48-(Tier^3)) seconds.
+saligia.rune.acedia.items=Item: Low regeneration in bursts if standing idle for ?(48-(Tier^3)) seconds.
 saligia.rune.acedia.tools=Tool: On hit: Freezes all foes within ?(4^Tier) blocks for ?(Tier) seconds.
 saligia.rune.acedia.armour=Armour: ?(percentage)% impervious to knockback.
 
