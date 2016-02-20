@@ -1,14 +1,19 @@
 package Matryoshika.mods.saligia.rendering.GUIHandler;
 
 import Matryoshika.mods.saligia.items.ItemLibroSaligia;
+import Matryoshika.mods.saligia.rendering.GUI.GUIRunicScribe;
 import Matryoshika.mods.saligia.rendering.GUI.book.ContainerLibroSaligia;
 import Matryoshika.mods.saligia.rendering.GUI.book.GUILibroSaligia;
 import Matryoshika.mods.saligia.rendering.GUI.book.relics.GUILibroSaligiaRelics;
+import Matryoshika.mods.saligia.tile.ContainerRunicScribe;
+import Matryoshika.mods.saligia.tile.TileRunicScribe;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -16,11 +21,18 @@ public class MSGuiHandler implements IGuiHandler {
 	
 	public static final int GUI_LIBROSALIGIA = 0;
 	public static final int GUI_LIBROSALIGIARELICS = 1;
+	public static final int GUI_RUNICSCRIBE = 2;
 
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		
+		switch(ID){
+		case GUI_RUNICSCRIBE:{
+			TileEntity tileEntity = world.getTileEntity(x, y, z);
+			//System.out.println("ContainerInventoryPlayerCrafting: Constructor called on " + FMLCommonHandler.instance().getEffectiveSide());
+			return new ContainerRunicScribe(player.inventory, (TileRunicScribe) tileEntity);
+		}
+		}
 		return null;
 
 	}
@@ -28,11 +40,15 @@ public class MSGuiHandler implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID){
-		case GUI_LIBROSALIGIA:{
-			return new GUILibroSaligia();
+			case GUI_LIBROSALIGIA:{
+				return new GUILibroSaligia();
 			}
-		case GUI_LIBROSALIGIARELICS: {
-			return new GUILibroSaligiaRelics();
+			case GUI_LIBROSALIGIARELICS: {
+				return new GUILibroSaligiaRelics();
+			}
+			case GUI_RUNICSCRIBE:{
+				TileEntity tileEntity = world.getTileEntity(x, y, z);
+				return new GUIRunicScribe(player.inventory, (TileRunicScribe) tileEntity);
 			}
 		}
 		
