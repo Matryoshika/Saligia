@@ -1,29 +1,36 @@
 package Matryoshika.mods.saligia.utils;
 
+import java.util.List;
 import java.util.Random;
 
-import Matryoshika.mods.saligia.entities.EntityAcedia;
-import Matryoshika.mods.saligia.entities.EntityAvaritia;
+import Matryoshika.mods.saligia.entities.EntitySaligiaBoss;
+import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.entities.EntityGula;
-import Matryoshika.mods.saligia.entities.EntityInvidia;
 import Matryoshika.mods.saligia.entities.EntityIra;
-import Matryoshika.mods.saligia.entities.EntityLuxuria;
 import Matryoshika.mods.saligia.entities.EntitySuperbia;
 import Matryoshika.mods.saligia.entities.saligia_Entities;
 import Matryoshika.mods.saligia.items.saligia_Items;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
 public class matryoshikaEventHandler {
 	
@@ -35,13 +42,7 @@ public class matryoshikaEventHandler {
 		
 		Entity target = attacker.target;
 
-			if((target instanceof EntityAcedia || 
-					target instanceof EntityAvaritia || 
-					target instanceof EntityGula || 
-					target instanceof EntityInvidia || 
-					target instanceof EntityIra || 
-					target instanceof EntityLuxuria || 
-					target instanceof EntitySuperbia)){
+			if((target instanceof EntitySaligiaBoss)){
 				if(attacker.entityPlayer.getCurrentEquippedItem() != null){
 					
 					ItemStack hand = attacker.entityPlayer.getCurrentEquippedItem();
@@ -125,4 +126,45 @@ public class matryoshikaEventHandler {
 			}
 		}
 	}
+	
+	@SubscribeEvent
+	public void onItemTooltip(ItemTooltipEvent event){
+	    if (event.itemStack.getItem() == Item.getItemFromBlock(saligia_Blocks.SinRose)) {
+	    	String roseName = new String(StatCollector.translateToLocal("tile.sinRose.name"));
+	        String rose1 = new String(StatCollector.translateToLocal("saligia.sinrose.tooltip1"));
+	        String rose2 = new String(StatCollector.translateToLocal("saligia.sinrose.tooltip2"));
+
+	        event.toolTip.clear();
+	        event.toolTip.add(roseName);
+	        event.toolTip.add(EnumChatFormatting.GRAY + rose1);
+	        event.toolTip.add(EnumChatFormatting.GRAY + rose2);
+	    }
+	}
+	@SubscribeEvent
+	public void boneMealing(BonemealEvent event){
+		World world = event.world;
+		int x = event.x;
+		int y = event.y;
+		int z = event.z;
+		Block block = event.block;
+		Random rand = new Random();
+		int i = rand.nextInt(2);
+		
+		if (block == Blocks.grass && event.world.getBlockMetadata(x, y, z) == 0){
+			int flowerHeight = y + 1;
+		    for (int i2 = 0; i2 < 5; ++i2){
+		    	x += event.world.rand.nextInt(3) - 1;
+		    	flowerHeight += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
+		    	z += event.world.rand.nextInt(3) - 1;
+			    }
+			    if (event.world.getBlock(x, flowerHeight, z).isAir(world, x, flowerHeight, z)){
+			    	if (saligia_Blocks.SinRose.canReplace(world, x, flowerHeight, z, 0, new ItemStack(saligia_Blocks.SinRose, 1, i))){
+			    		if (!event.world.isRemote){
+			    			event.world.setBlock(x, flowerHeight, z, saligia_Blocks.SinRose, 0, 2);
+			    			}
+			    		}
+			    	}
+			    }
+		}
+		
 }
