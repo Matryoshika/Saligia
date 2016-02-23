@@ -321,7 +321,7 @@ public class TilePaganAltar extends TileEntity implements ISidedInventory{
 		return energy >= requiredEnergy;
 	}
 	
-	public void recieveMana(int energy) {
+	public void recieveEnergy(int energy) {
 		this.energy = Math.min(this.energy + energy, requiredEnergy);
 	}
 	
