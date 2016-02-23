@@ -1,7 +1,9 @@
 /bin/
 
+.directory
 *.index
 eclipse/*
+eclipse/.*
 .gradle/*
 forge-1.7.10-10.13.4.1566-1.7.10-changelog.txt
 gradle/*
