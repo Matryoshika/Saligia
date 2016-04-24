@@ -78,4 +78,9 @@ public class TileRitualROTTS extends TileEntity implements IRitualSensor{
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt){
         readFromNBT(pkt.func_148857_g());
     }
+	
+	@Override
+	public boolean isRitualMaster(Block block) {
+		return true;
+	}
 }

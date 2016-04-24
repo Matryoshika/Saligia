@@ -75,9 +75,6 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
 			GL11.glTranslated(-2F, 0F, -2F);
 			GL11.glScalef(4F, 4F, 4F);
 			renderItem(tile.getWorldObj(),altar, x, y, z, 0, 1F, 0.2F, 1F);
-			GL11.glRotatef(180, 0, 1F, 0);
-			renderItem(tile.getWorldObj(),altar, x, y, z, 0, -1F, 0.2F, -1F);
-			GL11.glRotatef(180, 0, 1F, 0);
 			GL11.glScalef(0.25F, 0.25F, 0.25F);
 			GL11.glTranslated(2F, 0F, 2F);
 		}
@@ -92,17 +89,7 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
 			if(altar.getStackInSlot(6) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 6, 1.33F, 0F, 0.66F);
 			if(altar.getStackInSlot(7) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 7, 1.33F, 0F, 1.33F);
 			if(altar.getStackInSlot(8) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 8, 0.66F, 0F, 1.33F);
-			GL11.glRotatef(180, 0, 1F, 0);
-			//Renders backside
-			if(altar.getStackInSlot(1) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 1, -1F, 0F, -0.5F);
-			if(altar.getStackInSlot(2) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 2, -1F, 0F, -1.5F);
-			if(altar.getStackInSlot(3) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 3, -0.5F, 0F, -1F);
-			if(altar.getStackInSlot(4) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 4, -1.5F, 0F, -1F);
-			if(altar.getStackInSlot(5) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 5, -0.66F, 0F, -0.66F);
-			if(altar.getStackInSlot(6) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 6, -1.33F, 0F, -0.66F);
-			if(altar.getStackInSlot(7) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 7, -1.33F, 0F, -1.33F);
-			if(altar.getStackInSlot(8) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 8, -0.66F, 0F, -1.33F);
-			GL11.glRotatef(180, 0, 1F, 0);
+			
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
 		}
 		else{
@@ -115,17 +102,7 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
 			if(altar.getStackInSlot(6) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 6, 0.66F, 0F, 0.66F);
 			if(altar.getStackInSlot(7) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 7, 1.33F, 0F, 0.66F);
 			if(altar.getStackInSlot(8) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 8, 1.33F, 0F, 1.33F);
-			//Renders backside
-			GL11.glRotatef(180, 0, 1F, 0);
-			if(altar.getStackInSlot(1) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 1, -0.5F, 0F, -1F);
-			if(altar.getStackInSlot(2) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 2, -1.5F, 0F, -1F);
-			if(altar.getStackInSlot(3) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 3, -1F, 0F, -1.5F);
-			if(altar.getStackInSlot(4) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 4, -1F, 0F, -0.5F);
-			if(altar.getStackInSlot(5) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 5, -0.66F, 0F, -1.33F);
-			if(altar.getStackInSlot(6) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 6, -0.66F, 0F, -0.66F);
-			if(altar.getStackInSlot(7) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 7, -1.33F, 0F, -0.66F);
-			if(altar.getStackInSlot(8) != null)renderItem(tile.getWorldObj(),altar, x, y, z, 8, -1.33F, 0F, -1.33F);
-			GL11.glRotatef(180, 0, 1F, 0);
+			
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
 		}
 		GL11.glScalef(1F, -1F, -1F);
@@ -160,7 +137,7 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
     			this.entItem.hoverStart = 0.0F;
     			//RenderItem.renderInFrame = true;
     			//GL11.glRotatef(2*altar.hoverItem, 0F, 1F, 0F);
-    			RenderManager.instance.renderEntityWithPosYaw(this.entItem, 1.0D, 0.0D, 1.0D, 0.0F, 2.0F*altar.hoverItem);
+    			RenderManager.instance.renderEntityWithPosYaw(this.entItem, 1.0D, 0.0D, 1.0D, 0.0F, 1.0F*altar.hoverItem);
     			//RenderItem.renderInFrame = false;
     			//ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
     			GL11.glColor3f(1F, 1F, 1F);
@@ -183,8 +160,8 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
         			GL11.glDisable(GL11.GL_LIGHTING);
         			this.entItem.hoverStart = 0.0F;
         			RenderItem.renderInFrame = true;
-        			GL11.glRotatef(4*altar.hoverItem, 0F, 1F, 0F);
-        			RenderManager.instance.renderEntityWithPosYaw(this.entItem, 0.0D, 0.0D, 0.0D, 0.0F, 2.0F*altar.hoverItem);
+        			GL11.glRotatef(2*altar.hoverItem, 0F, 1F, 0F);
+        			RenderManager.instance.renderEntityWithPosYaw(this.entItem, 0.0D, 0.0D, 0.0D, 0.0F, 2F*altar.hoverItem);
         			//RenderManager.instance.renderEntityWithPosYaw(this.entItem, 0.0D, 0.0D, 0.0D, 0.0F, 2.0F*altar.hoverItem);
         			RenderItem.renderInFrame = false;
         			GL11.glColor3f(1F, 1F, 1F);

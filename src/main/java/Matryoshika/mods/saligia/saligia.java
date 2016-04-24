@@ -30,6 +30,7 @@ import Matryoshika.mods.saligia.tile.TileRitualROTTS;
 import Matryoshika.mods.saligia.tile.TileRunicScribe;
 import Matryoshika.mods.saligia.tile.altars.TileCultistAltar;
 import Matryoshika.mods.saligia.tile.altars.TilePaganAltar;
+import Matryoshika.mods.saligia.tile.soulsystem.TileLeyLineCrystal;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulNexus;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulObelisk;
@@ -144,6 +145,7 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerTileEntity(TileSoulObelisk.class, "tileSoulObelisk");
 		GameRegistry.registerTileEntity(TileSoulNexus.class, "tileSoulNexus");
 		GameRegistry.registerTileEntity(TileSoulPyre.class, "tileSoulPyre");
+		GameRegistry.registerTileEntity(TileLeyLineCrystal.class, "tileLeyLineCrystal");
 		
 		GameRegistry.registerTileEntity(TilePaganAltar.class, "tilePaganAltar");
 		GameRegistry.registerTileEntity(TileCultistAltar.class, "tileCultistAltar");

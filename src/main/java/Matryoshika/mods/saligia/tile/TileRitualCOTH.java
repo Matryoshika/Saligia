@@ -86,4 +86,9 @@ public class TileRitualCOTH extends TileEntity implements IRitualSensor{
         readFromNBT(pkt.func_148857_g());
     }
 	
+	@Override
+	public boolean isRitualMaster(Block block) {
+		return true;
+	}
+	
 }

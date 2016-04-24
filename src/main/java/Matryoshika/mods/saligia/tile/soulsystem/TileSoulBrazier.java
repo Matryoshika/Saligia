@@ -128,5 +128,14 @@ public class TileSoulBrazier extends TileEntity {
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt){
         readFromNBT(pkt.func_148857_g());
     }
+	
+	public int getTier(){
+		return 1;
+	}
+	
+	public double getCapacity(){
+		return Math.pow(Integer.decode("0x29A"), getTier());
+	}
+	
 
 }

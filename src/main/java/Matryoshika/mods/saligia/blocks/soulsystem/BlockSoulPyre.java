@@ -5,6 +5,8 @@ import java.util.Random;
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulBrazier;
 import Matryoshika.mods.saligia.tile.soulsystem.TileSoulPyre;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
@@ -22,6 +24,23 @@ public class BlockSoulPyre extends BlockContainer implements ITileEntityProvider
 		setHardness(10);
 		this.setResistance(150);
 		this.setBlockName("SoulPyre");
+		this.setBlockBounds(0.30F, 0.30F, 0.30F, 0.70F, 0.70F, 0.70F);
+	}
+	
+	public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+	
+	 @SideOnly(Side.CLIENT)
+	 public int getRenderBlockPass()
+	 {
+	     return 1;
+	 }
+	 
+	@Override
+	public boolean isOpaqueCube(){
+		return false;
 	}
 	
 	@Override

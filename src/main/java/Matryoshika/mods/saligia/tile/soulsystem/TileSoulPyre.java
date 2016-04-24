@@ -1,5 +1,11 @@
 package Matryoshika.mods.saligia.tile.soulsystem;
 
+import java.util.Random;
+
+import Matryoshika.mods.saligia.entities.misc.saligiaAvaritiaParticle;
+import Matryoshika.mods.saligia.entities.misc.saligiaPyreParticle;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityFX;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -9,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileSoulPyre extends TileEntity{
 	
 	int timer = 0;
+	int particleTimer = 0;
 
 	@Override
 	public void updateEntity() {
@@ -23,6 +30,21 @@ public class TileSoulPyre extends TileEntity{
 		}
 		if(tile != null && tile instanceof TileSoulNexus){
 			fillStorage(tile, 256, 3);
+		}
+		
+		
+		particleTimer++;
+		if(particleTimer >= 5 && tile != null && tile instanceof TileSoulBrazier){
+			
+			Random rand = new Random();
+			double motionX = rand.nextGaussian() * 0.02D;
+			double motionY = rand.nextGaussian() * 0.02D;
+			double motionZ = rand.nextGaussian() * 0.02D;
+			EntityFX soylPyreFX = new saligiaPyreParticle(worldObj, this.xCoord+0.5, this.yCoord+0.75, this.zCoord+0.5, motionX*20, motionY*0.8, motionZ*20 );
+			Minecraft.getMinecraft().effectRenderer.addEffect(soylPyreFX);
+			
+			
+	    	particleTimer = 0;
 		}
 		
 	}

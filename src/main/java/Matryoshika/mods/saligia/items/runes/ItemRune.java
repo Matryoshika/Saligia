@@ -54,7 +54,7 @@ public class ItemRune extends Item {
 		this.setUnlocalizedName("ItemRune");	
 		//this.setIcon(":runeBack");
 		//this.setTextureName(saligia.MODID+":runeBack");
-	}
+		}
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5){
@@ -199,7 +199,7 @@ public class ItemRune extends Item {
 	public String runeName(ItemStack stack){
 		//Checks NBT-value and returns possible names
 		if (!stack.hasTagCompound()){
-			return "ÅòkSource of Sin";
+			return "¬ßkSource of Sin";
 			}
 		return StatCollector.translateToLocal("saligia.rune.default")+" "+stack.getTagCompound().getString("saligiaElement");
 	}

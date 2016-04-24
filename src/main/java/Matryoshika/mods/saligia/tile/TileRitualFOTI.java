@@ -6,6 +6,7 @@ import java.util.Random;
 import Matryoshika.mods.saligia.saligia;
 import Matryoshika.mods.saligia.API.Rituals.IRitualSensor;
 import Matryoshika.mods.saligia.entities.misc.customLightningBolt;
+import net.minecraft.block.Block;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -93,4 +94,9 @@ public class TileRitualFOTI extends TileEntity implements IRitualSensor{
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt){
         readFromNBT(pkt.func_148857_g());
     }
+	
+	@Override
+	public boolean isRitualMaster(Block block) {
+		return true;
+	}
 }

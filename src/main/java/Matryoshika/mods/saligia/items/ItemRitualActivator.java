@@ -184,7 +184,7 @@ public class ItemRitualActivator extends Item {
 	
 	public String ritualName(ItemStack stack){
 		if (stack.getItemDamage() == 0){
-			ritualSelected = "ÅòkSource of Sin";
+			ritualSelected = "¬ßkSource of Sin";
 		}
 		if (stack.getItemDamage() == 1){
 			ritualSelected = new String(StatCollector.translateToLocal("saligia.ritual.COTH"));  

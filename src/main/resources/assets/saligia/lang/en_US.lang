@@ -1,4 +1,4 @@
-//Set all entity names
+﻿//Set all entity names
 entity.Acedia.name=Acedia
 entity.Avaritia.name=Avaritia
 entity.Gula.name=Gula
@@ -29,6 +29,7 @@ tile.SoulBrazier.name=§bSoul Brazier§r
 tile.SoulObelisk.name=§bSoul Obelisk§r
 tile.SoulNexus.name=§bSoul Nexus§r
 tile.SoulPyre.name=§bSoul Pyre§r
+tile.LeyLineCrystal.name=§bLey Line Crystal
 
 //set all item names
 item.ItemSinDagger.name=Dagger of Sin
@@ -38,7 +39,7 @@ item.ItemZombieSoul.name=Soul of the Mindless One
 item.ItemVillagerSoul.name=Soul of the Villager
 item.ItemBuffMobSoul.name=Soul of the Dark One
 item.ItemAnimalSoul.name=Soul of the Innocent One
-item.ItemRitualActivator.name=Source of Evil
+item.ItemRitualActivator.name=§kSource of Evil
 item.ItemLibroSaligia.name=Libro Saligia
 item.ItemBloodStone.name=Gem of the Infernal Blood
 item.ItemSinpick.name=Pickaxe of Everlasting Greed
