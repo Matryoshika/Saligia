@@ -132,7 +132,6 @@ public class RuneEffectEventHandler {
 						int tier = stack.getTagCompound().getInteger("saligiaTier");
 						String uuiid = player.getUniqueID().toString();
 						regentimer++;
-						System.out.println(regentimer);
 						if(regentimer >= (48-(Math.pow(tier, 3)))*20){
 							player.addPotionEffect(new PotionEffect(Potion.regeneration.id, (int) Math.pow(tier+1, 3)*20, 0));
 							regentimer = 0;
@@ -269,7 +268,7 @@ public class RuneEffectEventHandler {
 	
 	public boolean checkItem(ItemStack stack){
 		if(((stack.getItem() instanceof Item && !(stack.getItem() instanceof ItemArmor || (stack.getItem() instanceof ItemTool || stack.getItem() instanceof ItemFishingRod || stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemBow))) ) && stack.hasTagCompound()){
-			if(stack.getTagCompound().hasKey("saligiaTier") && stack.getTagCompound().hasKey("saligiaElement")){
+			if(stack.stackTagCompound != null && stack.getTagCompound().hasKey("saligiaTier") && stack.getTagCompound().hasKey("saligiaElement")){
 				return true;
 			}
 			else{
@@ -282,7 +281,7 @@ public class RuneEffectEventHandler {
 	
 	public boolean checkArmour(ItemStack stack){
 		if(stack.getItem() instanceof ItemArmor || stack.getItem() instanceof ItemRune){
-			if(stack.getTagCompound().hasKey("saligiaTier") && stack.getTagCompound().hasKey("saligiaElement")){
+			if(stack.stackTagCompound != null && stack.getTagCompound().hasKey("saligiaTier") && stack.getTagCompound().hasKey("saligiaElement")){
 				return true;
 			}
 			else{
@@ -294,7 +293,7 @@ public class RuneEffectEventHandler {
 	
 	public boolean checkTool(ItemStack stack){
 		if(stack.getItem() instanceof ItemTool || stack.getItem() instanceof ItemFishingRod || stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemBow || stack.getItem() instanceof ItemRune){
-			if(stack.getTagCompound().hasKey("saligiaTier") && stack.getTagCompound().hasKey("saligiaElement")){
+			if(stack.stackTagCompound != null && stack.getTagCompound().hasKey("saligiaTier") && stack.getTagCompound().hasKey("saligiaElement")){
 				return true;
 			}
 			else{
