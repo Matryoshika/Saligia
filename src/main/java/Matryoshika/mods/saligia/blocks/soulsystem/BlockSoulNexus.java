@@ -16,10 +16,11 @@ public class BlockSoulNexus extends BlockSoulObelisk{
 	public BlockSoulNexus (Block BlockSoulObelisk){
 		super(BlockSoulObelisk);
 		setStepSound(soundTypeStone);
-		setBlockTextureName(saligia.MODID+":BlockSoulNexus");
+		setBlockTextureName(saligia.MODID+":BlockSoulPyre");
 		setHardness(10);
 		this.setResistance(150);
 		this.setBlockName("SoulNexus");
+		this.setBlockBounds(-0.5F, 0.0F, -0.5F, 1.5F, 3.0F, 1.5F);
 	}
 	
 	@Override

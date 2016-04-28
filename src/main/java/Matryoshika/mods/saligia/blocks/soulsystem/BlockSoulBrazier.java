@@ -20,9 +20,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSoulBrazier extends BlockContainer implements ITileEntityProvider {
+public class BlockSoulBrazier extends Block implements ITileEntityProvider {
 	
 	public BlockSoulBrazier (Block BlockSoulBrazier){
 		super(Material.rock);
@@ -85,6 +86,14 @@ public class BlockSoulBrazier extends BlockContainer implements ITileEntityProvi
 		}
 		
 		return true;
+	}
+	
+	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l){
+		return false;
+	}
+
+	public boolean isOpaqueCube(){
+		return false;
 	}
 
 }
