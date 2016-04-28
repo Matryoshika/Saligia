@@ -2,7 +2,7 @@ package Matryoshika.mods.saligia.rendering.GUIHandler;
 
 import java.text.DecimalFormat;
 
-import Matryoshika.mods.saligia.API.Rituals.IRitualSensor;
+import Matryoshika.mods.saligia.API.ISaligiaBlockSensor;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.items.ItemLibroSaligia;
 import Matryoshika.mods.saligia.items.saligia_Items;
@@ -96,7 +96,7 @@ public class HUDRenderHandler{
 				new GUIStorage(Minecraft.getMinecraft(), percentage, bar, type);
 			}
 			
-			if(tile instanceof IRitualSensor){
+			if(tile instanceof ISaligiaBlockSensor){
 				Block block = player.worldObj.getBlock(X, Y, Z);
 				String name = block.getLocalizedName();
 				
