@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import Matryoshika.mods.saligia.saligia;
-import Matryoshika.mods.saligia.API.Rituals.IRitualSensor;
+import Matryoshika.mods.saligia.API.ISaligiaBlockSensor;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.entities.misc.customLightningBolt;
 import Matryoshika.mods.saligia.items.saligia_Items;
@@ -29,7 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 
-public class TileRitualFOTDB extends TileEntity implements IRitualSensor{
+public class TileRitualFOTDB extends TileEntity implements ISaligiaBlockSensor{
 	
 	private static final double RANGE = 64F;
 	
