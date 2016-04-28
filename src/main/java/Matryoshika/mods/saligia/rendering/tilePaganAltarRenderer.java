@@ -29,6 +29,8 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.model.AdvancedModelLoader;
+import net.minecraftforge.client.model.IModelCustom;
 
 import java.awt.Color;
 
@@ -44,7 +46,17 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
 	public Minecraft mc = Minecraft.getMinecraft();
 	//private ModelPedestal stand = new ModelPedestal();
 	
-	private static final ResourceLocation texture = new ResourceLocation(saligia.MODID+":paganAltar");
+	//private static final ResourceLocation texture = new ResourceLocation(saligia.MODID+":paganAltar");
+	ResourceLocation objModelLocation;
+	IModelCustom model;
+	ResourceLocation texture;
+	
+	public tilePaganAltarRenderer(){
+        texture = new ResourceLocation(saligia.MODID, "models/Altar_pagan.png");
+        objModelLocation = new ResourceLocation(saligia.MODID, "models/Altar_pagan.obj");
+        model = AdvancedModelLoader.loadModel(objModelLocation);
+    }
+	
 	//ModelPaganAltar model = new ModelPaganAltar()
 	EntityItem entItem = null;
 	
@@ -62,8 +74,16 @@ public class tilePaganAltarRenderer extends TileEntitySpecialRenderer{
 		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 
 		GL11.glTranslated(x, y + 1, z);
+		
+		GL11.glRotatef(90F, -90F, 0F, 0.5F);
+		GL11.glTranslated(0.5F, -0.5F, -1F);
+		GL11.glScalef(0.5F, 0.5F, 0.5F);
+		model.renderAll();
+		GL11.glScalef(2F, 2F, 2F);
+		GL11.glTranslated(-0.5F, 0.5F, 1.0F);
+		GL11.glRotatef(-270F, 270F, 0F, 2F);
+
 		GL11.glScalef(0.25F, 0.25F, 0.25F);
-		//model.render();
 		//Item 1
 		if(altar.getStackInSlot(0) != null && altar.getStackInSlot(0).getItem() instanceof ItemBlock){
 			GL11.glTranslated(-2F, 0F, -2F);
