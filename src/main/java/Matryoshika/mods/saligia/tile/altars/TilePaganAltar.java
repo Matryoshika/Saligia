@@ -3,6 +3,7 @@ package Matryoshika.mods.saligia.tile.altars;
 import java.util.List;
 import java.util.Random;
 
+import Matryoshika.mods.saligia.API.ISaligiaBlockSensor;
 import Matryoshika.mods.saligia.API.saligiaAPI;
 import Matryoshika.mods.saligia.blocks.saligia_Blocks;
 import Matryoshika.mods.saligia.blocks.altars.PaganAltar;
@@ -13,6 +14,7 @@ import Matryoshika.mods.saligia.rendering.tilePaganAltarRenderer;
 import Matryoshika.mods.saligia.utils.AltarRecipes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
@@ -33,7 +35,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-public class TilePaganAltar extends TileEntity implements ISidedInventory{
+public class TilePaganAltar extends TileEntity implements ISidedInventory, ISaligiaBlockSensor{
 	
 	ItemStack[] inventorySlots = new ItemStack[getSizeInventory()];
 	
@@ -378,6 +380,11 @@ public class TilePaganAltar extends TileEntity implements ISidedInventory{
 	
 	public int tier(){
 		return 1;
+	}
+
+	@Override
+	public boolean isRitualMaster(Block block) {
+		return true;
 	}
 
 }
