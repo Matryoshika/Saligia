@@ -18,6 +18,7 @@ import Matryoshika.mods.saligia.tile.TileRitualCOTH;
 import Matryoshika.mods.saligia.tile.altars.TilePaganAltar;
 import cpw.mods.fml.common.registry.GameData;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.ITileEntityProvider;
@@ -49,7 +50,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class PaganAltar extends Block implements ITileEntityProvider{
+public class PaganAltar extends BlockContainer implements ITileEntityProvider{
 	
 	int decreasedPerStack;
 	int left = 0;
@@ -69,7 +70,7 @@ public class PaganAltar extends Block implements ITileEntityProvider{
 	public PaganAltar (Block PaganAltar){
 		super(Material.iron);
 		setStepSound(soundTypeStone);
-		setBlockTextureName(saligia.MODID+":PaganAltar");
+		setBlockTextureName(saligia.MODID+":BlockSoulPyre");
 		setHardness(-1);
 		this.setResistance(18000000);
 		this.setBlockName("PaganAltar");
