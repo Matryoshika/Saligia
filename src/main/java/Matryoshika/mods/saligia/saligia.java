@@ -150,7 +150,7 @@ import net.minecraftforge.oredict.OreDictionary;
 		GameRegistry.registerTileEntity(TilePaganAltar.class, "tilePaganAltar");
 		GameRegistry.registerTileEntity(TileCultistAltar.class, "tileCultistAltar");
 		
-		
+		GameRegistry.registerWorldGenerator(new biomeDecorationAltar(), 0);
 		
 		AltarCrafting.init();
 	}
@@ -199,7 +199,7 @@ import net.minecraftforge.oredict.OreDictionary;
         try {
             cfg.load();
             cfg.addCustomCategoryComment("Boss Configs", "Shared between all bosses");
-            bossHealth = cfg.getFloat("Boss Health", "Boss Configs", 200, 500, 5000, "This sets the health for all Bosses");
+            bossHealth = cfg.getFloat("Boss Health", "Boss Configs", 200, 200, 5000, "This sets the health for all Bosses");
             bossSpeed = cfg.getFloat("Boss Speed", "Boss Configs", (float) 0.4, 0, 1, "This sets the base speed of Bosses (Some add/subtract to this)");
             bossAttack = cfg.getInt("Boss Attack Damage", "Boss Configs", 100, 100, 500, "This sets the rate of how hard the Bosses will hit you");
             bossToPlayerRange = cfg.getFloat("Player Detection Range", "Boss Configs", 25, 20, 64, "Sets how far away Bosses will detect players");
