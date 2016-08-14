@@ -36,9 +36,6 @@ import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 public class TileRitualCOTH extends TileEntity implements ITickable, IMultiblockChecker{
 	
 	private static final double RANGE = 2F;
-	public static int counter;
-	private boolean canWork = false;
-	public String ritualName;
 	
 	public TileRitualCOTH(){
 		setName("TileRitualCOTH");
