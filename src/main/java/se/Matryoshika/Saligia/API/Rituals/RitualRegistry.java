@@ -33,7 +33,7 @@ public class RitualRegistry {
 	private static List<String> ritualNames = new ArrayList<String>();
 	
 	/**
-	 * Stores each Tile with it's name as a reference.
+	 * Stores each Tile.class with it's name as a reference.
 	 */
 	private static HashMap tiles = new HashMap();
 	private static HashMap reverseTile = new HashMap();
@@ -43,7 +43,7 @@ public class RitualRegistry {
 	 */
 	private static HashMap blocks = new HashMap();
 	
-	public static void addRitual(String name, Object[][] multiblock, TileEntity tile, BlockRitualMaster block){
+	public static void addRitual(String name, Object[][] multiblock, Class tile, BlockRitualMaster block){
 		multiblocks.put(name, multiblock);
 		ritualNames.add(name);
 		tiles.put(name, tile);
@@ -59,15 +59,15 @@ public class RitualRegistry {
 		return ritualNames;
 	}
 	
-	public static TileEntity getTile(String name){
-		return (TileEntity) tiles.get(name);
+	public static Class getTile(String name){
+		return (Class) tiles.get(name);
 	}
 	
 	public static BlockRitualMaster getBlock(String name){
 		return (BlockRitualMaster) blocks.get(name);
 	}
 	
-	public static String getNameFromTile(TileEntity tile){
+	public static String getNameFromTile(Class tile){
 		return (String) reverseTile.get(tile);
 	}
 }

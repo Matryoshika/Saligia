@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.API.Rituals.IMultiblockChecker;
+import se.Matryoshika.Saligia.API.Rituals.RitualRegistry;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
 
 /**
@@ -25,6 +26,8 @@ import se.Matryoshika.Saligia.Content.ContentRegistry;
 public class TileRitualCOTH extends TileEntity implements ITickable, IMultiblockChecker{
 	
 	private static final double RANGE = 2F;
+	public int counter = 0;
+	private boolean canWork = false;
 	
 	public TileRitualCOTH(){
 		setName("TileRitualCOTH");
@@ -33,10 +36,15 @@ public class TileRitualCOTH extends TileEntity implements ITickable, IMultiblock
 	
 	@Override
 	public void update(){
-		System.out.println("Updating");
+		//System.out.println("Updating");
+		counter++;
+		if(counter >= 60){
+			counter = 0;
+			canWork = isMultiblockIntact(worldObj, RitualRegistry.getMultiblock(RitualRegistry.getNameFromTile(this.getClass())), this.pos);
+		}
 		
-		if(!worldObj.isRemote);{
-			
+		if(!worldObj.isRemote && canWork){
+			System.out.println(canWork);
 			Class<EntityItem> items = EntityItem.class;
 			List<EntityItem> inbox = worldObj.getEntitiesWithinAABB(items, new AxisAlignedBB(new BlockPos(this.pos.getX()-RANGE, this.pos.getY()-RANGE, this.pos.getZ()-RANGE), new BlockPos(this.pos.getX()+RANGE, this.pos.getY()+RANGE, this.pos.getZ()+RANGE)));
 			if(worldObj.isAirBlock(this.pos.up())){

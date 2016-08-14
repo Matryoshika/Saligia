@@ -27,7 +27,7 @@ public class SaligiaBaseMultiblocks {
 	
 	
 	public static void register(){
-		RitualRegistry.addRitual(ContentRegistry.ritualCOTHBlock.getRitualName(), COTH_BLOCKS, new TileRitualCOTH(), ContentRegistry.ritualCOTHBlock);
+		RitualRegistry.addRitual(ContentRegistry.ritualCOTHBlock.getRitualName(), COTH_BLOCKS, TileRitualCOTH.class, ContentRegistry.ritualCOTHBlock);
 	}
 
 }

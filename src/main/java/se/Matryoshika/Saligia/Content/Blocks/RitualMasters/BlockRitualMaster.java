@@ -44,7 +44,15 @@ public class BlockRitualMaster extends Block implements IRitualBlock{
 	
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state){
-		return RitualRegistry.getTile(getRitualName());
+		Class clazz = RitualRegistry.getTile(getRitualName());
+		try {
+			return (TileEntity) clazz.newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	@Override
