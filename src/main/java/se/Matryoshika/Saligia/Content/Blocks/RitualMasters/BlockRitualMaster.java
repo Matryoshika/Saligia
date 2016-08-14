@@ -3,7 +3,7 @@
  */
 package se.Matryoshika.Saligia.Content.Blocks.RitualMasters;
 
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -47,9 +47,7 @@ public class BlockRitualMaster extends Block implements IRitualBlock{
 		Class clazz = RitualRegistry.getTile(getRitualName());
 		try {
 			return (TileEntity) clazz.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		return null;
