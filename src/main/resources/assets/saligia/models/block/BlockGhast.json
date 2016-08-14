@@ -1,0 +1,43 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"faces": "saligia:blocks/BlockGhastly",
+		"topbottom": "saligia:blocks/BlockGhastlySides"
+	},
+	"elements": [{
+		"from": [0, 0, 0],
+		"to": [16, 16, 16],
+		"faces": {
+			"down": {
+				"uv": [0, 0, 16, 16],
+				"texture": "#topbottom",
+				"cullface": "down"
+			},
+			"up": {
+				"uv": [0, 0, 16, 16],
+				"texture": "#topbottom",
+				"cullface": "up"
+			},
+			"north": {
+				"uv": [0, 0, 16, 16],
+				"texture": "#faces",
+				"cullface": "north"
+			},
+			"south": {
+				"uv": [0, 0, 16, 16],
+				"texture": "#faces",
+				"cullface": "south"
+			},
+			"west": {
+				"uv": [0, 0, 16, 16],
+				"texture": "#faces",
+				"cullface": "west"
+			},
+			"east": {
+				"uv": [0, 0, 16, 16],
+				"texture": "#faces",
+				"cullface": "east"
+			}
+		}
+	}]
+}

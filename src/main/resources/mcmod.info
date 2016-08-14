@@ -1,14 +1,14 @@
 [
 {
-  "modid": "matryoshikassinners",
-  "name": "Matryoshika's Sinners",
-  "description": "A mod that adds bosses inspired by the 7 Deadly Sins",
-  "version": "${1.0}",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
+  "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["Matryoshika"],
-  "credits": "MOTHY/Akuno-P for creating my beloved Evillious Chronicles",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
