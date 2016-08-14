@@ -57,9 +57,9 @@ public class BlockRitualMaster extends Block implements IRitualBlock{
 	
 	@Nullable
 	@Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos){
-        return BOX;
-    }
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos){
+		return BOX;
+	}
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state){
