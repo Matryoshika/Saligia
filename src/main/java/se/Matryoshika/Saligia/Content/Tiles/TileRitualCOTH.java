@@ -5,27 +5,16 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.SoundCategory;
 import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.API.Rituals.IMultiblockChecker;
-import se.Matryoshika.Saligia.API.Rituals.IRitualBlock;
-import se.Matryoshika.Saligia.API.Rituals.RitualRegistry;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
-import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 
 /**
  * This class was created by Matryoshika Aug 9, 2016

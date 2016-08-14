@@ -6,7 +6,6 @@ package se.Matryoshika.Saligia.Content.Blocks.RitualMasters;
 import com.sun.istack.internal.Nullable;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -17,8 +16,6 @@ import net.minecraft.world.World;
 import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.API.Rituals.IRitualBlock;
 import se.Matryoshika.Saligia.API.Rituals.RitualRegistry;
-import se.Matryoshika.Saligia.Content.ContentRegistry;
-import se.Matryoshika.Saligia.Content.Tiles.TileRitualCOTH;
 
 /**
  * This class was created by Matryoshika Aug 10, 2016
