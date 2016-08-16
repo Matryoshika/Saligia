@@ -3,6 +3,8 @@
 
 //Block names
 tile.saligia:BlockCharcoal.name=Block of Charcoal
+tile.saligia:BlockSinBlock.name=Block of Sin Metal
+tile.saligia:BlockGhast.name=Block of the Lost One's Weeping
 
 //Ritual blocks
 tile.saligia:BlockRitualMaster.name=Ritual Nexus
@@ -10,3 +12,5 @@ tile.saligia:CognizanceOfTheHellmouth.name=Ritual Nexus: Cognizance Of The Hellm
 
 //Item names
 item.saligia:ItemDustIngot.name=Unprocessed Compound Ingot
+item.saligia:ItemTapeMeasure.name=Tape measure
+item.saligia:ItemSinIngot.name=Sin Metal Ingot
