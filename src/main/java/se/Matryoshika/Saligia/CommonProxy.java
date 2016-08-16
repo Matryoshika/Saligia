@@ -10,6 +10,7 @@ import se.Matryoshika.Saligia.API.Content.BlockRegistryInjector;
 import se.Matryoshika.Saligia.API.Content.ItemRegistryInjector;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Utils.ConfigHandler;
+import se.Matryoshika.Saligia.Utils.NormalRecipeRegistry;
 import se.Matryoshika.Saligia.Utils.SaligiaBaseMultiblocks;
 import se.Matryoshika.Saligia.Utils.SaligiaFuelHandler;
 
@@ -43,6 +44,8 @@ public class CommonProxy {
 		BlockRegistryInjector.registerSaligiaBlock();
 		BlockRegistryInjector.registerSaligiaRitualBlock();
 		ItemRegistryInjector.registerSaligiaItem();
+		
+		NormalRecipeRegistry.registerRecipes();
 	}
 	
 	public void init(FMLInitializationEvent event){
