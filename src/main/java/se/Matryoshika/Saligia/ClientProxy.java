@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void registerRenderers(){
 		RenderRegister.registerRenderers();
-		RenderingRegistryInjector.reg(ContentRegistry.ritualCOTHBlock, new ModelResourceLocation(Saligia.MODID+":"+ContentRegistry.ritualCOTHBlock.getUnlocName(), "inventory"), 0);
+		RenderingRegistryInjector.reg(ContentRegistry.BLOCK_RITUAL_COTH, new ModelResourceLocation(Saligia.MODID+":"+ContentRegistry.BLOCK_RITUAL_COTH.getUnlocName(), "inventory"), 0);
 	}
 
 }

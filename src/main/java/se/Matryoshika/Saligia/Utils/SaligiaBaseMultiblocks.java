@@ -21,13 +21,13 @@ public class SaligiaBaseMultiblocks {
 		{4, 0, 0, Blocks.STONEBRICK},{3, 0, 3, Blocks.STONEBRICK},{0, 0, 4, Blocks.STONEBRICK},{-3, 0, 3, Blocks.STONEBRICK},		
 		{-4, 1, 0, Blocks.STONEBRICK},{-3, 1, -3, Blocks.STONEBRICK},{0, 1, -4, Blocks.STONEBRICK},{3, 1, -3, Blocks.STONEBRICK},
 		{4, 1, 0, Blocks.STONEBRICK},{3, 1, 3, Blocks.STONEBRICK},{0, 1, 4, Blocks.STONEBRICK},{-3, 1, 3, Blocks.STONEBRICK},		
-		{-4, 2, 0, ContentRegistry.ghastBlock},{-3, 2, -3, ContentRegistry.ghastBlock},{0, 2, -4, ContentRegistry.ghastBlock},{3, 2, -3, ContentRegistry.ghastBlock},
-		{4, 2, 0, ContentRegistry.ghastBlock},{3, 2, 3, ContentRegistry.ghastBlock},{0, 2, 4, ContentRegistry.ghastBlock},{-3, 2, 3, ContentRegistry.ghastBlock}
+		{-4, 2, 0, ContentRegistry.GHAST_BLOCK},{-3, 2, -3, ContentRegistry.GHAST_BLOCK},{0, 2, -4, ContentRegistry.GHAST_BLOCK},{3, 2, -3, ContentRegistry.GHAST_BLOCK},
+		{4, 2, 0, ContentRegistry.GHAST_BLOCK},{3, 2, 3, ContentRegistry.GHAST_BLOCK},{0, 2, 4, ContentRegistry.GHAST_BLOCK},{-3, 2, 3, ContentRegistry.GHAST_BLOCK}
 	};
 	
 	
 	public static void register(){
-		RitualRegistry.addRitual(ContentRegistry.ritualCOTHBlock.getRitualName(), COTH_BLOCKS, TileRitualCOTH.class, ContentRegistry.ritualCOTHBlock);
+		RitualRegistry.addRitual(ContentRegistry.BLOCK_RITUAL_COTH.getRitualName(), COTH_BLOCKS, TileRitualCOTH.class, ContentRegistry.BLOCK_RITUAL_COTH);
 	}
 
 }

@@ -25,7 +25,7 @@ public class SaligiaFuelHandler{
 	
 	private static class FuelHandler implements IFuelHandler{
 		private static final int CHARCOAL_TIME = 16000;
-		private final Item charcoalBlock = Item.getItemFromBlock(ContentRegistry.charcoalBlock);
+		private final Item charcoalBlock = Item.getItemFromBlock(ContentRegistry.CHARCOAL_BLOCK);
 		
 		@Override
 		public int getBurnTime(ItemStack fuel){
