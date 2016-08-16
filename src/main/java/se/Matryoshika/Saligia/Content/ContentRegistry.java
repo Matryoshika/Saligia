@@ -29,42 +29,46 @@ public class ContentRegistry {
 	
 	//Blocks========================================================
 	
-	public static Block charcoalBlock;
+	public static Block CHARCOAL_BLOCK;
+	public static Block SIN_BLOCK;
 	
-	public static Block ritualMasterBlock;
-	public static Block ghastBlock;
+	public static Block BLOCK_RITUAL_MASTER;
+	public static Block GHAST_BLOCK;
 	
 	
-	public static BlockRitualMaster ritualCOTHBlock;
+	public static BlockRitualMaster BLOCK_RITUAL_COTH;
 	
 	public static List<Block> blockList = new ArrayList<Block>();
 	
 	public static void registerBlocks(){
 		
-		BlockRegistryInjector.blockList.add(charcoalBlock = new BlockCharcoal());
-		BlockRegistryInjector.blockList.add(ghastBlock = new BlockGhast());
+		BlockRegistryInjector.blockList.add(CHARCOAL_BLOCK = new BlockCharcoal());
+		BlockRegistryInjector.blockList.add(GHAST_BLOCK = new BlockGhast());
+		BlockRegistryInjector.blockList.add(SIN_BLOCK = new BlockSinBlock());
 		
-		BlockRegistryInjector.ritualList.add(ritualCOTHBlock =  (BlockRitualMaster) new BlockRitualMaster().setRitualName("Cognizance Of The Hellmouth"));
+		BlockRegistryInjector.ritualList.add(BLOCK_RITUAL_COTH =  (BlockRitualMaster) new BlockRitualMaster().setRitualName("Cognizance Of The Hellmouth"));
 		
 		
-		BlockRegistryInjector.blockList.add(ritualMasterBlock = new BlockRitualMaster().setRegistryName("BlockRitualMaster").setUnlocalizedName("saligia:BlockRitualMaster"));
+		BlockRegistryInjector.blockList.add(BLOCK_RITUAL_MASTER = new BlockRitualMaster().setRegistryName("BlockRitualMaster").setUnlocalizedName("saligia:BlockRitualMaster"));
 		
 		
 	}
 
 	//Items=========================================================
 	
-	public static Item dustIngotItem;
-	public static Item tapeMeasureItem;
-	public static Item ritualActivatorItem;
+	public static Item DUST_INGOT;
+	public static Item TAPE_MEASURE;
+	public static Item RITUAL_ACTIVATOR;
+	public static Item SIN_INGOT;
 	
 	public static List<Item> itemList = new ArrayList<Item>();
 	
 	public static void registerItems(){
 		
-		itemList.add(dustIngotItem = new ItemDustIngot());
-		itemList.add(tapeMeasureItem = new ItemTapeMeasure());
-		itemList.add(ritualActivatorItem = new ItemRitualActivator());
+		itemList.add(DUST_INGOT = new ItemDustIngot());
+		itemList.add(SIN_INGOT = new ItemSinIngot());
+		itemList.add(TAPE_MEASURE = new ItemTapeMeasure());
+		itemList.add(RITUAL_ACTIVATOR = new ItemRitualActivator());
 	}
 	
 	
