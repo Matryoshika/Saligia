@@ -1,0 +1,6 @@
+{
+    "parent": "saligia:block/custom_cross",
+    "textures": {
+        "cross": "saligia:blocks/rose_tex"
+    }
+}

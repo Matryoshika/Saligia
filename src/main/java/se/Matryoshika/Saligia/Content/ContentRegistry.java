@@ -31,6 +31,7 @@ public class ContentRegistry {
 	
 	public static Block CHARCOAL_BLOCK;
 	public static Block SIN_BLOCK;
+	public static Block SIN_ROSE_BLOCK;
 	
 	public static Block BLOCK_RITUAL_MASTER;
 	public static Block GHAST_BLOCK;
@@ -45,6 +46,7 @@ public class ContentRegistry {
 		BlockRegistryInjector.blockList.add(CHARCOAL_BLOCK = new BlockCharcoal());
 		BlockRegistryInjector.blockList.add(GHAST_BLOCK = new BlockGhast());
 		BlockRegistryInjector.blockList.add(SIN_BLOCK = new BlockSinBlock());
+		BlockRegistryInjector.blockList.add(SIN_ROSE_BLOCK = new BlockSinFlower());
 		
 		BlockRegistryInjector.ritualList.add(BLOCK_RITUAL_COTH =  (BlockRitualMaster) new BlockRitualMaster().setRitualName("Cognizance Of The Hellmouth"));
 		
