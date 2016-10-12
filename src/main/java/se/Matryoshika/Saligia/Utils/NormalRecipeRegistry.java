@@ -21,6 +21,15 @@ public class NormalRecipeRegistry {
 		GameRegistry.addShapelessRecipe(
 				new ItemStack(ContentRegistry.SIN_INGOT, 9), 
 				new ItemStack(ContentRegistry.SIN_BLOCK));
+		GameRegistry.addShapelessRecipe(
+				new ItemStack(ContentRegistry.DUST_COMPOUND), 
+				new ItemStack(ContentRegistry.SIN_ROSE_BLOCK));
+		
+		GameRegistry.addRecipe(new ItemStack(ContentRegistry.DUST_INGOT), new Object[]{
+				"CCC",
+				"CCC",
+				'C', ContentRegistry.DUST_COMPOUND
+		});
 		
 		
 		//Blocks===============================================
