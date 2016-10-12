@@ -18,7 +18,7 @@ public class BlockGhast extends Block{
 	
 	public BlockGhast(){
 		super(Material.WATER);
-		this.setSoundType(blockSoundType.PLANT);
+		this.setSoundType(blockSoundType.CLOTH);
 		this.setHardness(1);
 		this.setResistance(75);
 		this.setRegistryName("BlockGhast");

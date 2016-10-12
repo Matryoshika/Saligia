@@ -39,7 +39,8 @@ public class TileRitualCOTH extends TileEntity implements ITickable, IMultiblock
 	public TileRitualCOTH(){
 		setName("TileRitualCOTH");
 		for(int i = 16; i < 24; i++){
-			GHASTS.add(RitualRegistry.getMultiblock("Cognizance Of The HellMouth")[i]);
+			Object[][] multiblock = RitualRegistry.getMultiblock(RitualRegistry.getNameFromTile(this.getClass()));
+			GHASTS.add(multiblock[i]);
 		}
 	}
 

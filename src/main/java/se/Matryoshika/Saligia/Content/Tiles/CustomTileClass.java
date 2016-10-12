@@ -24,5 +24,12 @@ public class CustomTileClass extends TileEntity{
 		this.name = name;
 		return name;
 	}
+
+	/**
+	 * The RGB colours for this tile, if it needs any (Used by the Utility block models)
+	 */
+	public double[] colourScheme() {
+		return null;
+	}
 	
 }
