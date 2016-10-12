@@ -30,7 +30,7 @@ public class ItemRegistryInjector {
 				continue;
 			}
 			GameRegistry.register(item);
-			System.out.println("Registered : " + item.getUnlocalizedName());
+			//System.out.println("Registered : " + item.getUnlocalizedName());
 		}
 	}
 }

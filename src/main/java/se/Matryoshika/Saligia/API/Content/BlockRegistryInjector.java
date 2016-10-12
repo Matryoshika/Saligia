@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
+import se.Matryoshika.Saligia.Content.Blocks.Utility.UtilityBlock;
 import se.Matryoshika.Saligia.Utils.ConfigHandler;
 
 /**
@@ -26,6 +27,7 @@ public class BlockRegistryInjector {
 	
 	public static List<Block> blockList = new ArrayList<Block>();
 	public static List<BlockRitualMaster> ritualList = new ArrayList<BlockRitualMaster>();
+	public static List<UtilityBlock> utilityList = new ArrayList<UtilityBlock>();
 	
 	public static HashMap getMasterBlock = new HashMap();
 	
@@ -60,6 +62,16 @@ public class BlockRegistryInjector {
 			iblock.setRegistryName(name);
 			GameRegistry.register(iblock);
 			getMasterBlock.put(block.getRitualName(), block);
+		}
+	}
+	
+	public static void registerSaligiaUtilityBlock(){
+		for(UtilityBlock block : utilityList){
+			GameRegistry.register(block);
+			System.out.println("Registered : " + block.getUnlocalizedName());
+			ItemBlock iblock = new ItemBlock(block);
+			iblock.setRegistryName(block.getRegistryName());
+			GameRegistry.register(iblock);
 		}
 	}
 }

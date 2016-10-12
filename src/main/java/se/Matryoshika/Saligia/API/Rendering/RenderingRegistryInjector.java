@@ -8,6 +8,9 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.obj.OBJLoader;
+import se.Matryoshika.Saligia.Saligia;
+import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 
 /**
