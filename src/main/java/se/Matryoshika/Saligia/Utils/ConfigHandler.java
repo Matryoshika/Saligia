@@ -71,6 +71,7 @@ public class ConfigHandler {
 		
 		
 		
+		
 		//Boss Configs-----------------------------------------------------------------------------
 		bossConf.addCustomCategoryComment("Boss Configs", "Configs for all Saligia Bosses");
 		float bossHealth = bossConf.getFloat("Boss Health", "Boss Configs", 200, 500, 5000, "This sets the health for all Bosses");
@@ -82,6 +83,8 @@ public class ConfigHandler {
         int acediaMinionMax = bossConf.getInt("Acedia Minion count", "Boss Specific Configs", 11, 11, 30, "Sets how many of Acedia's minions can exist in the world");
         int avaritiaCounter = bossConf.getInt("Sets the tick timer for when Avaritia will steal items", "Boss Specific configs", 20, 0, 20, "This is also affected by a random counter, with a 1/32 chance");
         float gulaHeal = bossConf.getFloat("Regen amount per block", "Boss Specific configs", 10, 10, 30, "How much Gula will regen for every block eaten");
+        
+        
         
         
         //Item Configs-----------------------------------------------------------------------------
