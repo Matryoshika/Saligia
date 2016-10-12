@@ -2,13 +2,11 @@ package se.Matryoshika.Saligia;
 
 import java.io.File;
 
-import org.apache.logging.log4j.Level;
-
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -18,8 +16,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import se.Matryoshika.Saligia.Content.ContentRegistry;
-import se.Matryoshika.Saligia.Utils.ConfigHandler;
 import se.Matryoshika.Saligia.Utils.CreativeTabSaligia;
 
 /**
@@ -34,6 +30,9 @@ public class Saligia{
 	
     public static final String MODID = "saligia";
     public static final String VERSION = "0.0.1";
+    
+    private static FakePlayer fakePlayer;
+    private static String directory;
     
     
 	public File configDir;
@@ -59,6 +58,8 @@ public class Saligia{
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
+    	directory = event.getModConfigurationDirectory().getAbsolutePath();
+    	
     	configDir = new File(event.getModConfigurationDirectory(), "Saligia");
 		
 		proxy.preInit(event);
@@ -85,5 +86,17 @@ public class Saligia{
     
     public File getConfigFolder(){
     	return configDir;
+    }
+    
+    public static void setFakePlayer(FakePlayer player){
+    	fakePlayer = player;
+    }
+    
+    public static FakePlayer getFakePlayer(){
+    	return fakePlayer;
+    }
+    
+    public static String getDirectory(){
+    	return directory;
     }
 }
