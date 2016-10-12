@@ -1,29 +1,35 @@
-/bin/
+.gradle
+build/
 
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
 .directory
-*.index
-eclipse/*
-eclipse/.*
-.gradle/*
-forge-1.7.10-10.13.4.1566-1.7.10-changelog.txt
-gradle/*
-forge-1.7.10-10.13.4.1566-1.7.10-src.zip
+LICENSE-new.txt
+MinecraftForge-Credits.txt
+Paulscode IBXM Library License.txt
+Paulscode SoundSystem CodecIBXM License.txt
+README.txt
+forge-1.10.2-12.18.0.2007-1.10.0-changelog.txt
+CREDITS-fml.txt
+eclipse/**
+gradle/**
+build.gradle
+gradlew
+gradlew.bat
 .classpath
 .project
-.settings/org.eclipse.jdt.core.prefs
-build.gradle
-CREDITS-fml.txt
-gradlew
-MinecraftForge-License.txt
-MinecraftForge-Credits.txt
-gradlew.bat
-README.txt
-LICENSE-fml.txt
-src/main/resources/assets/saligia/textures/LogoMS.png
-src/main/resources/assets/saligia/textures/items/dagger.png
-src/main/resources/assets/saligia/textures/items/AltarDagger.png
-src/main/resources/assets/saligia/textures/gui/generatorGUIAlt.png
-src/main/resources/assets/saligia/textures/gui/generatorGUI.png
-src/main/resources/assets/saligia/textures/gui/brainGUI.png
-src/main/resources/assets/saligia/textures/blocks/matryoshikaBrainTEMP.png
-src/main/resources/assets/saligia/textures/blocks/Core.png
+*.launch
+.settings
+/bin/
+run/**
+.metadata
+forge-1.10.2*
