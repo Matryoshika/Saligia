@@ -5,6 +5,7 @@
 tile.saligia:BlockCharcoal.name=Block of Charcoal
 tile.saligia:BlockSinBlock.name=Block of Sin Metal
 tile.saligia:BlockGhast.name=Block of the Lost One's Weeping
+tile.saligia:BlockSinRose.name=Rose of Sin
 
 //Ritual blocks
 tile.saligia:BlockRitualMaster.name=Ritual Nexus
@@ -14,3 +15,5 @@ tile.saligia:CognizanceOfTheHellmouth.name=Ritual Nexus: Cognizance Of The Hellm
 item.saligia:ItemDustIngot.name=Unprocessed Compound Ingot
 item.saligia:ItemTapeMeasure.name=Tape measure
 item.saligia:ItemSinIngot.name=Sin Metal Ingot
+item.saligia:ItemDustCompound.name=Poisonous Dust
+item.saligia:ItemRitualActivator.name=Ritual Activator
