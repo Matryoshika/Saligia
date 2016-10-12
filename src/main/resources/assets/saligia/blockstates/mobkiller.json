@@ -1,0 +1,31 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "forge:multi-layer",
+		"transform": "forge:default-block"
+	},
+	"variants": {
+		"normal": [{
+			"custom": {
+				"base": "saligia:mobkiller#base",
+				"Solid": "saligia:mobkiller_actual",
+				"Translucent": "saligia:mobkiller_actual"
+			}
+		}],
+		"inventory": [{
+			"custom": {
+				"base": "saligia:mobkiller_actual",
+				"Solid": "saligia:mobkiller_actual",
+				"Translucent": "saligia:mobkiller_actual"
+			}
+		}],
+
+
+		"base": [{
+			"model": "minecraft:cube_all",
+			"textures": {
+				"all": "saligia:blocks/mobkiller"
+			}
+		}]
+	}
+} 

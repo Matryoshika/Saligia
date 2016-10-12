@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"normal": { "model": "saligia:BlockUtility.obj" },
+		"inventory": { "model": "saligia:BlockUtility.obj" }
+	}
+} 

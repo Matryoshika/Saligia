@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"normal": { "model": "saligia:blockplacer.obj" },
+		"inventory": { "model": "saligia:blockplacer.obj" }
+	}
+} 

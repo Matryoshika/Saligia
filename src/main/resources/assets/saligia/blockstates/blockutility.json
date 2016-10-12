@@ -1,0 +1,31 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "forge:multi-layer",
+		"transform": "forge:default-block"
+	},
+	"variants": {
+		"normal": [{
+			"custom": {
+				"base": "saligia:blockutility#base",
+				"Solid": "saligia:blockutility_actual",
+				"Translucent": "saligia:blockutility_actual"
+			}
+		}],
+		"inventory": [{
+			"custom": {
+				"base": "saligia:blockutility_actual",
+				"Solid": "saligia:blockutility_actual",
+				"Translucent": "saligia:blockutility_actual"
+			}
+		}],
+
+
+		"base": [{
+			"model": "minecraft:cube_all",
+			"textures": {
+				"all": "saligia:blocks/blockutility"
+			}
+		}]
+	}
+} 

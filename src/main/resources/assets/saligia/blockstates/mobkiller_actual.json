@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"normal": { "model": "saligia:mobkiller.obj" },
+		"inventory": { "model": "saligia:mobkiller.obj" }
+	}
+} 
