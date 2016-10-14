@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"normal": { "model": "saligia:itempickupper.obj" },
+		"inventory": { "model": "saligia:itempickupper.obj" }
+	}
+} 

@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"normal": { "model": "saligia:smelter.obj" },
+		"inventory": { "model": "saligia:smelter.obj" }
+	}
+} 

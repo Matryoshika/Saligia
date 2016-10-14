@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"normal": { "model": "saligia:cropgrower.obj" },
+		"inventory": { "model": "saligia:cropgrower.obj" }
+	}
+} 
