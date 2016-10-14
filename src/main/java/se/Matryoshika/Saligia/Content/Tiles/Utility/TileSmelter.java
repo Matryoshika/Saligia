@@ -68,7 +68,7 @@ public class TileSmelter  extends CustomTileClass implements ITickable{
 		if(itemstack != null && !(worldObj.isRemote)){
 			
 			worldObj.setBlockToAir(pos);
-			worldObj.spawnEntityInWorld(new EntityItem(worldObj, getPos().getX()+0.5, getPos().getY()+1.5, getPos().getZ()+0.5, itemstack));
+			worldObj.spawnEntityInWorld(new EntityItem(worldObj, getPos().getX()+0.5, getPos().getY()+1.5, getPos().getZ()+0.5, itemstack.copy()));
 			
 		}
 		
