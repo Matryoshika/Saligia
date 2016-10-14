@@ -1,17 +1,24 @@
 
 
 
-//Block names
+#Block names
 tile.saligia:BlockCharcoal.name=Block of Charcoal
 tile.saligia:BlockSinBlock.name=Block of Sin Metal
 tile.saligia:BlockGhast.name=Block of the Lost One's Weeping
 tile.saligia:BlockSinRose.name=Rose of Sin
 
-//Ritual blocks
+#Ritual blocks
 tile.saligia:BlockRitualMaster.name=Ritual Nexus
 tile.saligia:CognizanceOfTheHellmouth.name=Ritual Nexus: Cognizance Of The Hellmouth
 
-//Item names
+#Utility blocks
+tile.saligia:blockplacer.name=Shard of Abezethibou
+tile.saligia:mobkiller.name=Shard of Alastor
+tile.saligia:itempickupper.name=Shard of Clauneck
+tile.saligia:cropgrower.name=Shard of Bathym
+
+
+#Item names
 item.saligia:ItemDustIngot.name=Unprocessed Compound Ingot
 item.saligia:ItemTapeMeasure.name=Tape measure
 item.saligia:ItemSinIngot.name=Sin Metal Ingot
