@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -27,7 +26,10 @@ import se.Matryoshika.Saligia.Content.Items.ItemTapeMeasure;
 import se.Matryoshika.Saligia.Content.Tiles.TileRitual;
 import se.Matryoshika.Saligia.Content.Tiles.TileRitualCOTH;
 import se.Matryoshika.Saligia.Content.Tiles.Utility.TileBlockPlacer;
+import se.Matryoshika.Saligia.Content.Tiles.Utility.TileCropGrower;
+import se.Matryoshika.Saligia.Content.Tiles.Utility.TileItemPickUpper;
 import se.Matryoshika.Saligia.Content.Tiles.Utility.TileMobKiller;
+import se.Matryoshika.Saligia.Content.Tiles.Utility.TileSmelter;
 
 /**
  * This class was created by Matryoshika Aug 8, 2016
@@ -55,6 +57,9 @@ public class ContentRegistry {
 	
 	public static UtilityBlock BLOCK_PLACER;
 	public static UtilityBlock MOB_KILLER;
+	public static UtilityBlock ITEM_PICKUPPER;
+	public static UtilityBlock CROP_GROWER;
+	public static UtilityBlock SMELTER;
 	
 	public static List<Block> blockList = new ArrayList<Block>();
 	
@@ -71,6 +76,12 @@ public class ContentRegistry {
 				.setUnlocalizedName(Saligia.MODID+":blockplacer"));
 		BlockRegistryInjector.utilityList.add(MOB_KILLER = (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "mobkiller")
 				.setUnlocalizedName(Saligia.MODID+":mobkiller"));
+		BlockRegistryInjector.utilityList.add(ITEM_PICKUPPER = (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "itempickupper")
+				.setUnlocalizedName(Saligia.MODID+":itempickupper"));
+		BlockRegistryInjector.utilityList.add(CROP_GROWER = (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "cropgrower")
+				.setUnlocalizedName(Saligia.MODID+":cropgrower"));
+		BlockRegistryInjector.utilityList.add(SMELTER = (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "smelter")
+				.setUnlocalizedName(Saligia.MODID+"smelter"));
 		
 		BlockRegistryInjector.ritualList.add(BLOCK_RITUAL_COTH =  (BlockRitualMaster) new BlockRitualMaster().setRitualName("Cognizance Of The Hellmouth"));
 		
@@ -104,8 +115,11 @@ public class ContentRegistry {
 		GameRegistry.registerTileEntity(TileRitual.class, TileRitual.getName());
 		GameRegistry.registerTileEntity(TileRitualCOTH.class, TileRitualCOTH.getName());
 		
-		GameRegistry.registerTileEntity(TileMobKiller.class, Saligia.MODID+"mobkiller");
+		GameRegistry.registerTileEntity(TileMobKiller.class, Saligia.MODID+":mobkiller");
 		GameRegistry.registerTileEntity(TileBlockPlacer.class, Saligia.MODID+":blockplacer");
+		GameRegistry.registerTileEntity(TileItemPickUpper.class, Saligia.MODID+":itempickupper");
+		GameRegistry.registerTileEntity(TileCropGrower.class, Saligia.MODID+":cropgrower");
+		GameRegistry.registerTileEntity(TileSmelter.class, Saligia.MODID+":smelter");
 		registerUtility();
 	}
 	
@@ -114,6 +128,9 @@ public class ContentRegistry {
 	public static void registerUtility(){
 		UtilityTileRegistry.addUtility(Saligia.MODID+":mobkiller", TileMobKiller.class, MOB_KILLER);
 		UtilityTileRegistry.addUtility(Saligia.MODID+":blockplacer", TileBlockPlacer.class, BLOCK_PLACER);
+		UtilityTileRegistry.addUtility(Saligia.MODID+":itempickupper", TileItemPickUpper.class, ITEM_PICKUPPER);
+		UtilityTileRegistry.addUtility(Saligia.MODID+":cropgrower", TileCropGrower.class, CROP_GROWER);
+		UtilityTileRegistry.addUtility(Saligia.MODID+":smelter", TileSmelter.class, SMELTER);
 	}
 
 }
