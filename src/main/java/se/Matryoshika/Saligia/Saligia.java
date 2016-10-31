@@ -1,12 +1,20 @@
 package se.Matryoshika.Saligia;
 
 import java.io.File;
+import java.util.UUID;
+
+import com.mojang.authlib.GameProfile;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -16,6 +24,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import se.Matryoshika.Saligia.Events.MainEventHandler;
 import se.Matryoshika.Saligia.Utils.CreativeTabSaligia;
 
 /**
@@ -71,6 +80,7 @@ public class Saligia{
         
     	
     	proxy.init(event);
+    	MinecraftForge.EVENT_BUS.register(MainEventHandler.class);
     }
     
     @EventHandler
@@ -88,11 +98,9 @@ public class Saligia{
     	return configDir;
     }
     
-    public static void setFakePlayer(FakePlayer player){
-    	fakePlayer = player;
-    }
-    
     public static FakePlayer getFakePlayer(){
+    	if(fakePlayer == null)
+    		fakePlayer = FakePlayerFactory.get((WorldServer) DimensionManager.getWorld(0), new GameProfile(UUID.fromString("14159265-3589-7932-3846-264338327950"), "[Saligia]"));
     	return fakePlayer;
     }
     

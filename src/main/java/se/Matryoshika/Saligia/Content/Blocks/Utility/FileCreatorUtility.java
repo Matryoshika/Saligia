@@ -6,16 +6,9 @@ package se.Matryoshika.Saligia.Content.Blocks.Utility;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -26,11 +19,7 @@ import java.text.DecimalFormat;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.codec.binary.Hex;
-
-import net.minecraft.block.Block;
 import net.minecraft.launchwrapper.Launch;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import se.Matryoshika.Saligia.Saligia;
@@ -60,19 +49,13 @@ public class FileCreatorUtility {
 			createObjModel(alt);
 			
 			
-			
-			Class clazz = UtilityTileRegistry.getTile(util.getRegistryName().toString());
-			
-			if(clazz == null)
-				return;
-			try {
-				CustomTileClass tile = (CustomTileClass) clazz.newInstance();
+			CustomTileClass tile = (CustomTileClass) UtilityTileRegistry.instantiateUtil(UtilityTileRegistry.getTile(block.getRegistryName().toString()));
+			if(tile != null){
 				double[] scheme = tile.colourScheme();
 				createMTL(alt, scheme);
 				createParticleTexture(alt, scheme);
-			} catch (InstantiationException | IllegalAccessException e) {
-				e.printStackTrace();
 			}
+			
 			System.out.println("Created files for: " + name);
 		}
 	}

@@ -26,7 +26,7 @@ public class Constants {
 	private static final String ANIMUN_HAND_HELD_2 = "NjY2MDA=";
 	private static final String ANIMUN_HAND_HELD_3 = "NDQzNTU2MDA=";
 	
-	public static int getStorageValues(int i){
+	public static float getStorageValues(float i){
 		Base64 base64 = new Base64();
 		if(i == 1)
 			return Integer.valueOf(new String(base64.decode(ANIMUN_STORAGE_TIER_1.getBytes())));

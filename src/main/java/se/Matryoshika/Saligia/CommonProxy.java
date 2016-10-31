@@ -1,18 +1,16 @@
 package se.Matryoshika.Saligia;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import se.Matryoshika.Saligia.API.Content.BlockRegistryInjector;
 import se.Matryoshika.Saligia.API.Content.ItemRegistryInjector;
+import se.Matryoshika.Saligia.API.Soulsystem.AnimunLogic;
+import se.Matryoshika.Saligia.API.Soulsystem.IAnimun;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Content.Tiles.TileRitual;
 import se.Matryoshika.Saligia.Utils.ConfigHandler;
@@ -29,10 +27,6 @@ import se.Matryoshika.Saligia.Utils.SaligiaFuelHandler;
 public class CommonProxy {
 	
 	public void registerRenderers(){
-		
-	}
-
-	public void registerEntities(){
 		
 	}
 	
@@ -65,5 +59,14 @@ public class CommonProxy {
 	
 	public void renderMultiblock(TileRitual te, double x, double y, double z){
 		
+	}
+	
+	public void renderEntity(Entity entity, Block block){
+		
+	}
+	
+
+	public void particle(double x, double y, double z, int r, int g, int b) {
+
 	}
 }

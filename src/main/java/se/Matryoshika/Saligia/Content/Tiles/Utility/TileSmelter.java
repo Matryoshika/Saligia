@@ -25,7 +25,7 @@ import se.Matryoshika.Saligia.Content.Tiles.CustomTileClass;
  * Part of the Saligia mod.
  * May be viewed for educational purposes.
  */
-public class TileSmelter  extends CustomTileClass implements ITickable{
+public class TileSmelter extends TileUtilityBase{
 
 	public static int TIMER = 0;
 	public static final int LIMIT = 1 * 20;
@@ -40,6 +40,7 @@ public class TileSmelter  extends CustomTileClass implements ITickable{
 	
 	@Override
 	public void update() {
+		super.update();
 		if(worldObj.isRemote)
 			return;
 		

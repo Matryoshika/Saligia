@@ -8,11 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import se.Matryoshika.Saligia.Saligia;
-import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 import se.Matryoshika.Saligia.Content.Blocks.Utility.UtilityBlock;
 import se.Matryoshika.Saligia.Utils.ConfigHandler;

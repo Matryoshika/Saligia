@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
@@ -22,7 +21,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 import se.Matryoshika.Saligia.API.Recipes.AltarRecipeInjector;
-import se.Matryoshika.Saligia.API.Soulsystem.IAnimunCatcher;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Utils.AltarRecipes;
 
@@ -32,7 +30,7 @@ import se.Matryoshika.Saligia.Utils.AltarRecipes;
  * Part of the Saligia mod.
  * May be viewed for educational purposes.
  */
-public abstract class TileAbstractAltar extends TileEntity implements ITickable, IItemHandler, IAnimunCatcher{
+public abstract class TileAbstractAltar extends TileEntity implements ITickable, IItemHandler{
 	
 	ItemStack[] inventorySlots = new ItemStack[getSlots()];
 	AltarRecipes currentRecipe;

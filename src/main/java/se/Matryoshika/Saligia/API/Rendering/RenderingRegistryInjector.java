@@ -8,10 +8,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.client.model.obj.OBJLoader;
-import se.Matryoshika.Saligia.Saligia;
-import se.Matryoshika.Saligia.Content.ContentRegistry;
-import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 
 /**
  * This class was created by Matryoshika Aug 11, 2016
@@ -33,6 +29,10 @@ public class RenderingRegistryInjector {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(location, "inventory"));
 	}
 	
+	public static void regWithLocation(Block block, ModelResourceLocation location, int meta){
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, location);
+	}
+	
 	/**
 	 * @param item : The instance of the item you added to Saligia that you want rendered.
 	 * @param location : Create a new ResourceLocation using the registryname with your own modid.
@@ -40,15 +40,6 @@ public class RenderingRegistryInjector {
 	 */
 	public static void regWithLocation(Item item, ResourceLocation location, int meta){
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(location, "inventory"));
-	}
-	
-	/**
-	 * @param block : The instance of the BlockRitualMaster you added to Saligia that you want rendered.
-	 * @param location : Create a new ResourceLocation using the registryname with your own modid.
-	 * @param meta : The meta of the block you want rendered.
-	 */
-	public static void reg(BlockRitualMaster block, ModelResourceLocation location, int meta){
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, location);
 	}
 
 }

@@ -22,14 +22,14 @@ public class TilePaganAltar extends TileAbstractAltar{
 
 	
 	
-	@Override
+
 	public int inputMaxSpeed(int maxInput) {
 		return 6;
 	}
 
 	
 	
-	@Override
+
 	public int inputMinSpeed(int minInput) {
 		return 1;
 	}

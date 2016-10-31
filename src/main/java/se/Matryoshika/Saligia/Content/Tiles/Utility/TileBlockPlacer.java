@@ -33,9 +33,9 @@ import se.Matryoshika.Saligia.Utils.Print;
 public class TileBlockPlacer extends CustomTileClass implements ITickable{
 	
 	public static int TIMER = 0;
-	public static final int LIMIT = 1 * 20;
-	private final int RADII = 5;
-	private final int HEIGHT = 2;
+	public static final int LIMIT = 1;
+	private final int RADII = 11;
+	private final int HEIGHT = 6;
 	
 	private HashMap<Item, Block> specials = new HashMap<Item, Block>();
 	

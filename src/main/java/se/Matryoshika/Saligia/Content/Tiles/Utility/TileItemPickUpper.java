@@ -6,9 +6,7 @@ package se.Matryoshika.Saligia.Content.Tiles.Utility;
 import java.util.List;
 
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
@@ -16,9 +14,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.VanillaDoubleChestItemHandler;
-import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.Content.Tiles.CustomTileClass;
 
 /**

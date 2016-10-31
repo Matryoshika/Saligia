@@ -34,6 +34,8 @@ public class ConfigHandler {
     public static HashMap isBlockEnabledMap = new HashMap();
     public static HashMap isRitualEnabledMap = new HashMap();
     public static HashMap isItemEnabledMap = new HashMap();
+    
+    public static boolean requireJungleForOcelotDiscSpawn;
 	
 	public static void readConfigs(FMLPreInitializationEvent event){
 		
@@ -50,6 +52,9 @@ public class ConfigHandler {
 		itemConf.load();
 		blockConf.load();
 		ritualConf.load();
+		
+		mainConf.addCustomCategoryComment("Various Configs", "Random configs without a common denominator");
+		requireJungleForOcelotDiscSpawn = mainConf.getBoolean("requireJungleForOcelotDiscSpawn", "Various Configs", true, "Wether or not the Ocelot spawning method of Jungle Sapling & Cat disc requires to be done inside a Jungle biome");
 		
 		blockConf.addCustomCategoryComment("Enabled Blocks", "All enabled blocks");
 		for(Block block : BlockRegistryInjector.blockList){

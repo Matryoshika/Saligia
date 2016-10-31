@@ -6,6 +6,7 @@ tile.saligia:BlockCharcoal.name=Block of Charcoal
 tile.saligia:BlockSinBlock.name=Block of Sin Metal
 tile.saligia:BlockGhast.name=Block of the Lost One's Weeping
 tile.saligia:BlockSinRose.name=Rose of Sin
+tile.saligia:ghastspawner.name=Gateway of the Lost One's
 
 #Ritual blocks
 tile.saligia:BlockRitualMaster.name=Ritual Nexus
@@ -25,3 +26,42 @@ item.saligia:ItemTapeMeasure.name=Tape measure
 item.saligia:ItemSinIngot.name=Sin Metal Ingot
 item.saligia:ItemDustCompound.name=Poisonous Dust
 item.saligia:ItemRitualActivator.name=Ritual Activator
+item.saligia:jar.name=Jar
+item.saligia:spidereyejar.name=Jar of Spider Eyes
+item.saligia:zombietooth.name=Zombie Tooth
+item.saligia:zombieteethjar.name=Jar of Zombie Teeth
+item.saligia:skeletonvertebrae.name=Skeleton Vertebrae
+item.saligia:skeletonvertebraejar.name=Jar of Skeleton Vertebrae
+item.saligia:creeperash.name=Creeper Ashes
+item.saligia:creeperashjar.name=Jar of Creeper Ashes
+item.saligia:ocelotclaw.name=Ocelot Claw
+item.saligia:ocelotclawjar.name=Jar of Ocelot Claws
+item.saligia:magmacreamjar.name=Jar of Magma Cream
+item.saligia:ghasttearjar.name=Jar of Ghast Tears
+item.saligia:wolfbrain.name=Wolf Brain
+item.saligia:wolfbrainjar.name=Jar of Wolf Brains
+item.saligia:poisonclay.name=Vile Clay
+item.saligia:softjar.name=Unsintered Jar
+item.saligia:daggervile.name=Vile Dagger
+
+
+#Lore
+saligia.lore.references.blockplacer=[Don't let it take your coat]
+saligia.lore.references.mobkiller=[Hello Ultimate Highschool-level Killing machine]
+saligia.lore.references.itempickupper=[Like a pocket sized monster cat with a coin]
+saligia.lore.references.cropgrower=[Grown with (your) blood, sweat and tears]
+saligia.lore.references.smelter=[Dante would feel at home possessing this]
+
+saligia.lore.advanced.blockplacer=Places blocks on the same block-type it is on [11x5x11]
+saligia.lore.advanced.mobkiller=Kills mobs below it dead, with vengeance [5x3x5]
+saligia.lore.advanced.itempickupper=Picks up items and inserts into adjacent inventory [7x7x7]
+saligia.lore.advanced.cropgrower=Speeds up the growth of nearby plants [7x7x7]
+saligia.lore.advanced.smelter=Speeds furnaces and smelts placed ores [7x7x7]
+saligia.lore.advanced.creativesoulcrucible=Might not be a good idea to hold this...
+
+#Death messages
+death.saligia.creative=seems to have thought they could handle the forces of Sin. Seems they were proven wrong...
+
+
+
+

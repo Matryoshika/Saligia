@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import net.minecraft.tileentity.TileEntity;
 import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 import se.Matryoshika.Saligia.Content.Blocks.Utility.UtilityBlock;
 
@@ -21,10 +22,10 @@ public class UtilityTileRegistry {
 	private static List<String> utilityNames = new ArrayList<String>();
 	
 	/**
-	 * Stores each Tile.class with it's name as a reference.
+	 * Stores each Entity.class with it's name as a reference.
 	 */
 	private static HashMap tiles = new HashMap();
-	private static HashMap reverseTile = new HashMap();
+	private static HashMap reverseTiles = new HashMap();
 	
 	/**
 	 * Stores each Block with it's name as a reference.
@@ -34,7 +35,7 @@ public class UtilityTileRegistry {
 	public static void addUtility(String name, Class tile, UtilityBlock block){
 		utilityNames.add(name);
 		tiles.put(name, tile);
-		reverseTile.put(tile, name);
+		reverseTiles.put(tile, name);
 		blocks.put(name, block);
 	}
 	
@@ -51,7 +52,19 @@ public class UtilityTileRegistry {
 	}
 	
 	public static String getNameFromTile(Class tile){
-		return (String) reverseTile.get(tile);
+		return (String) reverseTiles.get(tile);
+	}
+	
+	public static TileEntity instantiateUtil(Class tile){
+		TileEntity wanted = null;
+
+		try {
+			wanted = (TileEntity) tile.newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
+		return wanted;
 	}
 
 }

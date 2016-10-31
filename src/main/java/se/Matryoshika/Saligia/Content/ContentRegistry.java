@@ -11,25 +11,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.API.Content.BlockRegistryInjector;
 import se.Matryoshika.Saligia.API.UtilityTiles.UtilityTileRegistry;
-import se.Matryoshika.Saligia.Content.Blocks.BlockCharcoal;
-import se.Matryoshika.Saligia.Content.Blocks.BlockGhast;
-import se.Matryoshika.Saligia.Content.Blocks.BlockSinBlock;
-import se.Matryoshika.Saligia.Content.Blocks.BlockSinFlower;
-import se.Matryoshika.Saligia.Content.Blocks.Altars.AltarPagan;
-import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
-import se.Matryoshika.Saligia.Content.Blocks.Utility.UtilityBlock;
-import se.Matryoshika.Saligia.Content.Items.ItemDustCompound;
-import se.Matryoshika.Saligia.Content.Items.ItemDustIngot;
-import se.Matryoshika.Saligia.Content.Items.ItemRitualActivator;
-import se.Matryoshika.Saligia.Content.Items.ItemSinIngot;
-import se.Matryoshika.Saligia.Content.Items.ItemTapeMeasure;
-import se.Matryoshika.Saligia.Content.Tiles.TileRitual;
-import se.Matryoshika.Saligia.Content.Tiles.TileRitualCOTH;
-import se.Matryoshika.Saligia.Content.Tiles.Utility.TileBlockPlacer;
-import se.Matryoshika.Saligia.Content.Tiles.Utility.TileCropGrower;
-import se.Matryoshika.Saligia.Content.Tiles.Utility.TileItemPickUpper;
-import se.Matryoshika.Saligia.Content.Tiles.Utility.TileMobKiller;
-import se.Matryoshika.Saligia.Content.Tiles.Utility.TileSmelter;
+import se.Matryoshika.Saligia.Content.Blocks.*;
+import se.Matryoshika.Saligia.Content.Blocks.Altars.*;
+import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.*;
+import se.Matryoshika.Saligia.Content.Blocks.Utility.*;
+import se.Matryoshika.Saligia.Content.Items.*;
+import se.Matryoshika.Saligia.Content.Items.Animun.*;
+import se.Matryoshika.Saligia.Content.Items.Tools.*;
+import se.Matryoshika.Saligia.Content.Tiles.*;
+import se.Matryoshika.Saligia.Content.Tiles.Utility.*;
 
 /**
  * This class was created by Matryoshika Aug 8, 2016
@@ -40,7 +30,7 @@ import se.Matryoshika.Saligia.Content.Tiles.Utility.TileSmelter;
 public class ContentRegistry {
 	
 	//Tool Materials================================================
-	public static ToolMaterial SIN = EnumHelper.addToolMaterial("SIN", 3, -1, 15.0F, 21.0F, 0);
+	public static ToolMaterial VILE = EnumHelper.addToolMaterial("SIN", 3, 1536, 10.0F, 8.0F, 0);
 	
 	//Blocks========================================================
 	
@@ -51,6 +41,7 @@ public class ContentRegistry {
 	
 	public static Block BLOCK_RITUAL_MASTER;
 	public static Block GHAST_BLOCK;
+	public static Block GHAST_SPAWNER;
 	
 	
 	public static BlockRitualMaster BLOCK_RITUAL_COTH;
@@ -71,6 +62,7 @@ public class ContentRegistry {
 		BlockRegistryInjector.blockList.add(SIN_BLOCK = new BlockSinBlock());
 		BlockRegistryInjector.blockList.add(SIN_ROSE_BLOCK = new BlockSinFlower());
 		BlockRegistryInjector.blockList.add(ALTAR_PAGAN = new AltarPagan());
+		BlockRegistryInjector.blockList.add(GHAST_SPAWNER = new BlockGhastSpawner());
 		
 		BlockRegistryInjector.utilityList.add(BLOCK_PLACER =  (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "blockplacer")
 				.setUnlocalizedName(Saligia.MODID+":blockplacer"));
@@ -81,7 +73,7 @@ public class ContentRegistry {
 		BlockRegistryInjector.utilityList.add(CROP_GROWER = (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "cropgrower")
 				.setUnlocalizedName(Saligia.MODID+":cropgrower"));
 		BlockRegistryInjector.utilityList.add(SMELTER = (UtilityBlock) new UtilityBlock().setRegistryName(Saligia.MODID, "smelter")
-				.setUnlocalizedName(Saligia.MODID+"smelter"));
+				.setUnlocalizedName(Saligia.MODID+":smelter"));
 		
 		BlockRegistryInjector.ritualList.add(BLOCK_RITUAL_COTH =  (BlockRitualMaster) new BlockRitualMaster().setRitualName("Cognizance Of The Hellmouth"));
 		
@@ -97,6 +89,26 @@ public class ContentRegistry {
 	public static Item RITUAL_ACTIVATOR;
 	public static Item SIN_INGOT;
 	public static Item DUST_COMPOUND;
+	public static Item POISONCLAY;
+	public static Item SOFTJAR;
+	public static Item JAR;
+	public static Item SPIDER_EYE_JAR;
+	public static Item ZOMBIETOOTH;
+	public static Item ZOMBIE_TEETH_JAR;
+	public static Item SKELETONVERTEBRAE;
+	public static Item SKELETON_VERTEBRAE_JAR;
+	public static Item CREEPERASH;
+	public static Item CREEPER_ASH_JAR;
+	public static Item OCELOTCLAW;
+	public static Item OCELOT_CLAW_JAR;
+	public static Item MAGMA_CREAM_JAR;
+	public static Item GHAST_TEAR_JAR;
+	public static Item WOLFBRAIN;
+	public static Item WOLF_BRAIN_JAR;
+	
+	public static Item CREATIVE_ANIMUN_CRUCIBLE;
+	
+	public static Item DAGGER;
 	
 	public static List<Item> itemList = new ArrayList<Item>();
 	
@@ -107,6 +119,27 @@ public class ContentRegistry {
 		itemList.add(TAPE_MEASURE = new ItemTapeMeasure());
 		itemList.add(RITUAL_ACTIVATOR = new ItemRitualActivator());
 		itemList.add(DUST_COMPOUND = new ItemDustCompound());
+		itemList.add(POISONCLAY = new ItemPoisonClay());
+		itemList.add(SOFTJAR = new ItemSoftJar());
+		
+		itemList.add(JAR = new ItemJar());
+		itemList.add(SPIDER_EYE_JAR = new ItemSpiderEyeJar());
+		itemList.add(ZOMBIETOOTH = new ItemZombieTooth());
+		itemList.add(ZOMBIE_TEETH_JAR = new ItemZombieTeethJar());
+		itemList.add(SKELETONVERTEBRAE = new ItemSkeletonVertebrae());
+		itemList.add(SKELETON_VERTEBRAE_JAR = new ItemSkeletonVertebraeJar());
+		itemList.add(CREEPERASH = new ItemCreeperAsh());
+		itemList.add(CREEPER_ASH_JAR = new ItemCreeperAshJar());
+		itemList.add(OCELOTCLAW = new ItemOcelotClaw());
+		itemList.add(OCELOT_CLAW_JAR = new ItemOcelotClawJar());
+		itemList.add(MAGMA_CREAM_JAR = new ItemMagmaCreamJar());
+		itemList.add(GHAST_TEAR_JAR = new ItemGhastTearJar());
+		itemList.add(WOLFBRAIN = new ItemWolfBrain());
+		itemList.add(WOLF_BRAIN_JAR = new ItemWolfBrainJar());
+		
+		itemList.add(CREATIVE_ANIMUN_CRUCIBLE = new ItemCreativeSoulCrucible());
+		
+		itemList.add(DAGGER = new ItemDagger()); 
 	}
 	
 	
@@ -114,6 +147,8 @@ public class ContentRegistry {
 	public static void registerTiles(){
 		GameRegistry.registerTileEntity(TileRitual.class, TileRitual.getName());
 		GameRegistry.registerTileEntity(TileRitualCOTH.class, TileRitualCOTH.getName());
+		
+		GameRegistry.registerTileEntity(TileGhastSpawner.class, Saligia.MODID+":ghastspawner");
 		
 		GameRegistry.registerTileEntity(TileMobKiller.class, Saligia.MODID+":mobkiller");
 		GameRegistry.registerTileEntity(TileBlockPlacer.class, Saligia.MODID+":blockplacer");

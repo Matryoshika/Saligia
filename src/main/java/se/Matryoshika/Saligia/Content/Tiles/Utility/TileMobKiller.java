@@ -10,9 +10,6 @@ import com.mojang.authlib.GameProfile;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -60,10 +57,6 @@ public class TileMobKiller extends CustomTileClass implements ITickable{
 	
 	private void activate(){
 		fakePlayer = Saligia.getFakePlayer();
-		if(fakePlayer == null){
-			fakePlayer = FakePlayerFactory.get((WorldServer) worldObj, new GameProfile(UUID.fromString("14159265-3589-7932-3846-264338327950"), "[Saligia]"));
-			Saligia.setFakePlayer(fakePlayer);
-		}
 		
 		List<EntityLiving> entities = worldObj.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(getPos().add(-2, -1, -2), getPos().add(3, -3, 3)));
 		

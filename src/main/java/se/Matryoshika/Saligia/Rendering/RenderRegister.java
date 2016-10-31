@@ -4,16 +4,10 @@
 package se.Matryoshika.Saligia.Rendering;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
-import se.Matryoshika.Saligia.Saligia;
 import se.Matryoshika.Saligia.API.Content.BlockRegistryInjector;
 import se.Matryoshika.Saligia.API.Content.ItemRegistryInjector;
 import se.Matryoshika.Saligia.API.Rendering.RenderingRegistryInjector;
-import se.Matryoshika.Saligia.Content.ContentRegistry;
-import se.Matryoshika.Saligia.Content.Blocks.RitualMasters.BlockRitualMaster;
 import se.Matryoshika.Saligia.Content.Blocks.Utility.UtilityBlock;
 import se.Matryoshika.Saligia.Utils.ConfigHandler;
 
@@ -43,6 +37,10 @@ public class RenderRegister {
 		for(UtilityBlock block : BlockRegistryInjector.utilityList){
 			RenderingRegistryInjector.regWithLocation(block, block.getRegistryName(), 0);
 		}
+		
+		//RenderingRegistry.registerEntityRenderingHandler(EntityUtility.class, RenderUtility::new);
+		
 	}
+	
 
 }
