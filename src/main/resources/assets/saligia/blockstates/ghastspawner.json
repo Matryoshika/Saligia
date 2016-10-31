@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "saligia:BlockPlaque" },
+        "inventory": { "model": "saligia:BlockPlaque" }
+    }
+} 
