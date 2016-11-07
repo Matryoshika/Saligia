@@ -17,7 +17,7 @@ public class Utils {
 	
 	public static ItemStack searchPlayerInventoryForAnimun(EntityPlayer player){
 		for(ItemStack stack : player.inventory.mainInventory){
-			if(stack.getItem() instanceof IAnimun){
+			if(stack != null && stack.getItem() instanceof IAnimun){
 				IAnimun item = (IAnimun) stack.getItem();
 				if(item.getCurrentAmount() > 0)
 					return stack;
@@ -25,8 +25,11 @@ public class Utils {
 				
 		}
 		for(ItemStack stack : player.inventory.armorInventory){
-			if(stack.getItem() instanceof IAnimun)
-				return stack;
+			if(stack != null && stack.getItem() instanceof IAnimun){
+				IAnimun item = (IAnimun) stack.getItem();
+				if(item.getCurrentAmount() > 0)
+					return stack;
+			}
 		}
 		
 		return null;
