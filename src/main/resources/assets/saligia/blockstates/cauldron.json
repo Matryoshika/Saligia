@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "level=0": { "model": "saligia:cauldron_empty" },
+        "level=1": { "model": "saligia:cauldron_level1" },
+        "level=2": { "model": "saligia:cauldron_level2" },
+        "level=3": { "model": "saligia:cauldron_level3" }
+    }
+} 
