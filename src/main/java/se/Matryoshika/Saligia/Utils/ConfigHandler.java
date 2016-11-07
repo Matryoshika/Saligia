@@ -33,6 +33,7 @@ public class ConfigHandler {
     
     public static HashMap isBlockEnabledMap = new HashMap();
     public static HashMap isRitualEnabledMap = new HashMap();
+    public static HashMap isUtilityEnabledMap = new HashMap();
     public static HashMap isItemEnabledMap = new HashMap();
     
     public static boolean requireJungleForOcelotDiscSpawn;
@@ -60,6 +61,11 @@ public class ConfigHandler {
 		for(Block block : BlockRegistryInjector.blockList){
 			boolean isBlockEnabled = blockConf.getBoolean(block.getRegistryName().toString(), "Enabled Blocks", true, "Wether or not this block is enabled");
 			isBlockEnabledMap.put(block.getRegistryName().toString(), isBlockEnabled);
+		}
+		
+		for(Block block : BlockRegistryInjector.utilityList){
+			boolean isUtilityEnabled = blockConf.getBoolean(block.getRegistryName().toString(), "Enabled Blocks", true, "Wether or not this block is enabled");
+			isUtilityEnabledMap.put(block.getRegistryName().toString(), isUtilityEnabled);
 		}
 		
 		ritualConf.addCustomCategoryComment("Enabled Rituals", "All enabled rituals");
