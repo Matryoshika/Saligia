@@ -3,6 +3,9 @@
  */
 package se.Matryoshika.Saligia.API.Soulsystem;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
 /**
  * This class was created by Matryoshika Oct 31, 2016
  * Property of Matryoshika. 
@@ -72,4 +75,14 @@ public interface IAnimun {
 	 * Returns true if Animun can be used to repair this item
 	 */
 	public boolean repairable();
+	
+	/**
+	 * @param owner = the one holding the tool
+	 * @param stack = the tool itself
+	 * @param animunRequirement = how much Animun it will cost to repair one durability
+	 * 
+	 * animunRequirement in Saligia equals max-durability/666
+	 */
+	public void tryRepair(EntityPlayer owner, ItemStack stack, int animunRequirement);
+
 }

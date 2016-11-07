@@ -3,15 +3,11 @@
  */
 package se.Matryoshika.Saligia.Content.Items.Tools;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import se.Matryoshika.Saligia.Saligia;
+import se.Matryoshika.Saligia.API.Content.Materials;
 import se.Matryoshika.Saligia.API.Soulsystem.IAnimun;
 import se.Matryoshika.Saligia.API.Tools.ISaligiaTool;
 import se.Matryoshika.Saligia.API.Tools.SaligiaBaseSword;
-import se.Matryoshika.Saligia.Content.ContentRegistry;
 
 /**
  * This class was created by Matryoshika Oct 29, 2016
@@ -19,12 +15,12 @@ import se.Matryoshika.Saligia.Content.ContentRegistry;
  * Part of the Saligia mod.
  * May be viewed for educational purposes.
  */
-public class ItemDagger extends SaligiaBaseSword implements IAnimun, ISaligiaTool{
+public class ItemDagger extends SaligiaBaseSword implements IAnimun{
 
-    private final ToolMaterial material = ContentRegistry.VILE;
+    private final ToolMaterial material = Materials.VILE;
 
 	public ItemDagger() {
-		super(ContentRegistry.VILE);
+		super(Materials.VILE);
 		this.setRegistryName(Saligia.MODID, "daggervile");
 		this.setUnlocalizedName(getRegistryName().toString());
 		this.setCreativeTab(Saligia.saligiaTab);

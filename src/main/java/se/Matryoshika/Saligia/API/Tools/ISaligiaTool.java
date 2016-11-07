@@ -51,16 +51,4 @@ public interface ISaligiaTool{
 	 */
 	public int damageModifier();
 	
-	/**
-	 * @param owner = the one holding the tool
-	 * @param stack = the tool itself
-	 * @param animunRequirement = how much Animun it will cost to repair one durability
-	 * 
-	 * animunRequirement in Saligia equals max-durability/666
-	 */
-	public void tryRepair(EntityPlayer owner, ItemStack stack, int animunRequirement);
-	
-	/**
-	 * Cost of repairing
-	 */
 }

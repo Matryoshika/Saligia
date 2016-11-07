@@ -16,11 +16,8 @@ import se.Matryoshika.Saligia.API.Soulsystem.IAnimun;
  * Part of the Saligia mod.
  * May be viewed for educational purposes.
  */
-public class SaligiaBaseSword extends ItemSword implements ISaligiaTool{
+public class SaligiaBaseSword extends ItemSword implements ISaligiaTool, IAnimun{
 
-	/**
-	 * @param material
-	 */
 	public SaligiaBaseSword(ToolMaterial material) {
 		super(material);
 	}
@@ -73,6 +70,58 @@ public class SaligiaBaseSword extends ItemSword implements ISaligiaTool{
 			stack.setItemDamage(stack.getItemDamage()-1);
 			animunHolder.set(animunHolder.getCurrentAmount() - animunRequirement);
 		}
+	}
+
+	@Override
+	public void input() {}
+
+	@Override
+	public void output() {}
+
+	@Override
+	public void transfer(IAnimun start, IAnimun finish) {}
+
+	@Override
+	public void set(int amount) {}
+
+	@Override
+	public float maxAmount() {
+		return 0;
+	}
+
+	@Override
+	public int getCurrentAmount() {
+		return 0;
+	}
+
+	@Override
+	public int outputPacket() {
+		return 0;
+	}
+
+	@Override
+	public int inputPacket() {
+		return 0;
+	}
+
+	@Override
+	public float getFillAmountPercentage() {
+		return 0;
+	}
+
+	@Override
+	public float getTier() {
+		return 0;
+	}
+
+	@Override
+	public boolean isHandHeld() {
+		return true;
+	}
+
+	@Override
+	public boolean repairable() {
+		return true;
 	}
 
 }

@@ -28,14 +28,17 @@ public class CreativeAnimunBase extends Item implements IAnimun{
 			EntityPlayer player = (EntityPlayer) entity;
 			
 			for(ItemStack stacks : player.inventory.mainInventory){
-				if(stacks != null && stacks.getItem() instanceof ISaligiaTool){
-					ISaligiaTool item = (ISaligiaTool) stacks.getItem();
+				if(stacks != null && stacks.getItem() instanceof IAnimun){
+					IAnimun item = (IAnimun) stacks.getItem();
 					item.tryRepair(player, stacks, stacks.getMaxDamage() / 666);
 						
 				}
 			}
 			for(ItemStack stacks : player.inventory.armorInventory){
 				if(stacks != null && stacks.getItem() instanceof IAnimun){
+					
+					IAnimun item = (IAnimun) stacks.getItem();
+					item.tryRepair(player, stacks, stacks.getMaxDamage() / 666);
 					
 				}
 			}
@@ -87,12 +90,10 @@ public class CreativeAnimunBase extends Item implements IAnimun{
 		return 100;
 	}
 
-
 	@Override
 	public float getTier() {
 		return -1;
 	}
-
 
 	@Override
 	public boolean isHandHeld() {
@@ -103,7 +104,8 @@ public class CreativeAnimunBase extends Item implements IAnimun{
 	public boolean repairable() {
 		return false;
 	}
-	
-	
+
+	@Override
+	public void tryRepair(EntityPlayer owner, ItemStack stack, int animunRequirement) {}
 
 }

@@ -3,6 +3,8 @@
  */
 package se.Matryoshika.Saligia.API.Soulsystem;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import se.Matryoshika.Saligia.Utils.Constants;
 
 /**
@@ -95,21 +97,23 @@ public class AnimunLogic implements IAnimun{
 		
 	}
 
-
 	@Override
 	public float getTier() {
-		
 		return 0;
-		
 	}
-
 
 	@Override
 	public boolean isHandHeld() {
-		
 		return false;
-		
 	}
+
+	@Override
+	public boolean repairable() {
+		return false;
+	}
+
+	@Override
+	public void tryRepair(EntityPlayer owner, ItemStack stack, int animunRequirement) {}
 
 
 }
