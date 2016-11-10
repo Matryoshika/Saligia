@@ -5,26 +5,29 @@ import java.util.UUID;
 
 import com.mojang.authlib.GameProfile;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import se.Matryoshika.Saligia.API.Capability.Progression.CapabilitySaligiaProgression;
+import se.Matryoshika.Saligia.Content.Progression.ProgressionRegistry;
 import se.Matryoshika.Saligia.Events.MainEventHandler;
+import se.Matryoshika.Saligia.Rendering.GUI.GuiHandler;
 import se.Matryoshika.Saligia.Utils.CreativeTabSaligia;
 
 /**
@@ -34,7 +37,7 @@ import se.Matryoshika.Saligia.Utils.CreativeTabSaligia;
  * May be viewed for educational purposes.
  */
 
-@Mod(modid = Saligia.MODID, version = Saligia.VERSION, name="Underworld")
+@Mod(modid = Saligia.MODID, version = Saligia.VERSION, name="Saligia")
 public class Saligia{
 	
     public static final String MODID = "saligia";
@@ -65,7 +68,12 @@ public class Saligia{
     @SidedProxy(clientSide="se.Matryoshika.Saligia.ClientProxy",serverSide="se.Matryoshika.Saligia.CommonProxy")
     public static CommonProxy proxy;
     
-    @EventHandler
+    @Mod.EventHandler
+    public void registerBlocks(RegistryEvent.Register<Block> event){
+    	//BlockRegistry.registerBlocks(event);
+    }
+    
+    @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
     	directory = event.getModConfigurationDirectory().getAbsolutePath();
     	
@@ -73,17 +81,21 @@ public class Saligia{
 		
 		proxy.preInit(event);
 		proxy.registerRenderers();
+		
+		CapabilitySaligiaProgression.register();
     }
     
-    @EventHandler
+    @Mod.EventHandler
     public void init(FMLInitializationEvent event){
-        
     	
     	proxy.init(event);
     	MinecraftForge.EVENT_BUS.register(MainEventHandler.class);
+    	NetworkRegistry.INSTANCE.registerGuiHandler(Saligia.instance, new GuiHandler());
+    	
+    	ProgressionRegistry.registerProgression();
     }
     
-    @EventHandler
+    @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event){
         
     	

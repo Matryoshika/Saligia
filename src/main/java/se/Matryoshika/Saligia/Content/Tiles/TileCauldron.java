@@ -23,9 +23,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.actors.threadpool.Arrays;
 import se.Matryoshika.Saligia.Saligia;
+import se.Matryoshika.Saligia.API.Capability.Progression.CapabilitySaligiaProgression;
+import se.Matryoshika.Saligia.API.Capability.Progression.ISaligiaProgression;
 import se.Matryoshika.Saligia.API.Rendering.FX.ParticleRedstoneActive;
 import se.Matryoshika.Saligia.Content.ContentRegistry;
 import se.Matryoshika.Saligia.Content.Blocks.BlockCustomCauldron;
+import se.Matryoshika.Saligia.Content.Progression.ProgressionRegistry;
 
 /**
  * This class was created by Matryoshika Nov 2, 2016
@@ -115,7 +118,11 @@ public class TileCauldron extends CustomTileClass{
 						PotionEffect potion = new PotionEffect(MobEffects.WITHER, 10*20, 4);
 						potion.getCurativeItems().clear();
 						player.addPotionEffect(potion);
-						//Add progression as well; This IS how you start it all, after all
+						if(player.hasCapability(CapabilitySaligiaProgression.SALIGIA_PROGRESSION_CAPABILITY, CapabilitySaligiaProgression.DEFAULT_FACING)){
+							ISaligiaProgression progression = player.getCapability(CapabilitySaligiaProgression.SALIGIA_PROGRESSION_CAPABILITY, CapabilitySaligiaProgression.DEFAULT_FACING);
+							progression.setPlayerProgression(player, "STARTER_INFUSION_MAIN", true);
+							System.out.println(progression.getPlayerProgression(player, "STARTER_INFUSION_MAIN"));
+						}
 					}
 				}
 				return true;
